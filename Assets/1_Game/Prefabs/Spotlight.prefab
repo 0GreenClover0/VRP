@@ -119,12 +119,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1900939703829819563}
   - component: {fileID: 1531619575536332992}
+  - component: {fileID: 8585615914321229931}
   - component: {fileID: 857083351720157755}
   - component: {fileID: 7804296025798587931}
   - component: {fileID: 6897634953312848903}
   - component: {fileID: 4735969626925627914}
   - component: {fileID: 1931792862061009909}
-  - component: {fileID: 8585615914321229931}
   m_Layer: 0
   m_Name: Grabbable
   m_TagString: Untagged
@@ -168,12 +168,28 @@ MonoBehaviour:
   _addNewPointsToFront: 0
   _forwardElement: {fileID: 0}
   _oneGrabTransformer: {fileID: 0}
-  _twoGrabTransformer: {fileID: 1931792862061009909}
-  _targetTransform: {fileID: 1900939703829819563}
+  _twoGrabTransformer: {fileID: 8585615914321229931}
+  _targetTransform: {fileID: 4448550634723915018}
   _maxGrabPoints: 2
   _rigidbody: {fileID: 0}
   _kinematicWhileSelected: 1
   _throwWhenUnselected: 1
+--- !u!114 &8585615914321229931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3503209695013075824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1453e661a2ee74a4995661b9c90db66c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _underlyingTransformer: {fileID: 642716319536363752}
+  _targetTransform: {fileID: 1900939703829819563}
+  _underlyingTargetTransform: {fileID: 4448550634723915018}
+  _filterStrength: 0.03
 --- !u!54 &857083351720157755
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -420,18 +436,100 @@ MonoBehaviour:
       AxisRange:
         Min: 1
         Max: 1
---- !u!114 &8585615914321229931
+--- !u!1 &3968934239305169752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4448550634723915018}
+  - component: {fileID: 642716319536363752}
+  m_Layer: 0
+  m_Name: UnderlyingTransformTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4448550634723915018
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3968934239305169752}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4301134817263895147}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &642716319536363752
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3503209695013075824}
+  m_GameObject: {fileID: 3968934239305169752}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1453e661a2ee74a4995661b9c90db66c, type: 3}
+  m_Script: {fileID: 11500000, guid: bbb7085c111fcb44493d57d4e336d3fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _positionConstraints:
+    ConstraintsAreRelative: 0
+    XAxis:
+      ConstrainAxis: 1
+      AxisRange:
+        Min: -0.04657374
+        Max: -0.04657374
+    YAxis:
+      ConstrainAxis: 1
+      AxisRange:
+        Min: -0.3054128
+        Max: -0.3054128
+    ZAxis:
+      ConstrainAxis: 1
+      AxisRange:
+        Min: 0.3626031
+        Max: 0.3626031
+  _rotationConstraints:
+    XAxis:
+      ConstrainAxis: 1
+      AxisRange:
+        Min: 0
+        Max: 45
+    YAxis:
+      ConstrainAxis: 1
+      AxisRange:
+        Min: 315
+        Max: 45
+    ZAxis:
+      ConstrainAxis: 1
+      AxisRange:
+        Min: 0
+        Max: 0
+  _scaleConstraints:
+    ConstraintsAreRelative: 1
+    XAxis:
+      ConstrainAxis: 1
+      AxisRange:
+        Min: 1
+        Max: 1
+    YAxis:
+      ConstrainAxis: 1
+      AxisRange:
+        Min: 1
+        Max: 1
+    ZAxis:
+      ConstrainAxis: 1
+      AxisRange:
+        Min: 1
+        Max: 1
 --- !u!1 &4107534851611270077
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,6 +675,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1900939703829819563}
+  - {fileID: 4448550634723915018}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5168506453837436122
