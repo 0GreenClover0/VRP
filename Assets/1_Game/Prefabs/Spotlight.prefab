@@ -277,7 +277,7 @@ MonoBehaviour:
   _underlyingTransformer: {fileID: 642716319536363752}
   _targetTransform: {fileID: 1900939703829819563}
   _underlyingTargetTransform: {fileID: 4448550634723915018}
-  _filterStrength: 0.025
+  _filterStrength: 0.02
 --- !u!54 &857083351720157755
 Rigidbody:
   m_ObjectHideFlags: 0
