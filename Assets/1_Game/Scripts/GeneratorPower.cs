@@ -19,9 +19,11 @@ public class GeneratorPower : MonoBehaviour
     [Range(0.1f, 10.0f)]
     public float powerDecrease = 1.0f;
 
+    //////////////////////////////////
     [Space]
     [Header("Visualization")]
     [Space]
+    //////////////////////////////////
 
     [Tooltip("Time in seconds that is needed to interpolate the bar from 0 to 100%")]
     public float speed = 1.0f;
