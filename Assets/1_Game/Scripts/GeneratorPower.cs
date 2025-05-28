@@ -87,7 +87,7 @@ public class GeneratorPower : MonoBehaviour
         t += LerpPerTick01();
         barValue = Mathf.Lerp(lastA, lastB, t);
         barValue = Mathf.Clamp(barValue, 0, 100.0f);
-        Debug.Log("Current Generator Value: " + currentGeneratorPower + ", Bar Value: " + barValue + ", Rotation Delta: " + rotationDelta);
+        //Debug.Log("Current Generator Value: " + currentGeneratorPower + ", Bar Value: " + barValue + ", Rotation Delta: " + rotationDelta);
 
         SetBarVisuals();
         SetMechanismVisuals();
@@ -98,16 +98,15 @@ public class GeneratorPower : MonoBehaviour
         return Mathf.Clamp(currentGeneratorPower, 0.0f, 100.0f);
     }
 
-    float MapRange(float input, float rangeMin, float rangeEnd, float newRangeMin, float newRangeEnd)
+    public float GetCurrentBarValue()
     {
-        float t = Mathf.InverseLerp(rangeMin, rangeEnd, input);
-        return Mathf.Clamp(Mathf.Lerp(newRangeMin, newRangeEnd, t), newRangeMin, newRangeEnd);
+        return Mathf.Clamp(barValue, 0.0f, 100.0f);
     }
 
     void SetBarVisuals()
     {
         Vector3 scale = barTransform.localScale;
-        scale.x = MapRange(barValue, 0.0f, 100.0f, 0.0f, 0.05f);
+        scale.x = AK.MapRangeClamped(barValue, 0.0f, 100.0f, 0.0f, 0.05f);
         barTransform.localScale = scale;
     }
 

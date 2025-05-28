@@ -1407,6 +1407,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df00fb2062d2b784db39d37791ab972b, type: 3}
+--- !u!114 &500746926 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4819338489345601743, guid: df00fb2062d2b784db39d37791ab972b, type: 3}
+  m_PrefabInstance: {fileID: 500746925}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04da9cf8fa0a0334aba044b6d22dd147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &516498020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3422,6 +3433,10 @@ PrefabInstance:
       propertyPath: distanceTest
       value: 
       objectReference: {fileID: 369376776}
+    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
+      propertyPath: generatorPowerScript
+      value: 
+      objectReference: {fileID: 500746926}
     - target: {fileID: 5713880220497014333, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
