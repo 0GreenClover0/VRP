@@ -4,6 +4,7 @@
 #
 .vsconfig
 .utmp/
+/.idea/
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
