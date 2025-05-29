@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4660a3440048e3f4e86c696857b0e0cc
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 112000000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 254008
+  packageName: Dragon Water URP
+  packageVersion: 1.2.0
+  assetPath: Assets/Plugins/Dragon Water/Examples/Scenes/Ocean/LightingData.asset
+  uploadId: 702127

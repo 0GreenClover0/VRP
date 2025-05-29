@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 4d4f9a7ac97f7d44893ea2408a302641
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 254008
+  packageName: Dragon Water URP
+  packageVersion: 1.2.0
+  assetPath: Assets/Plugins/Dragon Water/Resources/DragonWater/Shader/Dragon Ripple
+    Caster.shader
+  uploadId: 702127

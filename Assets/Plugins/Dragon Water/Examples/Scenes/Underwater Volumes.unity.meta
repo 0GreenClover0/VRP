@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e8287a59d929ec84eb312fe860c73149
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 254008
+  packageName: Dragon Water URP
+  packageVersion: 1.2.0
+  assetPath: Assets/Plugins/Dragon Water/Examples/Scenes/Underwater Volumes.unity
+  uploadId: 702127

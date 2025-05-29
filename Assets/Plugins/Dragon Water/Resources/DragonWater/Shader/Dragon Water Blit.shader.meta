@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: d7b2bdbf4f8cbc940840233d95603de9
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 254008
+  packageName: Dragon Water URP
+  packageVersion: 1.2.0
+  assetPath: Assets/Plugins/Dragon Water/Resources/DragonWater/Shader/Dragon Water
+    Blit.shader
+  uploadId: 702127

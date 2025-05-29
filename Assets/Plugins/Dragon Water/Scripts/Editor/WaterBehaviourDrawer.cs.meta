@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: e9e30ed1c8840394ea027da7a8c01817
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 254008
+  packageName: Dragon Water URP
+  packageVersion: 1.2.0
+  assetPath: Assets/Plugins/Dragon Water/Scripts/Editor/WaterBehaviourDrawer.cs
+  uploadId: 702127

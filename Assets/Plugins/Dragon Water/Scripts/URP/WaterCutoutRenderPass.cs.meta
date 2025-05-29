@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 8f0c8670229d1d0498b8fa6c5b75fe6f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 254008
+  packageName: Dragon Water URP
+  packageVersion: 1.2.0
+  assetPath: Assets/Plugins/Dragon Water/Scripts/URP/WaterCutoutRenderPass.cs
+  uploadId: 702127

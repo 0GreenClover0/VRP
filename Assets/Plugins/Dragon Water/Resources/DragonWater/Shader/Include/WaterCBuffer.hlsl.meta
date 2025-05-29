@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 55209d1a0f0bbe84fa5c7c5cda59d3ff
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 254008
+  packageName: Dragon Water URP
+  packageVersion: 1.2.0
+  assetPath: Assets/Plugins/Dragon Water/Resources/DragonWater/Shader/Include/WaterCBuffer.hlsl
+  uploadId: 702127

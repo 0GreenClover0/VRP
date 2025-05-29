@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: dc19413695840f144a95aa554ce3797c
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 254008
+  packageName: Dragon Water URP
+  packageVersion: 1.2.0
+  assetPath: Assets/Plugins/Dragon Water/Examples/Scenes/Four Quads.unity
+  uploadId: 702127
