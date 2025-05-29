@@ -1,16 +1,15 @@
+using Oculus.Interaction;
 using UnityEngine;
 
 public class Generator : MonoBehaviour
 {
-    [SerializeField]
-    private bool distinctDirections = false;
-
     private Transform leverTransform;
     private float leverZ;
     private float previousZ;
     private float rotationDelta;
     private bool cached = false;
     private GeneratorPower generatorPower;
+    private OneGrabRotateTransformer rotateTransformer;
 
     void Start()
     {
@@ -18,20 +17,21 @@ public class Generator : MonoBehaviour
         leverZ = leverTransform.eulerAngles.z;
         previousZ = leverZ;
         generatorPower = GetComponent<GeneratorPower>();
+        rotateTransformer = GetComponent<OneGrabRotateTransformer>();
     }
 
     void Update()
     {
         leverZ = leverTransform.eulerAngles.z;
-
+        
         if (cached)
         {
             previousZ = leverZ;
         }
-
-        rotationDelta = distinctDirections ? leverZ - previousZ : Mathf.Abs(leverZ - previousZ);
-        generatorPower.rotationDelta = leverZ - previousZ; // For visual presentation we shouldn't have an absolute value
-
+    
+        rotationDelta = leverZ - previousZ;
+        generatorPower.rotationDelta = rotationDelta;
+    
         cached = !cached;
     }
 }
