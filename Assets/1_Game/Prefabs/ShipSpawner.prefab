@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7132814381441041343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4077070702049727687}
+  - component: {fileID: 4894417865905692263}
+  - component: {fileID: 1944052636946031526}
+  m_Layer: 0
+  m_Name: ShipSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4077070702049727687
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7132814381441041343}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5109682, y: 2.1225011, z: -6.1049094}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4894417865905692263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7132814381441041343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d28ccb10ed07af843915ad83272cf93b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatersManager: {fileID: 1944052636946031526}
+  lighthouseLight: {fileID: 0}
+  warningPrefab: {fileID: 2291783105703421192, guid: d2c6c9d408f303943975242477ce3dfb, type: 3}
+  shipPrefab: {fileID: 8548596439203957564, guid: ac8cdda71befca2469b8d67f2949949f, type: 3}
+  spawnWarningTime: 1.5
+  spawnRapidTime: 2.5
+  minimumSpawnDistance: 2.25
+  lastChanceFoodThreshold: 5
+  lastChanceTimeThreshold: 30
+  mainEventSpawn:
+  - shipList: 00000000
+    spawnType: 0
+  backupSpawn:
+  - shipList: 00000000
+    spawnType: 0
+  ships: []
+  isTestSpawnEnable: 1
+--- !u!114 &1944052636946031526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7132814381441041343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca3f3054fdde4245907545ef90a9153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
