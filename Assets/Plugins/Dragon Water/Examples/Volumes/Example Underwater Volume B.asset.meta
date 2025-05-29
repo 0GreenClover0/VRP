@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e373aaa915645ec4786504503d74474c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 254008
+  packageName: Dragon Water URP
+  packageVersion: 1.2.0
+  assetPath: Assets/Plugins/Dragon Water/Examples/Volumes/Example Underwater Volume
+    B.asset
+  uploadId: 702127

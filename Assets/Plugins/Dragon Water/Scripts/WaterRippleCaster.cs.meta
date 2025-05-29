@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 10c0309d9d7aad644aed57a49954522e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 254008
+  packageName: Dragon Water URP
+  packageVersion: 1.2.0
+  assetPath: Assets/Plugins/Dragon Water/Scripts/WaterRippleCaster.cs
+  uploadId: 702127

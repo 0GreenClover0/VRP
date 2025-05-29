@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a4c85825660050c4fa4745b7cc404f2a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4890085278179872738
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 254008
+  packageName: Dragon Water URP
+  packageVersion: 1.2.0
+  assetPath: Assets/Plugins/Dragon Water/Examples/Scenes/Inner Water/Inner Water.lighting
+  uploadId: 702127

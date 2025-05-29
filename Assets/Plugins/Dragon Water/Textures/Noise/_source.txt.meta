@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 5723c0599dbef5b489359a23a1a39f7b
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 254008
+  packageName: Dragon Water URP
+  packageVersion: 1.2.0
+  assetPath: Assets/Plugins/Dragon Water/Textures/Noise/_source.txt
+  uploadId: 702127

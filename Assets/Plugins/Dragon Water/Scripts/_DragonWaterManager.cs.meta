@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: cf6d093ee27bc47438f3d5b113609603
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 254008
+  packageName: Dragon Water URP
+  packageVersion: 1.2.0
+  assetPath: Assets/Plugins/Dragon Water/Scripts/_DragonWaterManager.cs
+  uploadId: 702127

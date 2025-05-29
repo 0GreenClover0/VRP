@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 4a209234c2f51de4d90f40372d7bde49
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 254008
+  packageName: Dragon Water URP
+  packageVersion: 1.2.0
+  assetPath: Assets/Plugins/Dragon Water/Scripts/URP/UnderwaterCausticsPass.cs
+  uploadId: 702127

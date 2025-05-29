@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 339074fd4e7a5b544a41f6822f828134
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 254008
+  packageName: Dragon Water URP
+  packageVersion: 1.2.0
+  assetPath: Assets/Plugins/Dragon Water/Textures/Caustics/_source.txt
+  uploadId: 702127

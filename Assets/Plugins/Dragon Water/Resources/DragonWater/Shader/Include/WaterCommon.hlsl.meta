@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 1e1fc8100975e4341aa67ea299fa0e12
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 254008
+  packageName: Dragon Water URP
+  packageVersion: 1.2.0
+  assetPath: Assets/Plugins/Dragon Water/Resources/DragonWater/Shader/Include/WaterCommon.hlsl
+  uploadId: 702127

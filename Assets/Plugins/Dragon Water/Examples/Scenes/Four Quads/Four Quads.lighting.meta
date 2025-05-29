@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9a4798d25c82a43409166abb9def515a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4890085278179872738
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 254008
+  packageName: Dragon Water URP
+  packageVersion: 1.2.0
+  assetPath: Assets/Plugins/Dragon Water/Examples/Scenes/Four Quads/Four Quads.lighting
+  uploadId: 702127
