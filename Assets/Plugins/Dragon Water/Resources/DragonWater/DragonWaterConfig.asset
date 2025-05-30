@@ -29,7 +29,7 @@ MonoBehaviour:
     - 256
     - 512
     maxFarDistance: 5000
-    gridSnapUnits: 1
+    gridSnapUnits: 16
   - name: Low Far
     densities:
     - 1
@@ -81,7 +81,7 @@ MonoBehaviour:
     - 256
     - 512
     maxFarDistance: 5000
-    gridSnapUnits: 1
+    gridSnapUnits: 16
   - name: High Far
     densities:
     - 0.25
