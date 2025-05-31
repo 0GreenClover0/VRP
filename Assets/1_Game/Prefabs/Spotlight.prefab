@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 8802445924629158881}
   - component: {fileID: 2179189122964383835}
   - component: {fileID: 1888884842292477557}
+  - component: {fileID: 2854932776473758188}
   m_Layer: 0
   m_Name: WaterCone
   m_TagString: Untagged
@@ -195,6 +196,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2854932776473758188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2872354743721543858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a697fbcdd0e72c43979c63d4a918e85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlledShip: {fileID: 0}
+  isEnabled: 1
 --- !u!1 &3503209695013075824
 GameObject:
   m_ObjectHideFlags: 0

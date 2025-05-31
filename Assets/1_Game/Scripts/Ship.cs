@@ -67,7 +67,7 @@ public class Ship : MonoBehaviour
     private const float sinkFactor = 0.26f;
 
     // These were originally in Player and depended on appropriate curves
-    private const float playerRange = 1.0f;
+    private float playerRange = 10.0f;
     private const float playerPiratesInControl = 1.0f;
     private const float playerTurnSpeed = 30.0f;
     private const float playerAdditionalShipSpeed = 1.0f;
@@ -83,6 +83,11 @@ public class Ship : MonoBehaviour
 
     private void Update()
     {
+        if (shipSpawner != null)
+        {
+            playerRange = shipSpawner.shipRange;
+        }
+        
         if (IsOutOfRoom())
         {
             Destroy(gameObject);
