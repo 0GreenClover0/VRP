@@ -13,6 +13,7 @@ public class ShipSpawner : MonoBehaviour
     public float spawnWarningTime = 1.5f;
     public float spawnRapidTime = 2.5f;
     public float minimumSpawnDistance = 2.25f;
+    public float shipRange = 7.0f;
 
     public uint lastChanceFoodThreshold = 5;
     public float lastChanceTimeThreshold = 30.0f;

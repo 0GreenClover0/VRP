@@ -7,7 +7,6 @@ public class LighthouseLight : MonoBehaviour
 
     public Vector2 GetPosition()
     {
-        // TODO: Return some actual light position.
-        return new Vector2();
+        return new Vector2(transform.position.x, transform.position.z);
     }
 }
