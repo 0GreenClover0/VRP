@@ -148,7 +148,7 @@ public class ShipSpawner : MonoBehaviour
             }
         }
 
-        mainSpawn = new List<SpawnEvent>(backupSpawn);
+        CopySpawnList(mainSpawn, backupSpawn);
 
         if (!LevelController.Instance.IsTutorial)
         {
@@ -163,6 +163,24 @@ public class ShipSpawner : MonoBehaviour
         if (LevelController.Instance.HasStarted)
         {
             PrepareForSpawn();
+        }
+    }
+
+    private void CopySpawnList(List<SpawnEvent> destination, List<SpawnEvent> source)
+    {
+        destination.Clear();
+
+        foreach (var spawnEvent in source)
+        {
+            List<ShipType> shipListCopy = new();
+
+            foreach (var shipType in spawnEvent.shipList)
+            {
+                shipListCopy.Add(shipType);
+            }
+
+            SpawnEvent spawnEventCopy = new SpawnEvent(shipListCopy, spawnEvent.spawnType);
+            destination.Add(spawnEventCopy);
         }
     }
 
@@ -304,7 +322,7 @@ public class ShipSpawner : MonoBehaviour
         {
             if (!isLastChanceActivated)
             {
-                mainSpawn = new List<SpawnEvent>(backupSpawn);
+                CopySpawnList(mainSpawn, backupSpawn);
             }
 
             return;
@@ -325,8 +343,6 @@ public class ShipSpawner : MonoBehaviour
             {
                 return;
             }
-
-            currentEvent = mainSpawn.Last();
         }
 
         if (paths.Count == 0)
@@ -338,6 +354,7 @@ public class ShipSpawner : MonoBehaviour
         if (!isLastChanceActivated && IsTimeForLastChance())
             return;
 
+        currentEvent = mainSpawn.Last();
         spawnType = currentEvent.spawnType;
 
         if (spawnWarningCounter > 0.0f)
