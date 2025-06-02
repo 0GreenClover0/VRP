@@ -1,5 +1,9 @@
+using System;
+using DragonWater.Scripting;
+using Meta.XR.Guides.Editor;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public enum ShipType
 {
@@ -27,8 +31,8 @@ public class Ship : MonoBehaviour
     public ShipType type = ShipType.FoodSmall;
     public BehavioralState behavioralState = BehavioralState.Normal;
 
-    public float minimumSpeed = 0.11f;
-    public float maximumSpeed = 0.23f;
+    public float minimumSpeed = 0.6f;
+    public float maximumSpeed = 0.8f;
 
     public LighthouseLight lighthouseLight;
     public ShipSpawner shipSpawner;
@@ -48,6 +52,7 @@ public class Ship : MonoBehaviour
     private float destroyedCounter;
     private float collisionRotationCounter;
     private float scaleDownCounter;
+    [SerializeField] private float scaleDownSpeed = 0.05f;
 
     private bool isInPort = false;
 
@@ -330,34 +335,21 @@ public class Ship : MonoBehaviour
     {
         if (destroyedCounter > 0.0f)
         {
-            if (collisionRotationCounter > 0.0f)
-            {
-                collisionRotationCounter -= Time.deltaTime;
-
-                float factor = Utilities.EaseOutQuart(collisionRotationCounter / collisionRotationTime);
-
-                if (factor > 0.0f)
-                {
-                    transform.rotation = Quaternion.Lerp(rotationBeforeCollision, targetRotationAfterCollision, 1.0f - factor);
-                }
-            }
-
+            SinkVisuals();
             destroyedCounter -= Time.deltaTime;
-            transform.position = new Vector3(transform.position.x, ((destroyedCounter / destroyTime) - 1.0f) * sinkFactor, transform.position.z);
-
+            
             if (destroyedCounter < 0.0f)
             {
                 collisionCollider.enabled = false;
             }
         }
-        else if (scaleDownCounter > 0.0f)
-        {
-            ScaleDown();
-        }
         else
         {
-            Destroy(gameObject);
-            return;
+            ScaleDown(onlySink: true);
+            if (transform.position.y <= -10.00f || transform.GetChild(0).localScale.magnitude < 0.01f)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -532,12 +524,21 @@ public class Ship : MonoBehaviour
         }
     }
 
-    private void ScaleDown()
+    private void ScaleDown(bool onlySink = false)
     {
-        scaleDownCounter -= Time.deltaTime;
-        float scale = scaleDownCounter / scaleDownTime;
-        transform.localScale = new Vector3(scale, scale, scale);
-
+        scaleDownCounter -= Time.deltaTime * scaleDownSpeed;
+        Vector3 scale = transform.GetChild(0).localScale * (scaleDownCounter / scaleDownTime);
+        GetComponent<Rigidbody>().freezeRotation = true;
+        
+        if (!onlySink)
+        {
+            transform.GetChild(0).localScale = scale;
+        }
+        else
+        {
+            GetComponent<FloatingBody>().BuoyancyForce -= Time.deltaTime * 350.0f;   
+        }
+        
         // TODO: Dim out light
     }
 
@@ -559,13 +560,24 @@ public class Ship : MonoBehaviour
         };
     }
 
+    private void SinkVisuals()
+    {
+        FloatingBody f = GetComponent<FloatingBody>();
+        f.BuoyancyForce = 1000.0f;
+        Vector3 centerOfMass = f.CenterOfMass;
+        centerOfMass.x = -0.7f;
+        f.CenterOfMass = centerOfMass;
+    }
+    
     public void DestroyShip()
     {
         if (hasBeenDestroyed)
         {
             return;
         }
-
+        
+        SinkVisuals();
+        
         hasBeenDestroyed = true;
         destroyedCounter = isInPort ? destroyTimeInPort : destroyTime;
         scaleDownCounter = scaleDownTime;
@@ -577,13 +589,21 @@ public class Ship : MonoBehaviour
         scaleDownCounter = scaleDownTime;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.TryGetComponent(out Ship _) || other.TryGetComponent(out IceBound _))
+        if (other.gameObject.TryGetComponent(out Ship _) || other.gameObject.TryGetComponent(out IceBound _))
         {
             DestroyShip();
         }
     }
+
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     if (other.TryGetComponent(out Ship _) || other.TryGetComponent(out IceBound _))
+    //     {
+    //         DestroyShip();
+    //     }
+    // }
 
     private void OnDestroy()
     {

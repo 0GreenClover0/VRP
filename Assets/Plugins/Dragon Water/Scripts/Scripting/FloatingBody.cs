@@ -85,8 +85,7 @@ namespace DragonWater.Scripting
             tmp.Add(point);
             contactPoints = tmp.ToArray();
         }
-
-
+        
         protected override void InnerFixedUpdate()
         {
             if (contactPoints == null)
@@ -149,8 +148,7 @@ namespace DragonWater.Scripting
 #endif
                 Rigidbody.AddTorque(-Rigidbody.angularVelocity * angularDrag * CurrentSubmergeLevel, ForceMode.Acceleration);
             }
-
-
+            
             if (isSchedulingFrane)
             {
                 PrepareSamplingPointsSize(contactPoints.Length);

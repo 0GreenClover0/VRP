@@ -12,32 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fd8ac118ad5a734194e5da87b7a75ef, type: 3}
   m_Name: GLMaterialProfile
   m_EditorClassIdentifier: 
-  waterDepth: 3
-  shallowWaterColor: {r: 0, g: 0.76, b: 0.76, a: 0.5}
-  deepWaterColor: {r: 0, g: 0.4117647, b: 0.47, a: 0.9}
-  smoothness: 0.32
-  specular: {r: 0.12941177, g: 0.43571582, b: 0.4509804, a: 1}
+  waterDepth: 3.71
+  shallowWaterColor: {r: 0, g: 0.28235295, b: 0.2924528, a: 0.6745098}
+  deepWaterColor: {r: 0, g: 0.29411766, b: 0.29411766, a: 0.9}
+  smoothness: 0.75
+  specular: {r: 0.033463866, g: 0.1509434, b: 0.1509434, a: 1}
   specularHighlights: 1
-  colorNoiseHillnessOffset: -1
-  colorNoiseHillnessLighten: 1
-  colorNoiseHillnessDarken: 0.25
+  colorNoiseHillnessOffset: -0.8
+  colorNoiseHillnessLighten: -1
+  colorNoiseHillnessDarken: 0
   useColorNoiseTexture: 0
   colorNoiseTexture1:
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: b61a8fc6859ecc04db5b625e02412aca, type: 3}
     size: 256
     speed: 0
-    strength: 1
+    strength: 1.07
   colorNoiseTexture2:
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: df770d0a19fff24458eb1ea831765047, type: 3}
     size: 256
     speed: 0.05
-    strength: 1
-  colorNoiseColor: {r: 0, g: 0.32, b: 0.36, a: 1}
-  colorNoiseIntensity: 1
+    strength: 1.16
+  colorNoiseColor: {r: 0, g: 0.5129205, b: 0.5754717, a: 1}
+  colorNoiseIntensity: 2
   colorNoiseEmission: 0
-  sssGlobalIntensity: 1
-  sssNormalInfluence: 0.2
-  sssPower: 2
+  sssGlobalIntensity: 0.05
+  sssNormalInfluence: 0.5
+  sssPower: 0.4
   sssOverlayStrength: 1
   sssEmissionStrength: 0.25
   normalGlobalStrength: 1
@@ -46,30 +46,30 @@ MonoBehaviour:
     texture: {fileID: 2800000, guid: d3f4a6382a589374a800e294eb1bc30f, type: 3}
     size: 15
     speed: 0.2
-    strength: 0.667
+    strength: 0.1
   normalMap2:
     texture: {fileID: 2800000, guid: 850c0a9b0e75e5b49acd86690bfc3737, type: 3}
-    size: 15
+    size: 10
     speed: 0.4
-    strength: 0.732
+    strength: 0.3
   useFoam: 0
-  foamGlobalIntensity: 2
-  foamEmissionRate: 0.02
+  foamGlobalIntensity: 0.39
+  foamEmissionRate: 1
   foamColor: {r: 0, g: 0.7607844, b: 0.7607844, a: 1}
-  foamNoiseTexture: {fileID: 2800000, guid: fe06b06500485674da5dd3b9262ad0d9, type: 3}
-  foamNoiseSize: 108.52
-  foamSmoothnessFactor: -0
-  foamSpecularFactor: 2.47
+  foamNoiseTexture: {fileID: 2800000, guid: b61a8fc6859ecc04db5b625e02412aca, type: 3}
+  foamNoiseSize: 65.74
+  foamSmoothnessFactor: 1.17
+  foamSpecularFactor: 0.59
   foamNormalAttenuation: 2
   foamNormalAttenuationBias: 1
   foamEdge:
-    intensity: 0.4
-    maxDepth: 5
-    power: 2
+    intensity: 0.48
+    maxDepth: 35.04
+    power: 15.72
   foamHillness:
-    intensity: 0.3
-    hillnessThreshold: 0.01
-    hillnessMultiplier: 15
+    intensity: 1.43
+    hillnessThreshold: 0.04
+    hillnessMultiplier: 13.8
   foamExtraLayers: 0
   foamHillnessExtraLayer1:
     color: {r: 1, g: 1, b: 1, a: 1}
@@ -86,29 +86,29 @@ MonoBehaviour:
     hillnessThreshold: 0.5
     hillnessMultiplier: 1.5
   transparencyType: 0
-  refractionStrength: 0.15
+  refractionStrength: 1
   refractionDistanceFactor: 100
   reflectionsMode: 2
-  reflectionsIntensity: 0.604
+  reflectionsIntensity: 0.501
   reflectionsCubemap: {fileID: 0}
   reflectionsGlossyTint: {r: 0, g: 0, b: 0, a: 1}
-  rippleSmoothnessFactor: 1
-  rippleSpecularFactor: 0
+  rippleSmoothnessFactor: 2
+  rippleSpecularFactor: 2
   rippleColor:
-    color: {r: 0, g: 0.40360957, b: 0.4528302, a: 1}
-    attenuationStrength: 1
-    attenuationBias: 0
+    color: {r: 0, g: 0.41176474, b: 0.47058827, a: 1}
+    attenuationStrength: 0
+    attenuationBias: 1
   rippleNoise:
     texture: {fileID: 2800000, guid: 3c072437a9ae6a54ab79cf7b485f386e, type: 3}
-    color: {r: 0.9009434, g: 0.97312415, b: 1, a: 1}
-    scale: 48
+    color: {r: 1, g: 1, b: 1, a: 1}
+    scale: 8
     attenuationStrength: 0.5
     attenuationBias: 1
   rippleNormal:
-    heightOffset: 0.15
-    heightStrength: 4
-    attenuationStrength: 0.7
-    attenuationBias: 1
+    heightOffset: 0.236
+    heightStrength: 5
+    attenuationStrength: 1
+    attenuationBias: -0.33
   rippleFoam:
     attenuationStrength: 1
     attenuationBias: 0

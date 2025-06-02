@@ -15,7 +15,7 @@ MonoBehaviour:
   waves:
   - direction: {x: -0.6018151, y: -0.7986355}
     number: 1.0471976
-    steepness: 0.448
+    steepness: 0
     amplitude: 0.45
     speed: 1
   - direction: {x: -0.9659258, y: -0.25881904}
@@ -25,13 +25,13 @@ MonoBehaviour:
     speed: 1
   - direction: {x: -0.104528494, y: -0.9945219}
     number: 0.25132743
-    steepness: 0.264
+    steepness: 0.296
     amplitude: 0.25
     speed: 3
-  - direction: {x: -0.29237184, y: -0.9563047}
-    number: 0.41887903
-    steepness: 0.749
-    amplitude: 0.31
+  - direction: {x: -0.43837112, y: -0.89879405}
+    number: 0.43332314
+    steepness: 1
+    amplitude: 0.1
     speed: 5
   autoWaveSpeed: 0
   autoWaveSpeedGravity: 9.81
@@ -45,8 +45,8 @@ MonoBehaviour:
   globalSteepnessMultiplier: 8.3
   globalHillnessMultiplier: 1
   includeLocalAreas: 1
-  rippleMaxDepth: 1
-  rippleTime: 0.5
+  rippleMaxDepth: 2
+  rippleTime: 0.4
   rippleRestoreTime: 15
-  rippleBlurStep: 0.5
-  rippleBlurAttenuation: 0.3
+  rippleBlurStep: 0.2
+  rippleBlurAttenuation: 0.2
