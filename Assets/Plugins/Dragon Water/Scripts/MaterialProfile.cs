@@ -378,12 +378,12 @@ namespace DragonWater
 
 
             material.SetVector(Constants.Shader.Property.RippleMaterialParams, new Vector4(0, 0, rippleSmoothnessFactor, rippleSpecularFactor));
-            material.SetColor(Constants.Shader.Property.RippleColorColor, rippleColor.color);
+            material.SetColor(Constants.Shader.Property.RippleColorColor, rippleColor.color * 1.75f);
             material.SetVector(Constants.Shader.Property.RippleColorParams, rippleColor.ParamsVector);
             material.SetVector(Constants.Shader.Property.RippleNormalParams, rippleNormal.ParamsVector);
             material.SetVector(Constants.Shader.Property.RippleFoamParams, rippleFoam.ParamsVector);
             material.SetTexture(Constants.Shader.Property.RippleNoiseTexture, rippleNoise.texture);
-            material.SetColor(Constants.Shader.Property.RippleNoiseColor, rippleNoise.color);
+            material.SetColor(Constants.Shader.Property.RippleNoiseColor, rippleNoise.color * 1.75f);
             material.SetVector(Constants.Shader.Property.RippleNoiseParams, rippleNoise.ParamsVector);
 
             _filledMaterials.Add(material);
