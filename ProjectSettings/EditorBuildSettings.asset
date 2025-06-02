@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Main.unity
-    guid: 3797edaff42a2f64889095eb06ca30a4
+    path: Assets/1_Game/Scenes/Game_Blockout.unity
+    guid: 2ba328c8592e45645afa78dede5f326e
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: d730f8000e2f1814291fdde8c7308752, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 6f86a94401368ca409cdcb7fa64ac937, type: 2}
