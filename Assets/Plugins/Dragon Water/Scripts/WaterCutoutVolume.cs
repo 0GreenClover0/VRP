@@ -85,15 +85,20 @@ namespace DragonWater
         private void Awake()
         {
             EnsureDynamicConfig();
+            // Disable rendering this in game, also in VR XD
+            if (_renderer) _renderer.enabled = false;
         }
 
         private void OnEnable()
         {
-            if (_renderer) _renderer.enabled = true;
+            if (_renderer) _renderer.enabled = false;
+            // if (_renderer) _renderer.enabled = true;
             if (_collider) _collider.enabled = true;
         }
+        
         private void OnDisable()
         {
+            // LOL, it renders in the right eye in VR XD
             if (_renderer) _renderer.enabled = false;
             if (_collider) _collider.enabled = false;
         }

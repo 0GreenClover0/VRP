@@ -86,8 +86,8 @@ MonoBehaviour:
     cullingBoxSize: {x: 50, y: 30, z: 50}
     cullingRefreshTime: 0.1
   contactPoints:
-  - {x: -0.009797, y: -0.0032354486, z: 0.027790586}
-  centerOfMass: {x: -0.009224796, y: -1.0035475, z: 0.028074304}
+  - {x: -0.009816074, y: -0.0032354486, z: 0.027803807}
+  centerOfMass: {x: -0.009243869, y: -1.0035475, z: 0.028087525}
   buoyancyForce: 3000
   ignoreMass: 0
   normalAlignemnt: 0.3
@@ -551,7 +551,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8610052500356390808}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
