@@ -48,10 +48,11 @@ MonoBehaviour:
   floatersManager: {fileID: 1944052636946031526}
   lighthouseLight: {fileID: 0}
   warningPrefab: {fileID: 2291783105703421192, guid: d2c6c9d408f303943975242477ce3dfb, type: 3}
-  shipPrefab: {fileID: 8548596439203957564, guid: ac8cdda71befca2469b8d67f2949949f, type: 3}
+  shipPrefab: {fileID: 3669728572003431613, guid: 7c6855901bc063643865e19432add1c0, type: 3}
   spawnWarningTime: 1.5
   spawnRapidTime: 2.5
   minimumSpawnDistance: 2.25
+  shipRange: 7
   lastChanceFoodThreshold: 5
   lastChanceTimeThreshold: 30
   mainEventSpawn:

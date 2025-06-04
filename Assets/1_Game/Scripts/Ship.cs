@@ -82,7 +82,7 @@ public class Ship : MonoBehaviour
 
     private void Awake()
     {
-        SetStartDirection();
+        // SetStartDirection();
         rangeFactor = ShipTypeToRangeFactor(type);
     }
 
@@ -257,7 +257,8 @@ public class Ship : MonoBehaviour
     public void SetStartDirection()
     {
         Vector2 shipPosition = new Vector2(transform.position.x, transform.position.z);
-        Vector2 dir = (Vector2.zero - shipPosition).normalized;
+        Vector2 dir = (new Vector2(shipSpawner.transform.position.x, shipSpawner.transform.position.z) - shipPosition).normalized;
+        // Vector2 dir = (new Vector2(0,0) - shipPosition).normalized;
         float rotateDirection = Mathf.Sign(dir.y);
         direction = Vector2.Angle(new Vector2(1.0f, 0.0f), dir) * rotateDirection;
         direction += Random.Range(-startDirectionWiggle, startDirectionWiggle);
@@ -392,7 +393,7 @@ public class Ship : MonoBehaviour
 
     private bool ControlStateChange()
     {
-        if (lighthouseLight == null || !lighthouseLight.isEnabled)
+        if (lighthouseLight == null || !lighthouseLight.enabled)
         {
             return false;
         }
@@ -457,7 +458,7 @@ public class Ship : MonoBehaviour
     {
         bool result = false;
 
-        if (lighthouseLight != null && lighthouseLight.isEnabled)
+        if (lighthouseLight != null && lighthouseLight.enabled)
         {
             if (lighthouseLight.controlledShip != this)
             {
