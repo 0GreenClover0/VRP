@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Serialization;
 
 public class ShipSpawner : MonoBehaviour
 {
@@ -31,7 +32,7 @@ public class ShipSpawner : MonoBehaviour
     private AudioSource lastChanceSound;
     private AudioSource bellSound;
 
-    [SerializeField] private bool isTestSpawnEnable = false;
+    [FormerlySerializedAs("isTestSpawnEnabled")] [SerializeField] private bool onlyTestSpawn = false;
     private bool isHalfRapidDone = false;
     private bool isLastChanceActivated = false;
     private SpawnType spawnType = SpawnType.Sequence;
@@ -125,8 +126,23 @@ public class ShipSpawner : MonoBehaviour
 
     private void Start()
     {
-        if (isTestSpawnEnable)
+        if (onlyTestSpawn)
         {
+            backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodSmall }, spawnType = SpawnType.Sequence });
+            backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodMedium }, spawnType = SpawnType.Sequence });
+            backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodBig }, spawnType = SpawnType.Sequence });
+            backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.Pirates }, spawnType = SpawnType.Sequence });
+            backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.Tool }, spawnType = SpawnType.Sequence });
+            backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodSmall }, spawnType = SpawnType.Sequence });
+            backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodMedium }, spawnType = SpawnType.Sequence });
+            backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodBig }, spawnType = SpawnType.Sequence });
+            backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.Pirates }, spawnType = SpawnType.Sequence });
+            backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.Tool }, spawnType = SpawnType.Sequence });
+            backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodSmall }, spawnType = SpawnType.Sequence });
+            backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodMedium }, spawnType = SpawnType.Sequence });
+            backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodBig }, spawnType = SpawnType.Sequence });
+            backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.Pirates }, spawnType = SpawnType.Sequence });
+            backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.Tool }, spawnType = SpawnType.Sequence });
             backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodSmall }, spawnType = SpawnType.Sequence });
             backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodMedium }, spawnType = SpawnType.Sequence });
             backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodBig }, spawnType = SpawnType.Sequence });
@@ -193,7 +209,7 @@ public class ShipSpawner : MonoBehaviour
 
     public bool ShouldDecalBeDrawn()
     {
-        if (lighthouseLight != null && lighthouseLight.isEnabled)
+        if (lighthouseLight != null && lighthouseLight.enabled)
         {
             foreach (var ship in ships)
             {
@@ -667,7 +683,10 @@ public class ShipSpawner : MonoBehaviour
         Debug.Log("SPAWN");
         FloatersManager.FloaterSettings spawnedBoatSettings = new FloatersManager.FloaterSettings();
 
-        ShipType spawnedShipType = currentEvent.shipList.Last();
+        if (!currentEvent.shipList.Any())
+            return;
+        
+        ShipType spawnedShipType = currentEvent.shipList.Last();   
 
         if (spawnedShipType == ShipType.FoodSmall)
         {

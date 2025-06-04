@@ -1,11 +1,13 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SpotlightController : MonoBehaviour
 {
     RaycastHit hit;
 
-    [Tooltip("If the spotlight should be enabled and also attract ships (false if, e.g. generator power is 0)")]
-    public bool enableSpotlightLogic = true;
+    [FormerlySerializedAs("enableSpotlightLogic")] [Tooltip("If the spotlight should be enabled and also attract ships (false if, e.g. generator power is 0)")]
+    public bool spotlightEnabled = true;
     public AnimationCurve coneIntensityOverPower;
     public AnimationCurve waterConeIntensityOverPower;
     public GeneratorPower generatorPowerScript;
@@ -14,11 +16,18 @@ public class SpotlightController : MonoBehaviour
 
     public Transform waterConeTransform;
     public GameObject spotlightConeRef;
+    private LighthouseLight lighthouseLight;
 
     [Range(0.01f, 5.0f)]
     public float waterConeRadius = 1.75f;
 
     private float currentBarValue01;
+
+    private void Awake()
+    {
+        lighthouseLight = waterConeTransform.gameObject.GetComponent<LighthouseLight>();
+        spotlightEnabled = false;
+    }
 
     private void Start()
     {
@@ -28,25 +37,39 @@ public class SpotlightController : MonoBehaviour
         }
     }
 
+    private void EnableLighthouseLight(bool enable)
+    {
+        lighthouseLight.enabled = enable;
+        waterConeTransform.gameObject.SetActive(enable);
+        spotlightConeRef.gameObject.SetActive(enable);
+    }
+    
     void Update()
     {
-        if (enableSpotlightLogic)
+        EvaluateGeneratorPower();
+        
+        if (spotlightEnabled)
         {
-            if (!spotlightConeRef.activeInHierarchy)
-                spotlightConeRef.SetActive(true);
-
+            EnableLighthouseLight(true);
             ShootRaycast();
-            EvaluateGeneratorPower();
         }
-        else if (waterConeTransform.gameObject.activeInHierarchy)
+        else
         {
-            waterConeTransform.gameObject.SetActive(false);
-            spotlightConeRef.SetActive(false);
+            EnableLighthouseLight(false);
         }
     }
 
     void EvaluateGeneratorPower()
     {
+        if (generatorPowerScript.GetCurrentBarValue() > 0.001f)
+        {
+            spotlightEnabled = true;
+        }
+        else
+        {
+            spotlightEnabled = false;
+        }
+        
         currentBarValue01 = generatorPowerScript.GetCurrentBarValue() * 0.01f;
 
         float coneIntensity = coneIntensityOverPower.Evaluate(currentBarValue01);
@@ -86,6 +109,7 @@ public class SpotlightController : MonoBehaviour
         else if (waterConeTransform.gameObject.activeInHierarchy)
         {
             waterConeTransform.gameObject.SetActive(false);
+            waterConeTransform.gameObject.GetComponent<LighthouseLight>().enabled = false;
         }
     }
 }
