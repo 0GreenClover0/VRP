@@ -54,6 +54,8 @@ Shader "Hidden/Dragon Water"
         _SSS_Params("SSS Params", Vector) = (0.2, 2, 4, 0.5)
         _Smoothness("Smoothness", Range(0, 1)) = 0.9
         _Specular("Specular", Color) = (0.1254902, 0.1254902, 0.1254902, 1)
+        _MousePos("Mouse Position", Vector) = (0.0, 0.0, 0.0, 0.0)
+        _MouseRadius("Water Decal Radius", Float) = 1.0
         _Reflections_GI_Intensity("Reflections GI Intensity", Float) = 1
         _Reflections_Glossy_Tint("Reflections Glossy Tint", Color) = (0, 0, 0, 0)
         [HideInInspector]_AlphaClip("_AlphaClip", Float) = 0

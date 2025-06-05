@@ -9,7 +9,13 @@ public class ShipSpawner : MonoBehaviour
     public FloatersManager floatersManager;
     public LighthouseLight lighthouseLight;
     public GameObject warningPrefab;
-    public GameObject shipPrefab;
+    public GameObject smallFoodShipPrefab;
+    public GameObject mediumFoodShipPrefab;
+    public GameObject bigFoodShipPrefab;
+    public GameObject smallWoodShipPrefab;
+    public GameObject mediumWoodShipPrefab;
+    public GameObject bigWoodShipPrefab;
+    [FormerlySerializedAs("piratesShipPrefab")] public GameObject pirateShipPrefab;
 
     public float spawnWarningTime = 1.5f;
     public float spawnRapidTime = 2.5f;
@@ -20,7 +26,7 @@ public class ShipSpawner : MonoBehaviour
     public float lastChanceTimeThreshold = 30.0f;
 
     public List<SpawnEvent> mainEventSpawn = new();
-    public List<SpawnEvent> backupSpawn = new();
+    [HideInInspector] public List<SpawnEvent> backupSpawn = new();
 
     private List<Path> paths = new();
     private List<SpawnEvent> mainSpawn = new();
@@ -28,7 +34,7 @@ public class ShipSpawner : MonoBehaviour
     private float spawnWarningCounter = 0f;
     private List<Vector2> spawnPosition = new();
 
-    [SerializeField] private List<Ship> ships = new();
+    [HideInInspector] public List<Ship> ships = new();
     private AudioSource lastChanceSound;
     private AudioSource bellSound;
 
@@ -129,25 +135,25 @@ public class ShipSpawner : MonoBehaviour
         if (onlyTestSpawn)
         {
             backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodSmall }, spawnType = SpawnType.Sequence });
-            backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodMedium }, spawnType = SpawnType.Sequence });
+            // backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodMedium }, spawnType = SpawnType.Sequence });
             backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodBig }, spawnType = SpawnType.Sequence });
             backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.Pirates }, spawnType = SpawnType.Sequence });
-            backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.Tool }, spawnType = SpawnType.Sequence });
+            // backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.Tool }, spawnType = SpawnType.Sequence });
             backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodSmall }, spawnType = SpawnType.Sequence });
-            backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodMedium }, spawnType = SpawnType.Sequence });
+            // backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodMedium }, spawnType = SpawnType.Sequence });
             backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodBig }, spawnType = SpawnType.Sequence });
             backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.Pirates }, spawnType = SpawnType.Sequence });
-            backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.Tool }, spawnType = SpawnType.Sequence });
+            // backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.Tool }, spawnType = SpawnType.Sequence });
             backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodSmall }, spawnType = SpawnType.Sequence });
-            backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodMedium }, spawnType = SpawnType.Sequence });
+            // backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodMedium }, spawnType = SpawnType.Sequence });
             backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodBig }, spawnType = SpawnType.Sequence });
             backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.Pirates }, spawnType = SpawnType.Sequence });
-            backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.Tool }, spawnType = SpawnType.Sequence });
+            // backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.Tool }, spawnType = SpawnType.Sequence });
             backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodSmall }, spawnType = SpawnType.Sequence });
-            backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodMedium }, spawnType = SpawnType.Sequence });
+            // backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodMedium }, spawnType = SpawnType.Sequence });
             backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.FoodBig }, spawnType = SpawnType.Sequence });
             backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.Pirates }, spawnType = SpawnType.Sequence });
-            backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.Tool }, spawnType = SpawnType.Sequence });
+            // backupSpawn.Add(new SpawnEvent { shipList = new List<ShipType> { ShipType.Tool }, spawnType = SpawnType.Sequence });
         }
         else
         {
@@ -679,8 +685,9 @@ public class ShipSpawner : MonoBehaviour
 
     private void SpawnShip(SpawnEvent currentEvent)
     {
-        GameObject ship = Instantiate(shipPrefab);
         Debug.Log("SPAWN");
+        
+        GameObject ship = null;
         FloatersManager.FloaterSettings spawnedBoatSettings = new FloatersManager.FloaterSettings();
 
         if (!currentEvent.shipList.Any())
@@ -690,32 +697,41 @@ public class ShipSpawner : MonoBehaviour
 
         if (spawnedShipType == ShipType.FoodSmall)
         {
-            // ship = SceneSerializer::load_prefab("ShipSmall");
+            ship = Instantiate(smallFoodShipPrefab);
             spawnedBoatSettings = floatersManager.smallBoatSettings;
         }
         else if (spawnedShipType == ShipType.FoodMedium)
         {
-            // ship = SceneSerializer::load_prefab("ShipMedium");
+            ship = Instantiate(mediumFoodShipPrefab);
             spawnedBoatSettings = floatersManager.mediumBoatSettings;
         }
         else if (spawnedShipType == ShipType.FoodBig)
         {
-            // ship = SceneSerializer::load_prefab("ShipBig");
+            ship = Instantiate(bigFoodShipPrefab);
             spawnedBoatSettings = floatersManager.bigBoatSettings;
         }
         else if (spawnedShipType == ShipType.Pirates)
         {
-            // ship = SceneSerializer::load_prefab("ShipPirates");
+            ship = Instantiate(pirateShipPrefab);
             spawnedBoatSettings = floatersManager.pirateBoatSettings;
         }
-        else if (spawnedShipType == ShipType.Tool)
+        else if (spawnedShipType == ShipType.WoodSmall)
         {
-            // ship = SceneSerializer::load_prefab("ShipTool");
+            ship = Instantiate(smallWoodShipPrefab);
+            spawnedBoatSettings = floatersManager.toolBoatSettings;
+        }
+        else if (spawnedShipType == ShipType.WoodBig)
+        {
+            ship = Instantiate(bigWoodShipPrefab);
             spawnedBoatSettings = floatersManager.toolBoatSettings;
         }
 
-        // TODO: Add floater, set position, set parent, add component, set direction etc.
-
+        if (ship == null)
+        {
+            Debug.LogError("Ship is null after deciding what type of ship should be spawned.");
+            return;
+        }
+        
         var spawnPos = spawnPosition.Last();
         ship.transform.position = new Vector3(spawnPos.x, 0.0f, spawnPos.y);
 

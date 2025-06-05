@@ -1,4 +1,5 @@
 using System;
+using DragonWater;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -11,8 +12,6 @@ public class SpotlightController : MonoBehaviour
     public AnimationCurve coneIntensityOverPower;
     public AnimationCurve waterConeIntensityOverPower;
     public GeneratorPower generatorPowerScript;
-
-    [Space]
 
     public Transform waterConeTransform;
     public GameObject spotlightConeRef;
@@ -96,7 +95,7 @@ public class SpotlightController : MonoBehaviour
         scale.x = waterConeRadius * 2.0f;
         scale.z = waterConeRadius * 2.0f;
         waterConeTransform.localScale = scale;
-
+        
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 500))
         {
             if (!waterConeTransform.gameObject.activeInHierarchy)
@@ -104,7 +103,7 @@ public class SpotlightController : MonoBehaviour
 
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 500.0f, Color.yellow);
             Debug.DrawLine(hit.point, hit.point + Vector3.up * 0.5f, Color.red);
-            waterConeTransform.position = hit.point + Vector3.up * 0.05f;
+            waterConeTransform.position = hit.point - Vector3.up * 0.5f;
         }
         else if (waterConeTransform.gameObject.activeInHierarchy)
         {
