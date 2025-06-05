@@ -8,6 +8,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 626546292294509126, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4465996
+      objectReference: {fileID: 0}
+    - target: {fileID: 626546292294509126, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.9115487
+      objectReference: {fileID: 0}
+    - target: {fileID: 626546292294509126, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 626546292294509126, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 626546292294509126, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0059
+      objectReference: {fileID: 0}
     - target: {fileID: 3669728572003431613, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: m_Name
       value: WoodShipBig
@@ -100,6 +120,10 @@ PrefabInstance:
       propertyPath: collisionCollider
       value: 
       objectReference: {fileID: 6467355503440278977}
+    - target: {fileID: 7882661188371078751, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1975711664604200627, guid: 7c6855901bc063643865e19432add1c0, type: 3}
     m_RemovedGameObjects: []

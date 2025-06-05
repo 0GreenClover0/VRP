@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fd8ac118ad5a734194e5da87b7a75ef, type: 3}
   m_Name: GLMaterialProfile
   m_EditorClassIdentifier: 
-  waterDepth: 10
+  waterDepth: 5
   shallowWaterColor: {r: 0, g: 0.2806498, b: 0.754717, a: 0.68235296}
   deepWaterColor: {r: 0, g: 0.6277771, b: 1, a: 0.8509804}
   mousePos: {x: 0.046573736, y: 6.206, z: 1.1653969, w: 0}

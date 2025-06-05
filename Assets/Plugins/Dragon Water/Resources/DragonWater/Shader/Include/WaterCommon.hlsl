@@ -393,7 +393,7 @@ float4 halo(float3 halo_center, float3 world_pos, float diameter)
     }
     else if (distance < radius)
     {
-        float strength = 1.0f + log10(-(radius - distance) / (radius) + 1.0f);
+        float strength = 1.0f - 2.0 * log10(-(radius - distance) / (radius) + 1.0f);
         return float4(0.5f, 0.5f, 1.0f, 1.0f) * strength;
     }
     else
@@ -420,18 +420,18 @@ float4 CalculateBaseColor(float3 positionWS, float3 mousePosition, float waterCo
 
     float4 halo_value = float4(0.0f, 0.0f, 0.0, 0.0f);
     
-    if (waterConeRadius > 0.0f)
-    {
-        halo_value = halo(float3(mousePosition.x, 0.0f, mousePosition.z), positionWS, waterConeRadius);
-        halo_value /= 10.0f;
-    }
-    
-    color.rgb = lerp(color.rgb, noise.color.rgb, noise.amount);
-    
-    if (halo_value.a > 0.0f)
-    {
-        color.rgb += 10.0f * abs(halo_value.rgb);
-    }
+    // if (waterConeRadius > 0.0f)
+    // {
+    //     halo_value = halo(float3(mousePosition.x, 0.0f, mousePosition.z), positionWS, waterConeRadius);
+    //     halo_value /= 10.0f;
+    // }
+    //
+    // color.rgb = lerp(color.rgb, noise.color.rgb, noise.amount);
+    //
+    // if (halo_value.a > 0.0f)
+    // {
+    //     color.rgb += 10.0f * abs(halo_value.rgb);
+    // }
     
     return color;
 }
@@ -462,12 +462,36 @@ void WaterSSS(float3 color, float3 normal, float3 viewDirWS, out float3 sssColor
     sssColor = BlendOverlay(color, _MainLightColor.rgb, intensity * _SSS_Params.z);
     sssEmission = _MainLightColor.rgb * intensity * _SSS_Params.w;
 }
-MaterialOutput GetMaterialOutput(float4 color, float3 normal, float3 viewDirWS, RippleOutput ripple, FoamOutput foam, RefractionOutput refraction, ColorNoiseOutput noise)
+MaterialOutput GetMaterialOutput(float4 color, float3 normal, float3 mousePosition, float waterConeRadius, float3 worldPos, float3 viewDirWS, RippleOutput ripple, FoamOutput foam, RefractionOutput refraction, ColorNoiseOutput noise)
 {
     MaterialOutput output = (MaterialOutput)0;
 
+    float4 halo_value = float4(0.0f, 0.0f, 0.0, 0.0f);
+    
+    if (waterConeRadius > 0.0f)
+    {
+        halo_value = halo(float3(mousePosition.x, 0.0f, mousePosition.z), worldPos, waterConeRadius);
+    }
+
+    
+    
+    // if (halo_value.a > 0.0f)
+    // {
+    //     output.emission = 0.4f;
+    // }
+    // else
+    // {
+    //     output.emission = 0;
+    // }
+
+    if (halo_value.a > 0.0f)
+    {
+        color.rgb += 1.0f * abs(halo_value.rgb);
+        // output.emission = halo_value.a * 0.1f;
+    }
+    
     output.alpha = color.a;
-    output.emission = 0;
+    // output.emission = 0;
 
     #ifdef _USE_REFRACTION
         output.albedo = lerp(refraction.color, color.rgb, output.alpha);
@@ -488,7 +512,12 @@ MaterialOutput GetMaterialOutput(float4 color, float3 normal, float3 viewDirWS, 
     float2 ssFactor = foam.ssFactor * ripple.ssFactor;
     output.smoothness = ssFactor.x * _Smoothness;
     output.specular = ssFactor.y * _Specular;
-
+    
+    if (halo_value.a > 0.0f)
+    {
+        output.emission.rgb = float3(0,0.01,0.125);
+        output.emission += halo_value.a * 0.05f;
+    }
     return output;
 }
 
