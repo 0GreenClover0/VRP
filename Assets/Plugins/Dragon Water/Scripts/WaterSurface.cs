@@ -93,7 +93,7 @@ namespace DragonWater
         [SerializeField] internal Mesh geometryCustomMesh = null;
 
         [SerializeField] internal Transform waterLightTransform;
-        [SerializeField] internal float waterLightRadius;
+        [SerializeField] public float waterLightRadius;
         
         [Tooltip("This is wave configuration.\nTry to use as less profiles as possible - their calculation result is shared between all surfaces using it")]
         [SerializeField] internal WaveProfile waveProfile = null;

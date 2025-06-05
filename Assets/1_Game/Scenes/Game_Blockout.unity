@@ -35,7 +35,7 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 0.45
+  m_ReflectionIntensity: 0.275
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 304908715}
   m_UseRadianceAmbientProbe: 0
@@ -1763,91 +1763,6 @@ Transform:
   - {fileID: 1595837168}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &378631154
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2744628031487028551, guid: 482a55a30bb593f44833239992af8a7e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 2744628031487028551, guid: 482a55a30bb593f44833239992af8a7e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2744628031487028551, guid: 482a55a30bb593f44833239992af8a7e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 8.16
-      objectReference: {fileID: 0}
-    - target: {fileID: 2744628031487028551, guid: 482a55a30bb593f44833239992af8a7e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2744628031487028551, guid: 482a55a30bb593f44833239992af8a7e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2744628031487028551, guid: 482a55a30bb593f44833239992af8a7e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2744628031487028551, guid: 482a55a30bb593f44833239992af8a7e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2744628031487028551, guid: 482a55a30bb593f44833239992af8a7e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2744628031487028551, guid: 482a55a30bb593f44833239992af8a7e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2744628031487028551, guid: 482a55a30bb593f44833239992af8a7e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3080675943276529147, guid: 482a55a30bb593f44833239992af8a7e, type: 3}
-      propertyPath: centerOfMass.x
-      value: -0.009293556
-      objectReference: {fileID: 0}
-    - target: {fileID: 3080675943276529147, guid: 482a55a30bb593f44833239992af8a7e, type: 3}
-      propertyPath: centerOfMass.y
-      value: -1.005128
-      objectReference: {fileID: 0}
-    - target: {fileID: 3080675943276529147, guid: 482a55a30bb593f44833239992af8a7e, type: 3}
-      propertyPath: centerOfMass.z
-      value: 0.028170586
-      objectReference: {fileID: 0}
-    - target: {fileID: 3080675943276529147, guid: 482a55a30bb593f44833239992af8a7e, type: 3}
-      propertyPath: contactPoints.Array.data[0].x
-      value: -0.009846687
-      objectReference: {fileID: 0}
-    - target: {fileID: 3080675943276529147, guid: 482a55a30bb593f44833239992af8a7e, type: 3}
-      propertyPath: contactPoints.Array.data[0].y
-      value: -0.0046539307
-      objectReference: {fileID: 0}
-    - target: {fileID: 3080675943276529147, guid: 482a55a30bb593f44833239992af8a7e, type: 3}
-      propertyPath: contactPoints.Array.data[0].z
-      value: 0.027879715
-      objectReference: {fileID: 0}
-    - target: {fileID: 3165857503305772680, guid: 482a55a30bb593f44833239992af8a7e, type: 3}
-      propertyPath: m_Name
-      value: WoodShipBig
-      objectReference: {fileID: 0}
-    - target: {fileID: 8387614039136257130, guid: 482a55a30bb593f44833239992af8a7e, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 1246789605}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 482a55a30bb593f44833239992af8a7e, type: 3}
 --- !u!1001 &390898407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4428,7 +4343,7 @@ Transform:
   m_GameObject: {fileID: 1190039927}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.5, y: 0, z: 1}
+  m_LocalPosition: {x: -11.75, y: 0, z: 18.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4550,34 +4465,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c67033f580359c4581dff1ccffcca91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!21 &1246789605
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Hidden/Dragon Water Cutout
-  m_Shader: {fileID: 4800000, guid: cd3e29b5847823a41a5b4409802bc156, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Ints: []
-    m_Floats: []
-    m_Colors: []
-  m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!1 &1251665933
 GameObject:
   m_ObjectHideFlags: 0
@@ -5354,106 +5241,6 @@ PrefabInstance:
       propertyPath: generatorPowerScript
       value: 
       objectReference: {fileID: 500746926}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.data[1].time
-      value: 0.28234044
-      objectReference: {fileID: 0}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.data[2].time
-      value: 0.5762329
-      objectReference: {fileID: 0}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.data[3].time
-      value: 0.8160211
-      objectReference: {fileID: 0}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.data[4].time
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.data[1].value
-      value: 0.3436801
-      objectReference: {fileID: 0}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.data[2].value
-      value: 0.6008606
-      objectReference: {fileID: 0}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.data[3].value
-      value: 0.74132144
-      objectReference: {fileID: 0}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.data[4].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.data[1].inSlope
-      value: 1.4899147
-      objectReference: {fileID: 0}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.data[2].inSlope
-      value: 0.12813662
-      objectReference: {fileID: 0}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.data[3].inSlope
-      value: 1.2739325
-      objectReference: {fileID: 0}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.data[4].inSlope
-      value: 0.07392718
-      objectReference: {fileID: 0}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.data[1].inWeight
-      value: 0.15687428
-      objectReference: {fileID: 0}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.data[1].outSlope
-      value: 1.4899147
-      objectReference: {fileID: 0}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.data[2].inWeight
-      value: 0.17686743
-      objectReference: {fileID: 0}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.data[2].outSlope
-      value: 0.12813662
-      objectReference: {fileID: 0}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.data[3].inWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.data[3].outSlope
-      value: 1.2739325
-      objectReference: {fileID: 0}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.data[4].inWeight
-      value: 0.37902144
-      objectReference: {fileID: 0}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.data[4].outSlope
-      value: 0.07392718
-      objectReference: {fileID: 0}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.data[1].outWeight
-      value: 0.11185083
-      objectReference: {fileID: 0}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.data[2].outWeight
-      value: 0.16400033
-      objectReference: {fileID: 0}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.data[3].outWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 5609923728239654655, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
-      propertyPath: coneIntensityOverPower.m_Curve.Array.data[4].outWeight
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5691445218016789212, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
@@ -6322,34 +6109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d952c175ec3c6554199fd744548ce50a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!21 &1702589268
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Hidden/Dragon Water Cutout
-  m_Shader: {fileID: 4800000, guid: cd3e29b5847823a41a5b4409802bc156, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Ints: []
-    m_Floats: []
-    m_Colors: []
-  m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!1 &1706040688
 GameObject:
   m_ObjectHideFlags: 0
@@ -7518,4 +7277,3 @@ SceneRoots:
   - {fileID: 2001735660}
   - {fileID: 390898407}
   - {fileID: 1827806778}
-  - {fileID: 378631154}
