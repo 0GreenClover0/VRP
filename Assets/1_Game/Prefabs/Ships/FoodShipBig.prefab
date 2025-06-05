@@ -8,6 +8,58 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 626546292294509126, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9513068
+      objectReference: {fileID: 0}
+    - target: {fileID: 626546292294509126, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2711314
+      objectReference: {fileID: 0}
+    - target: {fileID: 626546292294509126, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3874075
+      objectReference: {fileID: 0}
+    - target: {fileID: 626546292294509126, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0059
+      objectReference: {fileID: 0}
+    - target: {fileID: 626546292294509126, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 626546292294509126, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 626546292294509126, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.70697975
+      objectReference: {fileID: 0}
+    - target: {fileID: 626546292294509126, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.013404757
+      objectReference: {fileID: 0}
+    - target: {fileID: 626546292294509126, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.01365155
+      objectReference: {fileID: 0}
+    - target: {fileID: 626546292294509126, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.706975
+      objectReference: {fileID: 0}
+    - target: {fileID: 626546292294509126, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 626546292294509126, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 357.808
+      objectReference: {fileID: 0}
+    - target: {fileID: 626546292294509126, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -89.999
+      objectReference: {fileID: 0}
     - target: {fileID: 3669728572003431613, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: m_Name
       value: FoodShipBig
@@ -75,6 +127,10 @@ PrefabInstance:
     - target: {fileID: 4545535784333817714, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882661188371078751, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
