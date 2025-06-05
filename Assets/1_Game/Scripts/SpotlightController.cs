@@ -17,14 +17,15 @@ public class SpotlightController : MonoBehaviour
     public GameObject spotlightConeRef;
     private LighthouseLight lighthouseLight;
 
-    [Range(0.01f, 5.0f)]
-    public float waterConeRadius = 1.75f;
+    public WaterSurface ocean;
+    private float cachedWaterDecalRadius;
 
     private float currentBarValue01;
 
     private void Awake()
     {
         lighthouseLight = waterConeTransform.gameObject.GetComponent<LighthouseLight>();
+        cachedWaterDecalRadius = ocean.waterLightRadius;
         spotlightEnabled = false;
     }
 
@@ -39,7 +40,7 @@ public class SpotlightController : MonoBehaviour
     private void EnableLighthouseLight(bool enable)
     {
         lighthouseLight.enabled = enable;
-        waterConeTransform.gameObject.SetActive(enable);
+        ocean.waterLightRadius = enable ? cachedWaterDecalRadius : 0.0f;
         spotlightConeRef.gameObject.SetActive(enable);
     }
     
@@ -78,22 +79,15 @@ public class SpotlightController : MonoBehaviour
         float waterConeOpacity = AK.MapRangeClamped(waterConeIntensity, 0.0f, 1.0f, 0.0f, 0.3f);
 
         Material coneMaterial = spotlightConeRef.GetComponent<MeshRenderer>().material;
-        Material waterConeMaterial = waterConeTransform.gameObject.GetComponent<MeshRenderer>().material;
 
         Color coneColor = coneMaterial.color;
         coneColor.a = coneOpacity;
         coneMaterial.color = coneColor;
-
-        Color waterConeColor = waterConeMaterial.color;
-        waterConeColor.a = waterConeOpacity;
-        waterConeMaterial.color = waterConeColor;
     }
 
     void ShootRaycast()
     {
         Vector3 scale = waterConeTransform.localScale;
-        scale.x = waterConeRadius * 2.0f;
-        scale.z = waterConeRadius * 2.0f;
         waterConeTransform.localScale = scale;
         
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 500))

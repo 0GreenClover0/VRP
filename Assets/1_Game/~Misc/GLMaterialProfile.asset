@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: GLMaterialProfile
   m_EditorClassIdentifier: 
   waterDepth: 5
-  shallowWaterColor: {r: 0, g: 0.2806498, b: 0.754717, a: 0.68235296}
-  deepWaterColor: {r: 0, g: 0.6277771, b: 1, a: 0.8509804}
+  shallowWaterColor: {r: 0, g: 0.68159175, b: 1, a: 0}
+  deepWaterColor: {r: 0, g: 0.44116876, b: 0.6981132, a: 0.8509804}
   mousePos: {x: 0.046573736, y: 6.206, z: 1.1653969, w: 0}
   mouseRadius: 5
-  smoothness: 0.75
-  specular: {r: 0.033463866, g: 0.1509434, b: 0.1509434, a: 1}
+  smoothness: 0.632
+  specular: {r: 0.13149695, g: 0.13650319, b: 0.14150941, a: 1}
   specularHighlights: 1
   colorNoiseHillnessOffset: -0.8
   colorNoiseHillnessLighten: -1
