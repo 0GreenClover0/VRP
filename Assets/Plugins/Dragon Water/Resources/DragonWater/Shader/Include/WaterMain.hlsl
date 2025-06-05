@@ -172,7 +172,7 @@ half4 frag(Varyings IN) : SV_Target
 	color = CombineColor(color, ripple, foam);
 
 	MaterialOutput material;
-	material = GetMaterialOutput(color, normal, viewDirWS, ripple, foam, refraction, noise);
+	material = GetMaterialOutput(color, normal, _MousePos, _MouseRadius, IN.positionWS, viewDirWS, ripple, foam, refraction, noise);
 
 	PatchReflections();
 

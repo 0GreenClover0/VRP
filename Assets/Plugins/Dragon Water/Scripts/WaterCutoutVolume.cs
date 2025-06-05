@@ -91,8 +91,8 @@ namespace DragonWater
 
         private void OnEnable()
         {
-            if (_renderer) _renderer.enabled = false;
-            // if (_renderer) _renderer.enabled = true;
+            // if (_renderer) _renderer.enabled = false;
+            if (_renderer) _renderer.enabled = true;
             if (_collider) _collider.enabled = true;
         }
         
