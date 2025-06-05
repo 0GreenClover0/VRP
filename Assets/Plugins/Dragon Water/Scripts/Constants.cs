@@ -97,6 +97,8 @@ namespace DragonWater
                 public static readonly int DeepWaterColor = UnityEngine.Shader.PropertyToID("_Deep_Water_Color");
                 public static readonly int Smoothness = UnityEngine.Shader.PropertyToID("_Smoothness");
                 public static readonly int Specular = UnityEngine.Shader.PropertyToID("_Specular");
+                public static readonly int MousePos = UnityEngine.Shader.PropertyToID("_MousePos");
+                public static readonly int MouseRadius = UnityEngine.Shader.PropertyToID("_MouseRadius");
 
                 public static readonly int ColorHillnessParams = UnityEngine.Shader.PropertyToID("_Color_Hillness_Params");
                 public static readonly int ColorNoiseColor = UnityEngine.Shader.PropertyToID("_Color_Noise_Color");

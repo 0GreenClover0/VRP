@@ -68,6 +68,8 @@ namespace DragonWater.Editor
                 surface.InvalidateMesh();
             }
 
+            PropertyField(serializedObject.FindProperty(nameof(WaterSurface.waterLightTransform)));
+            PropertyField(serializedObject.FindProperty(nameof(WaterSurface.waterLightRadius)));
 
             EditorGUILayout.Space();
             DrawTitle("Renderer");

@@ -48,11 +48,17 @@ MonoBehaviour:
   floatersManager: {fileID: 1944052636946031526}
   lighthouseLight: {fileID: 0}
   warningPrefab: {fileID: 2291783105703421192, guid: d2c6c9d408f303943975242477ce3dfb, type: 3}
-  shipPrefab: {fileID: 3669728572003431613, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+  smallFoodShipPrefab: {fileID: 0}
+  mediumFoodShipPrefab: {fileID: 0}
+  bigFoodShipPrefab: {fileID: 3165857503305772680, guid: 9c7f7fc4c3bf18741aad6ba80a0cfeda, type: 3}
+  smallWoodShipPrefab: {fileID: 0}
+  mediumWoodShipPrefab: {fileID: 0}
+  bigWoodShipPrefab: {fileID: 3165857503305772680, guid: 482a55a30bb593f44833239992af8a7e, type: 3}
+  pirateShipPrefab: {fileID: 0}
   spawnWarningTime: 1.5
   spawnRapidTime: 2.5
   minimumSpawnDistance: 2.25
-  shipRange: 7
+  shipRange: 4.25
   lastChanceFoodThreshold: 5
   lastChanceTimeThreshold: 30
   mainEventSpawn:
@@ -62,7 +68,7 @@ MonoBehaviour:
   - shipList: 00000000
     spawnType: 0
   ships: []
-  isTestSpawnEnable: 1
+  onlyTestSpawn: 0
 --- !u!114 &1944052636946031526
 MonoBehaviour:
   m_ObjectHideFlags: 0

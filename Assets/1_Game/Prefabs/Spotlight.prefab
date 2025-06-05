@@ -209,7 +209,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlledShip: {fileID: 0}
-  isEnabled: 1
 --- !u!1 &3503209695013075824
 GameObject:
   m_ObjectHideFlags: 0
@@ -1536,7 +1535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e64ddf2bb1a9504cb554d7957a2ae6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableSpotlightLogic: 1
+  spotlightEnabled: 1
   coneIntensityOverPower:
     serializedVersion: 2
     m_Curve:
@@ -1633,7 +1632,7 @@ MonoBehaviour:
   generatorPowerScript: {fileID: 0}
   waterConeTransform: {fileID: 8802445924629158881}
   spotlightConeRef: {fileID: 6353783402046299730}
-  waterConeRadius: 1.75
+  waterConeRadius: 1.4
 --- !u!1 &9031047032817158117
 GameObject:
   m_ObjectHideFlags: 0
