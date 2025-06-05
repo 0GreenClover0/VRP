@@ -92,6 +92,9 @@ namespace DragonWater
         [Tooltip("Custom mesh asset. It should be flat mesh.\nEnable wireframe mode to visualise it.")]
         [SerializeField] internal Mesh geometryCustomMesh = null;
 
+        [SerializeField] internal Transform waterLightTransform;
+        [SerializeField] internal float waterLightRadius;
+        
         [Tooltip("This is wave configuration.\nTry to use as less profiles as possible - their calculation result is shared between all surfaces using it")]
         [SerializeField] internal WaveProfile waveProfile = null;
         [Tooltip("This is water surface material configuration.")]
@@ -128,7 +131,6 @@ namespace DragonWater
 
         [Tooltip("If set to true, this will be default surface for easier accessibility via API and automatic optimization for Water Sampler.\nYou do not need to have a default surface, but you want, you can have only one.")]
         [SerializeField] internal bool isDefaultSurface = false;
-
 
         public GeometryMeshType GeometryType
         {
@@ -299,9 +301,6 @@ namespace DragonWater
 #endif
         }
 
-        private void Start()
-        {
-        }
         private void OnEnable()
         {
             DragonWaterManager.Instance.RegisterSurface(this);
@@ -380,6 +379,18 @@ namespace DragonWater
 
         internal void UpdateWater(Camera camera)
         {
+            MaterialProfile.mouseRadius = waterLightRadius;
+            if (waterLightTransform != null)
+            {
+                MaterialProfile.mousePos = waterLightTransform.position;
+            }
+            else
+            {
+                MaterialProfile.mousePos = Vector4.zero;
+            }
+            
+            MaterialProfile.SetMaterialDirty(Material);
+            
             if (waveProfile != null)
             {
                 if (synchronizeWorldOrigin)

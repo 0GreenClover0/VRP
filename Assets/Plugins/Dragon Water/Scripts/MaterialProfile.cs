@@ -148,10 +148,13 @@ namespace DragonWater
         public Color shallowWaterColor = new Color(0.0f, 0.76f, 0.76f, 0.5f);
         public Color deepWaterColor = new Color(0.0f, 0.41f, 0.47f, 0.9f);
 
+        public Vector4 mousePos = new Vector3(0.0f, 0.0f, 0.0f);
+        public float mouseRadius;
+        
         [Range(0,1)] public float smoothness = 0.9f;
         [ColorUsage(false)] public Color specular = new Color(0.14f, 0.14f, 0.14f);
         public bool specularHighlights = true;
-
+        
         [Tooltip("Used to lighten/darken color depending on hillness.\nKind of another layer of water deep.")]
         [Range(-1, 2)] public float colorNoiseHillnessOffset = 0.0f;
         [Tooltip("How much base color is lighten above hillness offset")]
@@ -253,6 +256,8 @@ namespace DragonWater
             material.SetColor(Constants.Shader.Property.DeepWaterColor, deepWaterColor);
             material.SetFloat(Constants.Shader.Property.Smoothness, smoothness);
             material.SetColor(Constants.Shader.Property.Specular, specular);
+            material.SetVector(Constants.Shader.Property.MousePos, mousePos);
+            material.SetFloat(Constants.Shader.Property.MouseRadius, mouseRadius);
 
             if (specularHighlights)
                 material.DisableKeyword(Constants.Shader.Keyword.SpecularHighlightsOff);

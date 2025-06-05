@@ -370,8 +370,39 @@ RefractionOutput CalculateRefraction(float4 screenPosition, float3 normal, float
     return output;
 }
 
+float4 halo(float3 halo_center, float3 world_pos, float diameter)
+{
+    // This function makes a 2D halo on water
+    float distance = length(world_pos - halo_center);
 
-float4 CalculateBaseColor(float3 positionWS, float waterDepth, float hillness, RefractionOutput refraction, ColorNoiseOutput noise)
+    float time = _Time.y;
+    if (time > PI / 2.0f)
+    {
+        time += PI / 2.0f - time;
+    }
+
+    float radius = diameter / 2.0f;
+    radius *= 0.55f;
+
+    float _border = radius * tan(_Time.y) * tan(_Time.y);
+    _border = clamp(_border, 0.0f, radius);
+    if (distance < _border)
+    {
+        float strength = -log10(-(distance) / (_border) + 1.0f);
+        return float4(0.5f, 0.5f, 1.0f, 1.0f) * strength;
+    }
+    else if (distance < radius)
+    {
+        float strength = 1.0f + log10(-(radius - distance) / (radius) + 1.0f);
+        return float4(0.5f, 0.5f, 1.0f, 1.0f) * strength;
+    }
+    else
+    {
+        return float4(0.0f, 0.0f, 0.0f, 0.0f);
+    }
+}
+
+float4 CalculateBaseColor(float3 positionWS, float3 mousePosition, float waterConeRadius, float waterDepth, float hillness, RefractionOutput refraction, ColorNoiseOutput noise)
 {
     float4 color;
 
@@ -387,11 +418,23 @@ float4 CalculateBaseColor(float3 positionWS, float waterDepth, float hillness, R
     float hMulLight = max(0, hMul) * _Color_Hillness_Params.y;
     color.rgb *= 1 + hMulDark + hMulLight;
 
+    float4 halo_value = float4(0.0f, 0.0f, 0.0, 0.0f);
+    
+    if (waterConeRadius > 0.0f)
+    {
+        halo_value = halo(float3(mousePosition.x, 0.0f, mousePosition.z), positionWS, waterConeRadius);
+        halo_value /= 10.0f;
+    }
+    
     color.rgb = lerp(color.rgb, noise.color.rgb, noise.amount);
-
+    
+    if (halo_value.a > 0.0f)
+    {
+        color.rgb += 10.0f * abs(halo_value.rgb);
+    }
+    
     return color;
 }
-
 
 float4 CombineColor(float4 baseColor, RippleOutput ripple, FoamOutput foam)
 {

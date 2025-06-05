@@ -10,7 +10,10 @@ public enum ShipType
     FoodMedium,
     FoodBig,
     Pirates,
-    Tool
+    WoodSmall,
+    WoodMedium,
+    WoodBig
+    //Tool
 }
 
 public enum BehavioralState
@@ -402,6 +405,9 @@ public class Ship : MonoBehaviour
 
         float distanceToLight = Vector2.Distance(shipPosition, targetPosition);
 
+		// if in the trigger of light
+		
+
         if (distanceToLight >= playerRange * rangeFactor)
         {
             return false;
@@ -552,10 +558,11 @@ public class Ship : MonoBehaviour
         return type switch
         {
             ShipType.FoodSmall => 0.55f,
-            ShipType.FoodMedium => 0.75f,
+            // ShipType.FoodMedium => 0.75f,
             ShipType.FoodBig => 1.0f,
             ShipType.Pirates => 0.55f,
-            ShipType.Tool => 0.55f,
+            ShipType.WoodSmall => 0.55f,
+            ShipType.WoodBig => 1.0f,
             _ => 1.0f
         };
     }

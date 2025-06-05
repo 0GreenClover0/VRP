@@ -13,6 +13,10 @@ struct Attributes
 
     UNITY_VERTEX_INPUT_INSTANCE_ID
 };
+
+float3 _MousePos;
+float _MouseRadius;
+
 struct Varyings
 {
     float4 positionCS : SV_POSITION;
@@ -104,7 +108,7 @@ Varyings vert(Attributes IN)
 
 	OUT.positionCS = positionInputs.positionCS;
 	OUT.positionWS = positionInputs.positionWS;
-
+	
 	half3 viewDirWS = GetWorldSpaceViewDir(positionInputs.positionWS);
 	half3 vertexLight = VertexLighting(positionInputs.positionWS, normalInputs.normalWS);
 	half fogFactor = ComputeFogFactor(positionInputs.positionCS.z);
@@ -164,7 +168,7 @@ half4 frag(Varyings IN) : SV_Target
 	refraction = CalculateRefraction(screenPosition, normal, waterDepth);
 
 	float4 color;
-	color = CalculateBaseColor(IN.positionWS, waterDepth, hillness, refraction, noise);
+	color = CalculateBaseColor(IN.positionWS, _MousePos, _MouseRadius, waterDepth, hillness, refraction, noise);
 	color = CombineColor(color, ripple, foam);
 
 	MaterialOutput material;
