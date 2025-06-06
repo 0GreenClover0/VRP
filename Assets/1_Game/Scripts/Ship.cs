@@ -74,9 +74,10 @@ public class Ship : MonoBehaviour
     private const float sinkFactor = 0.26f;
 
     // These were originally in Player and depended on appropriate curves
+    // Should take those from SpotlightController
     private float playerRange = 10.0f;
     private const float playerPiratesInControl = 1.0f;
-    private const float playerTurnSpeed = 30.0f;
+    private const float playerTurnSpeed = 22.5f;
     private const float playerAdditionalShipSpeed = 1.0f;
 
     // These were originally in LevelController and depended on appropriate curves
@@ -562,6 +563,7 @@ public class Ship : MonoBehaviour
             ShipType.FoodBig => 1.0f,
             ShipType.Pirates => 0.55f,
             ShipType.WoodSmall => 0.55f,
+            ShipType.WoodMedium => 0.75f,
             ShipType.WoodBig => 1.0f,
             _ => 1.0f
         };

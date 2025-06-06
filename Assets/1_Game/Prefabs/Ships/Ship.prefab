@@ -108,7 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   behavioralState: 0
-  minimumSpeed: 0.6
+  minimumSpeed: 0.3
   maximumSpeed: 0.7
   lighthouseLight: {fileID: 0}
   shipSpawner: {fileID: 0}
