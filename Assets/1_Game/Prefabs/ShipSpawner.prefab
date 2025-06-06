@@ -57,15 +57,15 @@ MonoBehaviour:
   pirateShipPrefab: {fileID: 0}
   spawnWarningTime: 1.5
   spawnRapidTime: 2.5
-  minimumSpawnDistance: 2.25
-  shipRange: 4.25
+  minimumSpawnDistance: 6
+  shipRange: 6.375
   lastChanceFoodThreshold: 5
   lastChanceTimeThreshold: 30
   mainEventSpawn:
   - shipList: 00000000
     spawnType: 0
   backupSpawn:
-  - shipList: 00000000
+  - shipList: 
     spawnType: 0
   ships: []
   onlyTestSpawn: 0

@@ -17,7 +17,7 @@ MonoBehaviour:
   deepWaterColor: {r: 0, g: 0.44116876, b: 0.6981132, a: 0.8509804}
   mousePos: {x: 0.046573736, y: 6.206, z: 1.1653969, w: 0}
   mouseRadius: 5
-  smoothness: 0.632
+  smoothness: 0.7
   specular: {r: 0.13149695, g: 0.13650319, b: 0.14150941, a: 1}
   specularHighlights: 1
   colorNoiseHillnessOffset: -0.8
@@ -94,7 +94,7 @@ MonoBehaviour:
   reflectionsIntensity: 0.5
   reflectionsCubemap: {fileID: 0}
   reflectionsGlossyTint: {r: 0, g: 0, b: 0, a: 1}
-  rippleSmoothnessFactor: 2
+  rippleSmoothnessFactor: 0.7
   rippleSpecularFactor: 2
   rippleColor:
     color: {r: 0, g: 0.41176474, b: 0.47058827, a: 1}
