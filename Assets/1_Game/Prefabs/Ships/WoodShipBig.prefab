@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 341698538822709941, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c7a186f187e95234e9945cfd1c6de36a, type: 2}
     - target: {fileID: 626546292294509126, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.4465996
@@ -27,6 +31,30 @@ PrefabInstance:
     - target: {fileID: 626546292294509126, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.0059
+      objectReference: {fileID: 0}
+    - target: {fileID: 3398772966094320202, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.084
+      objectReference: {fileID: 0}
+    - target: {fileID: 3398772966094320202, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.084
+      objectReference: {fileID: 0}
+    - target: {fileID: 3398772966094320202, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.084
+      objectReference: {fileID: 0}
+    - target: {fileID: 3398772966094320202, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.003
+      objectReference: {fileID: 0}
+    - target: {fileID: 3398772966094320202, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.777
+      objectReference: {fileID: 0}
+    - target: {fileID: 3398772966094320202, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3669728572003431613, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: m_Name
@@ -116,10 +144,190 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5014016823882143814, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: lightOffset.x
+      value: 7.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014016823882143814, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: lightOffset.y
+      value: 10.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014016823882143814, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: lightOffset.z
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightMaps._serializedList.Array.data[0].Value
+      value: 
+      objectReference: {fileID: 2800000, guid: 046902e16d54de74b814259238ad0535, type: 3}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightMaps._serializedList.Array.data[2].Value
+      value: 
+      objectReference: {fileID: 2800000, guid: f036e1f0c7abbad4b821326f88520a29, type: 3}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightMaps._serializedList.Array.data[3].Value
+      value: 
+      objectReference: {fileID: 2800000, guid: 046902e16d54de74b814259238ad0535, type: 3}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightMaps._serializedList.Array.data[4].Value
+      value: 
+      objectReference: {fileID: 2800000, guid: 046902e16d54de74b814259238ad0535, type: 3}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightMaps._serializedList.Array.data[5].Value
+      value: 
+      objectReference: {fileID: 2800000, guid: f036e1f0c7abbad4b821326f88520a29, type: 3}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightMaps._serializedList.Array.data[6].Value
+      value: 
+      objectReference: {fileID: 2800000, guid: f036e1f0c7abbad4b821326f88520a29, type: 3}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightMaps._serializedList.Array.data[7].Value
+      value: 
+      objectReference: {fileID: 2800000, guid: f036e1f0c7abbad4b821326f88520a29, type: 3}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[0].Value.a
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[0].Value.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[0].Value.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[0].Value.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[1].Value.a
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[1].Value.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[1].Value.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[1].Value.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[2].Value.a
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[2].Value.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[2].Value.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[2].Value.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[3].Value.a
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[3].Value.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[3].Value.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[3].Value.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[4].Value.a
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[4].Value.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[4].Value.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[4].Value.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[5].Value.a
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[5].Value.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[5].Value.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[5].Value.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[6].Value.a
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[6].Value.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[6].Value.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[6].Value.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[7].Value.a
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[7].Value.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[7].Value.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: statesToLightColors._serializedList.Array.data[7].Value.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7335470740791117205, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: collisionCollider
       value: 
       objectReference: {fileID: 6467355503440278977}
+    - target: {fileID: 7478631665899426343, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478631665899426343, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478631665899426343, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.02
+      objectReference: {fileID: 0}
     - target: {fileID: 7882661188371078751, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: m_Enabled
       value: 1
