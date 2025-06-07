@@ -138,8 +138,8 @@ MonoBehaviour:
     cullingBoxSize: {x: 50, y: 30, z: 50}
     cullingRefreshTime: 0.1
   contactPoints:
-  - {x: -0.0000003165278, y: -0.9700001, z: 0.0043416233}
-  centerOfMass: {x: -0.009294346, y: -1.5000001, z: 0.03259547}
+  - {x: -0.0000003165278, y: -0.9700001, z: 0.0043440606}
+  centerOfMass: {x: -0.009294346, y: -1.5000001, z: 0.03259791}
   buoyancyForce: 3000
   ignoreMass: 0
   normalAlignemnt: 0.3
