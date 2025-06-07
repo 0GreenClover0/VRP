@@ -46,6 +46,7 @@ public class Ship : MonoBehaviour
     public bool hasBeenDestroyed = false;
 
     public UnityAction<Ship> onDestroyed;
+    public UnityAction<BehavioralState> onShipStateChanged;
 
     private float speed;
     private float direction;
@@ -510,6 +511,7 @@ public class Ship : MonoBehaviour
 
     private bool ChangeState(BehavioralState newState)
     {
+        onShipStateChanged.Invoke(newState);
         behavioralState = newState;
         return true;
     }

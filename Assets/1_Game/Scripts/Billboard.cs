@@ -7,6 +7,6 @@ public class Billboard : MonoBehaviour
     void Update()
     {
         transform.LookAt(Camera.main.transform.position, Vector3.up);
-        transform.position = buoyMesh.position + lightOffset;
+        transform.localPosition = buoyMesh.localPosition + lightOffset;
     }
 }
