@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: 7610386174548297483, guid: 9d407dde28a60d34fa64292e130a1f83, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: -1165073596168651963, guid: 7522e4c352e05e24d838ba7edf322c20, type: 3}
+      objectReference: {fileID: -7443724666282046697, guid: d8122a2fa198dc54880acc82b48e0c01, type: 3}
     - target: {fileID: 8250304732507452659, guid: 9d407dde28a60d34fa64292e130a1f83, type: 3}
       propertyPath: m_Name
       value: Floe3
@@ -95,4 +95,4 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: -1165073596168651963, guid: 7522e4c352e05e24d838ba7edf322c20, type: 3}
+  m_Mesh: {fileID: -7443724666282046697, guid: d8122a2fa198dc54880acc82b48e0c01, type: 3}

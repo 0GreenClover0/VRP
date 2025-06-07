@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GreenBuoy
       objectReference: {fileID: 0}
+    - target: {fileID: 8800093865749840320, guid: c96bafaf55c3a78469b7b59dd1225019, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ce20a21f5410bc5449be25d17576276f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
