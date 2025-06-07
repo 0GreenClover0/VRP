@@ -61,7 +61,7 @@ public class SpotlightController : MonoBehaviour
 
     void EvaluateGeneratorPower()
     {
-        if (generatorPowerScript.GetCurrentBarValue() > 0.001f)
+        if (generatorPowerScript.GetCurrentBarValue() > 1.0f)
         {
             spotlightEnabled = true;
         }
@@ -78,6 +78,9 @@ public class SpotlightController : MonoBehaviour
         float waterConeIntensity = waterConeIntensityOverPower.Evaluate(currentBarValue01);
         float waterConeOpacity = AK.MapRangeClamped(waterConeIntensity, 0.0f, 1.0f, 0.0f, 0.3f);
 
+        // Water decal
+        ocean.waterLightIntensity = waterConeIntensity;
+        
         Material coneMaterial = spotlightConeRef.GetComponent<MeshRenderer>().material;
         Material waterConeMaterial = waterConeTransform.gameObject.GetComponent<MeshRenderer>().material;
 
