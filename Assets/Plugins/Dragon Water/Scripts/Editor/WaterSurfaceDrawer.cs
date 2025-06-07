@@ -70,6 +70,7 @@ namespace DragonWater.Editor
 
             PropertyField(serializedObject.FindProperty(nameof(WaterSurface.waterLightTransform)));
             PropertyField(serializedObject.FindProperty(nameof(WaterSurface.waterLightRadius)));
+            PropertyField(serializedObject.FindProperty(nameof(WaterSurface.waterLightIntensity)));
 
             EditorGUILayout.Space();
             DrawTitle("Renderer");

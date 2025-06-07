@@ -16,6 +16,7 @@ struct Attributes
 
 float3 _MousePos;
 float _MouseRadius;
+float _MouseIntensity;
 
 struct Varyings
 {
@@ -168,11 +169,11 @@ half4 frag(Varyings IN) : SV_Target
 	refraction = CalculateRefraction(screenPosition, normal, waterDepth);
 
 	float4 color;
-	color = CalculateBaseColor(IN.positionWS, _MousePos, _MouseRadius, waterDepth, hillness, refraction, noise);
+	color = CalculateBaseColor(waterDepth, hillness, refraction, noise);
 	color = CombineColor(color, ripple, foam);
 
 	MaterialOutput material;
-	material = GetMaterialOutput(color, normal, _MousePos, _MouseRadius, IN.positionWS, viewDirWS, ripple, foam, refraction, noise);
+	material = GetMaterialOutput(color, normal, _MousePos, _MouseRadius, _MouseIntensity, IN.positionWS, viewDirWS, ripple, foam, refraction, noise);
 
 	PatchReflections();
 

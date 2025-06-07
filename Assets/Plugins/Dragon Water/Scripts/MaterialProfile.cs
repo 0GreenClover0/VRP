@@ -150,6 +150,7 @@ namespace DragonWater
 
         public Vector4 mousePos = new Vector3(0.0f, 0.0f, 0.0f);
         public float mouseRadius;
+        public float mouseIntensity;
         
         [Range(0,1)] public float smoothness = 0.9f;
         [ColorUsage(false)] public Color specular = new Color(0.14f, 0.14f, 0.14f);
@@ -258,6 +259,7 @@ namespace DragonWater
             material.SetColor(Constants.Shader.Property.Specular, specular);
             material.SetVector(Constants.Shader.Property.MousePos, mousePos);
             material.SetFloat(Constants.Shader.Property.MouseRadius, mouseRadius);
+            material.SetFloat(Constants.Shader.Property.MouseIntensity, mouseIntensity);
 
             if (specularHighlights)
                 material.DisableKeyword(Constants.Shader.Keyword.SpecularHighlightsOff);

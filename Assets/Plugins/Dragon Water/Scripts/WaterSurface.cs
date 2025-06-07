@@ -94,6 +94,7 @@ namespace DragonWater
 
         [SerializeField] internal Transform waterLightTransform;
         [SerializeField] public float waterLightRadius;
+        [SerializeField] public float waterLightIntensity;
         
         [Tooltip("This is wave configuration.\nTry to use as less profiles as possible - their calculation result is shared between all surfaces using it")]
         [SerializeField] internal WaveProfile waveProfile = null;
@@ -380,6 +381,7 @@ namespace DragonWater
         internal void UpdateWater(Camera camera)
         {
             MaterialProfile.mouseRadius = waterLightRadius;
+            MaterialProfile.mouseIntensity = waterLightIntensity;
             if (waterLightTransform != null)
             {
                 MaterialProfile.mousePos = waterLightTransform.position;
