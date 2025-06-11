@@ -56,7 +56,7 @@ public class FilteredRotationTransformer : MonoBehaviour, ITransformer
         Debug.Log("CurrentAngle: " + GetLocalAngle() + ", LastAngle: " + _lastAngle + ", Delta: " + delta + ", ProposedAngle: " + _proposedAngle);
         
         // Allow only forward (positive) rotation, exclude some off jumps in rotation resulting in odd backward turns sometimes
-        if (_proposedAngle < _lastAngle || delta > 45.0f)
+        if (_proposedAngle > _lastAngle || delta < -45.0f)
         {
             // Cancel backward rotation
             _currentAngle = _lastAngle;

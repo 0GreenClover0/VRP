@@ -122,11 +122,11 @@ public class GeneratorPower : MonoBehaviour
         Vector3 v5 = mechanism4.transform.localEulerAngles;
         Vector3 v6 = mechanism4.transform.localEulerAngles;
 
-        v1.z -= rotationDelta;
-        v2.z += rotationDelta;
-        v3.z -= rotationDelta;
-        v4.z += rotationDelta;
-        v5.z -= rotationDelta;
+        v1.z += rotationDelta;
+        v2.z -= rotationDelta;
+        v3.z += rotationDelta;
+        v4.z -= rotationDelta;
+        v5.z += rotationDelta;
         v6.z += rotationDelta;
 
         mechanism1.transform.localEulerAngles = v1;
