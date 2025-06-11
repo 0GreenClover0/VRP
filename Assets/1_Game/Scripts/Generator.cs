@@ -30,7 +30,7 @@ public class Generator : MonoBehaviour
         }
     
         rotationDelta = leverZ - previousZ;
-        generatorPower.rotationDelta = rotationDelta;
+        generatorPower.rotationDelta = -rotationDelta;
     
         cached = !cached;
     }
