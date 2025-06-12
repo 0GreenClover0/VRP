@@ -381,6 +381,11 @@ public class ShipSpawner : MonoBehaviour
 
         if (spawnWarningCounter > 0.0f)
         {
+            if (Player.Instance.IsFlashActive())
+            {
+                return;
+            }
+
             if (spawnType != SpawnType.Rapid)
             {
                 spawnWarningCounter -= Time.deltaTime;

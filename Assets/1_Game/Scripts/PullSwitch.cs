@@ -82,5 +82,6 @@ public class PullSwitch : MonoBehaviour
     private void ActivateFlash()
     {
         flashActive = flashTime;
+        Player.Instance.ActivateFlash();
     }
 }
