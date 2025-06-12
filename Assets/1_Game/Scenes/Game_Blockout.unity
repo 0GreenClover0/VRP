@@ -4874,6 +4874,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PullSwitch
       objectReference: {fileID: 0}
+    - target: {fileID: 6718480835535639337, guid: 48352ab4444a232448c523cba0f04589, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.048999906
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731994310486174577, guid: 48352ab4444a232448c523cba0f04589, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.085
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
