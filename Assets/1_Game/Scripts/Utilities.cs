@@ -16,4 +16,9 @@ public static class Utilities
     {
         return 1.0f - Mathf.Pow(1.0f - x, 4.0f);
     }
+
+    public static GameManager GetGameManager()
+    {
+        return GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+    }
 }

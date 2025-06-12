@@ -219,6 +219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1900939703829819563}
   - component: {fileID: 1531619575536332992}
+  - component: {fileID: 6572497394912703846}
   - component: {fileID: 8585615914321229931}
   - component: {fileID: 857083351720157755}
   - component: {fileID: 7804296025798587931}
@@ -271,13 +272,29 @@ MonoBehaviour:
   _transferOnSecondSelection: 0
   _addNewPointsToFront: 0
   _forwardElement: {fileID: 0}
-  _oneGrabTransformer: {fileID: 0}
+  _oneGrabTransformer: {fileID: 8585615914321229931}
   _twoGrabTransformer: {fileID: 8585615914321229931}
   _targetTransform: {fileID: 4448550634723915018}
   _maxGrabPoints: 2
   _rigidbody: {fileID: 0}
-  _kinematicWhileSelected: 1
-  _throwWhenUnselected: 1
+  _kinematicWhileSelected: 0
+  _throwWhenUnselected: 0
+--- !u!114 &6572497394912703846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3503209695013075824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d02bf768dea8524480b7c392391b265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftInteractable: {fileID: 3772952754373619573}
+  rightInteractable: {fileID: 7290178239589031808}
+  oneHandFilterValue: 0.02
+  twoHandsFilterValue: 0.05
 --- !u!114 &8585615914321229931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,6 +311,8 @@ MonoBehaviour:
   _targetTransform: {fileID: 1900939703829819563}
   _underlyingTargetTransform: {fileID: 4448550634723915018}
   _filterStrength: 0.02
+  leftInteractable: {fileID: 3772952754373619573}
+  rightInteractable: {fileID: 7290178239589031808}
 --- !u!54 &857083351720157755
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -316,7 +335,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
