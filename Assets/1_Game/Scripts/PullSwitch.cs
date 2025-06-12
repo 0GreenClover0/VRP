@@ -4,6 +4,7 @@ using UnityEngine;
 public class PullSwitch : MonoBehaviour
 {
     [SerializeField] private InteractableGroupView interactableGroupView;
+    [SerializeField] private Light pointLight;
     [SerializeField] private MaterialPropertyBlockEditor bulbMaterial;
     [SerializeField] private GameObject grabbableObject;
     [SerializeField] private Transform ropeDesiredPosition;
@@ -42,8 +43,8 @@ public class PullSwitch : MonoBehaviour
 
         if (flashActive <= 0.0f && interactableGroupView.SelectingInteractorsCount != 0 && grabbableObject.transform.position.y < yPositionActivateFlashTreshold.transform.position.y)
         {
+            ActivateFlash();
             bulbMaterial.ColorProperties = new System.Collections.Generic.List<MaterialPropertyColor>() { activatedMaterialColor };
-            flashActive = flashTime;
         }
 
         if (flashActive <= 0.0f)
@@ -51,6 +52,35 @@ public class PullSwitch : MonoBehaviour
             bulbMaterial.ColorProperties = new System.Collections.Generic.List<MaterialPropertyColor>() { defaultMaterialColor };
         }
 
+        if (flashActive >= 3.0f && flashActive <= 5.0f)
+        {
+            if (!pointLight.enabled)
+            {
+                pointLight.enabled = true;
+            }
+
+            float t = Mathf.InverseLerp(5.0f, 3.0f, flashActive); // t goes from 0.0 to 1.0
+            float ramp = Mathf.Pow(t, 1.5f); // Faster ramp-up
+            float fade = Mathf.Pow(1.0f - t, 1.2f); // Slower fade-out
+            float shaped = ramp * fade * 4.0f; // Bell-like pulse shape
+            pointLight.intensity = shaped * 100.0f;
+        }
+        else
+        {
+            pointLight.intensity = 0.0f;
+
+            if (pointLight.enabled)
+            {
+                pointLight.enabled = false;
+            }
+        }
+
         flashActive -= Time.deltaTime;
+    }
+
+    [ContextMenu("Activate flash")]
+    private void ActivateFlash()
+    {
+        flashActive = flashTime;
     }
 }
