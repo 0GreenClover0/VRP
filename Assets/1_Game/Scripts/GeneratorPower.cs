@@ -46,8 +46,11 @@ public class GeneratorPower : MonoBehaviour
     private float t = 0.0f;
     private float lastA = 0.0f, lastB = 0.0f;
 
-    private void Start()
+    private AudioSource audioSource;
+
+    private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         barValue = GetCurrentGeneratorPower();
     }
 
@@ -64,6 +67,12 @@ public class GeneratorPower : MonoBehaviour
         t = 0.0f;
         lastA = barValue;
         lastB = currentGeneratorPower;
+
+        if ((!audioSource.isPlaying || audioSource.time > Random.Range(0.05f, 0.1f)) && Mathf.Abs(rotationDelta) > 0.02f)
+        {
+            audioSource.pitch = Random.Range(0.8f, 1.2f);
+            audioSource.Play();
+        }
     }
 
     // In range 0-100%, not 0-1

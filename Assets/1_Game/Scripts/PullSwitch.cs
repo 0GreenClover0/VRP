@@ -9,8 +9,10 @@ public class PullSwitch : MonoBehaviour
     [SerializeField] private GameObject grabbableObject;
     [SerializeField] private Transform ropeDesiredPosition;
     [SerializeField] private Transform yPositionActivateFlashTreshold;
+    [SerializeField] private AudioClip flashSound;
 
     private float flashActiveVisual = 0.0f;
+    private AudioSource audioSource;
     private MaterialPropertyColor defaultMaterialColor;
     private MaterialPropertyColor activatedMaterialColor;
 
@@ -19,6 +21,9 @@ public class PullSwitch : MonoBehaviour
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = flashSound;
+        
         defaultMaterialColor = new MaterialPropertyColor
         {
             name = "_BaseColor",
@@ -83,5 +88,10 @@ public class PullSwitch : MonoBehaviour
     {
         flashActiveVisual = flashTime;
         Player.Instance.ActivateFlash();
+
+        if (!audioSource.isPlaying)
+        {
+            audioSource.Play();   
+        }
     }
 }
