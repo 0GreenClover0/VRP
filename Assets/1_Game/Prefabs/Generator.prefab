@@ -928,9 +928,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationDelta: 0
-  chargeTimer: 0.5
-  powerMultiplier: 1.5
-  powerDecrease: 1
+  chargeTimer: 0.25
+  powerMultiplier: 2
+  powerDecrease: 0.5
   speed: 1
   barTransform: {fileID: 7726661042684241700}
   mechanism1: {fileID: 4138923336742136375}

@@ -1651,6 +1651,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rope_base (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1172526551899085897, guid: bcacdcda25fb6f646bcdb0e3ff7958cd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 589a2425730236846839f47f75e1a050, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1669,6 +1673,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2023701688066320540}
     m_Modifications:
+    - target: {fileID: 5160877498084913382, guid: 152a5db1cdbe75941ad0495ad8ed3047, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 589a2425730236846839f47f75e1a050, type: 2}
     - target: {fileID: 6328738769070951305, guid: 152a5db1cdbe75941ad0495ad8ed3047, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -1823,6 +1831,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rope_base
       objectReference: {fileID: 0}
+    - target: {fileID: 1172526551899085897, guid: bcacdcda25fb6f646bcdb0e3ff7958cd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 589a2425730236846839f47f75e1a050, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1885,6 +1897,10 @@ PrefabInstance:
       propertyPath: _defaultInteractable
       value: 
       objectReference: {fileID: 7742381971604797533}
+    - target: {fileID: 5188097502058665951, guid: 6451592af2520cf488384ae9649b0f61, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 589a2425730236846839f47f75e1a050, type: 2}
     - target: {fileID: 8770182500794299091, guid: 6451592af2520cf488384ae9649b0f61, type: 3}
       propertyPath: m_Name
       value: Lightbulb
