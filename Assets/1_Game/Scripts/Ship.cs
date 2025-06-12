@@ -276,9 +276,10 @@ public class Ship : MonoBehaviour
         float speedDelta = speed * Time.deltaTime;
         Vector2 speedVector = new Vector2(Mathf.Cos(Mathf.Deg2Rad * direction), Mathf.Sin(Mathf.Deg2Rad * direction)) * speedDelta;
 
-        // TODO: If flash not active
-
-        transform.position += new Vector3(speedVector.x, 0.0f, speedVector.y);
+        if (!Player.Instance.IsFlashActive())
+        {
+            transform.position += new Vector3(speedVector.x, 0.0f, speedVector.y);
+        }
     }
 
     private void UpdateRotation()
