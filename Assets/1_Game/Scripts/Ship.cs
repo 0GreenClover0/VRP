@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DragonWater.Scripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -85,11 +86,22 @@ public class Ship : MonoBehaviour
 
     // These were originally in LevelController and depended on appropriate curves
     private const float levelControllerShipsSpeed = 1.0f;
+    
+    // Audio
+    private AudioSource audioSource;
+    [Space]
+    [Header("Sound")]
+    [Space]
+    
+    [SerializeField] private AudioClip destroyClip; 
+    [SerializeField] private List<AudioClip> interactClips;
+    private bool playedCrashSound;
 
     private void Awake()
     {
         // SetStartDirection();
         scaleDownCounter = scaleDownTime;
+        audioSource = GetComponent<AudioSource>();
         rangeFactor = ShipTypeToRangeFactor(type);
     }
 
@@ -566,6 +578,9 @@ public class Ship : MonoBehaviour
         }
         else
         {
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX;
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ;
             GetComponent<FloatingBody>().BuoyancyForce -= Time.deltaTime * 350.0f;
         }
 
@@ -599,6 +614,21 @@ public class Ship : MonoBehaviour
         Vector3 centerOfMass = f.CenterOfMass;
         centerOfMass.x = -0.7f;
         f.CenterOfMass = centerOfMass;
+        
+        if(!playedCrashSound)
+            PlayCrashSound();
+    }
+
+    public void PlayCrashSound()
+    {
+        if (audioSource == null || audioSource.isPlaying)
+        {
+            return;
+        }
+        
+        audioSource.clip = destroyClip;
+        audioSource.Play();
+        playedCrashSound = true;
     }
     
     public void DestroyShip()
@@ -621,19 +651,16 @@ public class Ship : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.TryGetComponent(out Ship _) || other.gameObject.TryGetComponent(out IceBound _))
+        if (other.gameObject.TryGetComponent(out Ship ship) || other.gameObject.TryGetComponent(out IceBound _))
         {
+            if (ship != null)
+            {
+                ship.audioSource.volume /= 2.0f;
+            }
+            
             DestroyShip();
         }
     }
-
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     if (other.TryGetComponent(out Ship _) || other.TryGetComponent(out IceBound _))
-    //     {
-    //         DestroyShip();
-    //     }
-    // }
 
     private void OnDestroy()
     {
