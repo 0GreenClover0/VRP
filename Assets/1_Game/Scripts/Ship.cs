@@ -570,6 +570,7 @@ public class Ship : MonoBehaviour
     // TODO: Split this into two different functions
     private void ScaleDown(bool onlySink = false)
     {
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         if (!onlySink)
         {
             scaleDownCounter -= Time.deltaTime * scaleDownSpeed;
@@ -578,9 +579,8 @@ public class Ship : MonoBehaviour
         }
         else
         {
-            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX;
-            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ;
+            // GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX;
+            // GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ;
             GetComponent<FloatingBody>().BuoyancyForce -= Time.deltaTime * 350.0f;
         }
 
