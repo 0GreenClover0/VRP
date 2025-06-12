@@ -6,7 +6,7 @@ public class PullSwitch : MonoBehaviour
     [SerializeField] private InteractableGroupView interactableGroupView;
     [SerializeField] private MaterialPropertyBlockEditor bulbMaterial;
     [SerializeField] private GameObject grabbableObject;
-    [SerializeField] private Transform desiredPosition;
+    [SerializeField] private Transform ropeDesiredPosition;
     [SerializeField] private Transform yPositionActivateFlashTreshold;
 
     private float flashActive = 0.0f;
@@ -20,13 +20,13 @@ public class PullSwitch : MonoBehaviour
     {
         defaultMaterialColor = new MaterialPropertyColor
         {
-            name = "_Color",
+            name = "_BaseColor",
             value = Color.white
         };
 
         activatedMaterialColor = new MaterialPropertyColor
         {
-            name = "_Color",
+            name = "_BaseColor",
             value = Color.yellow
         };
     }
@@ -34,10 +34,10 @@ public class PullSwitch : MonoBehaviour
     private void Update()
     {
         // If nothing is grabbing the string, slowly move up to default position.
-        float distance = Vector3.Distance(grabbableObject.transform.position, desiredPosition.position);
+        float distance = Vector3.Distance(grabbableObject.transform.position, ropeDesiredPosition.position);
         if (interactableGroupView.SelectingInteractorsCount == 0 && distance > 0.01f)
         {
-            grabbableObject.transform.position = Vector3.MoveTowards(grabbableObject.transform.position, desiredPosition.position, Time.deltaTime * returningToDefaultSpeed);
+            grabbableObject.transform.position = Vector3.MoveTowards(grabbableObject.transform.position, ropeDesiredPosition.position, Time.deltaTime * returningToDefaultSpeed);
         }
 
         if (flashActive <= 0.0f && interactableGroupView.SelectingInteractorsCount != 0 && grabbableObject.transform.position.y < yPositionActivateFlashTreshold.transform.position.y)
