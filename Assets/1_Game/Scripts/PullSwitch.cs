@@ -10,7 +10,7 @@ public class PullSwitch : MonoBehaviour
     [SerializeField] private Transform ropeDesiredPosition;
     [SerializeField] private Transform yPositionActivateFlashTreshold;
 
-    private float flashActive = 0.0f;
+    private float flashActiveVisual = 0.0f;
     private MaterialPropertyColor defaultMaterialColor;
     private MaterialPropertyColor activatedMaterialColor;
 
@@ -41,25 +41,25 @@ public class PullSwitch : MonoBehaviour
             grabbableObject.transform.position = Vector3.MoveTowards(grabbableObject.transform.position, ropeDesiredPosition.position, Time.deltaTime * returningToDefaultSpeed);
         }
 
-        if (flashActive <= 0.0f && interactableGroupView.SelectingInteractorsCount != 0 && grabbableObject.transform.position.y < yPositionActivateFlashTreshold.transform.position.y)
+        if (flashActiveVisual <= 0.0f && interactableGroupView.SelectingInteractorsCount != 0 && grabbableObject.transform.position.y < yPositionActivateFlashTreshold.transform.position.y)
         {
             ActivateFlash();
             bulbMaterial.ColorProperties = new System.Collections.Generic.List<MaterialPropertyColor>() { activatedMaterialColor };
         }
 
-        if (flashActive <= 0.0f)
+        if (flashActiveVisual <= 0.0f)
         {
             bulbMaterial.ColorProperties = new System.Collections.Generic.List<MaterialPropertyColor>() { defaultMaterialColor };
         }
 
-        if (flashActive >= 3.0f && flashActive <= 5.0f)
+        if (flashActiveVisual >= 3.0f && flashActiveVisual <= 5.0f)
         {
             if (!pointLight.enabled)
             {
                 pointLight.enabled = true;
             }
 
-            float t = Mathf.InverseLerp(5.0f, 3.0f, flashActive); // t goes from 0.0 to 1.0
+            float t = Mathf.InverseLerp(5.0f, 3.0f, flashActiveVisual); // t goes from 0.0 to 1.0
             float ramp = Mathf.Pow(t, 1.5f); // Faster ramp-up
             float fade = Mathf.Pow(1.0f - t, 1.2f); // Slower fade-out
             float shaped = ramp * fade * 4.0f; // Bell-like pulse shape
@@ -75,13 +75,13 @@ public class PullSwitch : MonoBehaviour
             }
         }
 
-        flashActive -= Time.deltaTime;
+        flashActiveVisual -= Time.deltaTime;
     }
 
     [ContextMenu("Activate flash")]
     private void ActivateFlash()
     {
-        flashActive = flashTime;
+        flashActiveVisual = flashTime;
         Player.Instance.ActivateFlash();
     }
 }
