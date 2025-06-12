@@ -58,6 +58,7 @@ public class Ship : MonoBehaviour
     [SerializeField] private float scaleDownSpeed = 0.05f;
 
     private bool isInPort = false;
+    private float timeInPort = 0.0f;
 
     private int avoidDirection = 1;
 
@@ -70,8 +71,9 @@ public class Ship : MonoBehaviour
     private const float collisionRotationTime = 0.5f;
     private const float destroyTime = 3.5f;
     private const float destroyTimeInPort = 6.5f;
-    private const float scaleDownTime = 0.25f;
-    private const float decelerationSpeed = 0.17f;
+    private const float timeInPortToDisappear = 3.5f;
+    private const float scaleDownTime = 0.04f;
+    private const float decelerationSpeed = 0.17f; // TODO: This seems very fast in our game
     private const float sinkFactor = 0.26f;
 
     // These were originally in Player and depended on appropriate curves
@@ -87,6 +89,7 @@ public class Ship : MonoBehaviour
     private void Awake()
     {
         // SetStartDirection();
+        scaleDownCounter = scaleDownTime;
         rangeFactor = ShipTypeToRangeFactor(type);
     }
 
@@ -363,6 +366,19 @@ public class Ship : MonoBehaviour
     {
         speed -= decelerationSpeed * Time.deltaTime;
         speed = Mathf.Max(speed, 0.0f);
+        timeInPort += Time.deltaTime;
+
+        if (timeInPort > timeInPortToDisappear)
+        {
+            if (scaleDownCounter > 0.0f)
+            {
+                ScaleDown();
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     private void CollectedByKeeperBehavior()
@@ -519,6 +535,11 @@ public class Ship : MonoBehaviour
 
     #endregion
 
+    public void Stop()
+    {
+        isInPort = true;
+    }
+
     private void FollowPoint(Vector2 shipPosition, Vector2 targetPosition)
     {
         Vector2 shipDirection = new Vector2(Mathf.Cos(Mathf.Deg2Rad * direction), Mathf.Sin(Mathf.Deg2Rad * direction)).normalized;
@@ -534,21 +555,20 @@ public class Ship : MonoBehaviour
         }
     }
 
+    // TODO: Split this into two different functions
     private void ScaleDown(bool onlySink = false)
     {
-        scaleDownCounter -= Time.deltaTime * scaleDownSpeed;
-        Vector3 scale = transform.GetChild(0).localScale * (scaleDownCounter / scaleDownTime);
-        GetComponent<Rigidbody>().freezeRotation = true;
-        
         if (!onlySink)
         {
-            transform.GetChild(0).localScale = scale;
+            scaleDownCounter -= Time.deltaTime * scaleDownSpeed;
+            Vector3 scale = transform.localScale * (scaleDownCounter / scaleDownTime);
+            transform.localScale = scale;
         }
         else
         {
-            GetComponent<FloatingBody>().BuoyancyForce -= Time.deltaTime * 350.0f;   
+            GetComponent<FloatingBody>().BuoyancyForce -= Time.deltaTime * 350.0f;
         }
-        
+
         // TODO: Dim out light
     }
 
@@ -592,13 +612,11 @@ public class Ship : MonoBehaviour
         
         hasBeenDestroyed = true;
         destroyedCounter = isInPort ? destroyTimeInPort : destroyTime;
-        scaleDownCounter = scaleDownTime;
     }
 
     public void GetCollectedByKeeper()
     {
         behavioralState = BehavioralState.CollectedByKeeper;
-        scaleDownCounter = scaleDownTime;
     }
 
     private void OnCollisionEnter(Collision other)
