@@ -1,10 +1,5 @@
 using System;
-using System.Linq;
-using System.Numerics;
 using Oculus.Interaction;
-using Oculus.Interaction.HandGrab;
-using Oculus.Interaction.Input;
-using UnityEditor.ShaderGraph;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
