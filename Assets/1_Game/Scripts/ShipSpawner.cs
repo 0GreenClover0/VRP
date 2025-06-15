@@ -93,22 +93,23 @@ public class ShipSpawner : MonoBehaviour
     public Ship FindNearestNonPirateShip(Vector2 position)
     {
         bool foundNonPirateShip = false;
-        Ship nearest = null;
+        Ship nearestShip = null;
         foreach (var ship in ships)
         {
             if (ship.type == ShipType.Pirates)
                 continue;
 
             foundNonPirateShip = true;
-            nearest = ship;
+            nearestShip = ship;
             break;
         }
 
         if (!foundNonPirateShip)
+        {
             return null;
+        }
 
-        Ship nearestShip = null;
-        float nearestDistance = Vector2.Distance(position, Utilities.Convert3DTo2D(nearest.transform.position));
+        float nearestDistance = Vector2.Distance(position, Utilities.Convert3DTo2D(nearestShip.transform.position));
 
         foreach (var ship in ships)
         {
