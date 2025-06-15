@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5c4beea2ae8c9b64e8a4654637bb9685
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - distanceGrabHoverAudioPrefab: {instanceID: 0}
+  - distanceGrabPullAudioPrefab: {instanceID: 0}
+  - basicGrabPickupAudioPrefab: {fileID: 4674537905600659506, guid: b47fbfedcfef5414580d99c9115e2b8a, type: 3}
+  - basicGrabReleaseAudioPrefab: {fileID: 4674537905600659506, guid: 4c10bc37c0e8b774387330f749138159, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
