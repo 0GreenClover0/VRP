@@ -311,8 +311,6 @@ MonoBehaviour:
   _targetTransform: {fileID: 1900939703829819563}
   _underlyingTargetTransform: {fileID: 4448550634723915018}
   _filterStrength: 0.02
-  leftInteractable: {fileID: 3772952754373619573}
-  rightInteractable: {fileID: 7290178239589031808}
 --- !u!54 &857083351720157755
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1025,13 +1023,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5023699318956939366}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: -0.046574, y: -1.505, z: 0.362}
   m_LocalScale: {x: 28, y: 28, z: 53.66247}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4301134817263895147}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -180}
 --- !u!33 &8742552098013678969
 MeshFilter:
   m_ObjectHideFlags: 0

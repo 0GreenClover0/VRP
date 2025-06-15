@@ -54,7 +54,7 @@ MonoBehaviour:
   smallWoodShipPrefab: {fileID: 0}
   mediumWoodShipPrefab: {fileID: 0}
   bigWoodShipPrefab: {fileID: 3165857503305772680, guid: 482a55a30bb593f44833239992af8a7e, type: 3}
-  pirateShipPrefab: {fileID: 0}
+  pirateShipPrefab: {fileID: 5646225028059152367, guid: 79137820e1e4d3847aa36d8a757ae380, type: 3}
   spawnWarningTime: 1.5
   spawnRapidTime: 2.5
   minimumSpawnDistance: 6
