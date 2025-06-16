@@ -4,6 +4,14 @@ using Oculus.Interaction;
 using Oculus.Interaction.HandGrab;
 using UnityEngine;
 
+public enum GrabbingHand
+{
+    None,
+    Left,
+    Right,
+    Both
+}
+
 public class AdditionalGrabbableLogic : MonoBehaviour
 {
     // Components
@@ -14,6 +22,7 @@ public class AdditionalGrabbableLogic : MonoBehaviour
     public HandGrabInteractable rightInteractable;
     public float oneHandFilterValue = 0.02f;
     public float twoHandsFilterValue = 0.08f;
+    [HideInInspector] public GrabbingHand holdingHand;
     
     private int grabbersNum; // How many hands are grabbing the spotlight now?
     
@@ -27,12 +36,27 @@ public class AdditionalGrabbableLogic : MonoBehaviour
     void EvaluateGrabbersNum()
     {
         grabbersNum = 0;
+
+        holdingHand = GrabbingHand.None;
         
         if (leftInteractable.Interactors.Any(i => i.IsGrabbing))
+        {
             grabbersNum++;
+            holdingHand = GrabbingHand.Left;
+        }
 
         if (rightInteractable.Interactors.Any(i => i.IsGrabbing))
+        {
             grabbersNum++;
+            if (holdingHand == GrabbingHand.Left)
+            {
+                holdingHand = GrabbingHand.Both;
+            }
+            else
+            {
+                holdingHand = GrabbingHand.Right;
+            }
+        }
     }
 
     void SwitchOneTwoHands()
