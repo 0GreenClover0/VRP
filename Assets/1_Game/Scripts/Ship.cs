@@ -79,7 +79,7 @@ public class Ship : MonoBehaviour
     private const float destroyTimeInPort = 6.5f;
     private const float timeInPortToDisappear = 3.0f;
     private const float scaleDownTime = 0.04f;
-    private const float decelerationSpeed = 0.17f; // TODO: This seems very fast in our game
+    private const float decelerationSpeed = 0.05f;
     private const float sinkFactor = 0.26f;
 
     // These were originally in Player and depended on appropriate curves
