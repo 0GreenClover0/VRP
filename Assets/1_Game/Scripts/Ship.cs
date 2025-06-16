@@ -571,9 +571,16 @@ public class Ship : MonoBehaviour
 
     #endregion
 
-    public void Stop()
+    public void StopAtPort()
     {
+        if (isInPort)
+        {
+            return;
+        }
+
         isInPort = true;
+
+        Player.Instance.AddPoints(100);
     }
 
     private void FollowPoint(Vector2 shipPosition, Vector2 targetPosition)
@@ -688,6 +695,11 @@ public class Ship : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (type == ShipType.Pirates)
+        {
+            Player.Instance.AddPoints(50);
+        }
+
         onDestroyed.Invoke(this);
     }
 }

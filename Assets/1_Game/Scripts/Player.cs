@@ -4,6 +4,8 @@ public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
 
+    public int Points { get; private set; }
+
     public int Food { get; private set; }
 
     public float FlashCounter { get; private set; }
@@ -30,6 +32,11 @@ public class Player : MonoBehaviour
         {
             FlashCounter -= Time.deltaTime;
         }
+    }
+
+    public void AddPoints(int points)
+    {
+        Points += points;
     }
 
     public void ActivateFlash()
