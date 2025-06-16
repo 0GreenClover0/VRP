@@ -58,7 +58,7 @@ MonoBehaviour:
   spawnWarningTime: 1.5
   spawnRapidTime: 2.5
   minimumSpawnDistance: 6
-  shipRange: 6.375
+  shipRange: 6.25
   lastChanceFoodThreshold: 5
   lastChanceTimeThreshold: 30
   mainEventSpawn:
