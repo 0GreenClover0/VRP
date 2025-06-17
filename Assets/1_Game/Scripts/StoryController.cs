@@ -47,8 +47,13 @@ public class StoryController : MonoBehaviour
     
     private List<BlinkingData> blinkers;
     
+    [Header("Voicelines")]
+    public List<AudioClip> voiceLines;
+    
     // ---------------------------------
-
+    
+    private AudioSource audioSource;
+    
     private UnityAction onStoryStageChanged;
     private int currentStage = 1;
     
@@ -92,6 +97,7 @@ public class StoryController : MonoBehaviour
     
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         onStoryStageChanged += EvaluateScriptedSequence;
         InitializeBlinkingData();
         StartScriptedSequence();
@@ -183,11 +189,28 @@ public class StoryController : MonoBehaviour
         }
     }
 
+    void PlayVoiceLine(int num)
+    {
+        audioSource.clip = voiceLines[num];
+        audioSource.time = 0.0f;
+        audioSource.Play();
+    }
+    
     void SpawnFirstPenguinWithAnimation()
     {
         
     }
 
+    void HideSpotlightPenguinShowPullSwitchPenguin()
+    {
+        
+    }
+
+    void EnableUnscriptedShipSpawner()
+    {
+        
+    }
+    
     void SetMiscBlinkingData(BlinkingData blinkingData)
     {
         misc = blinkingData;
