@@ -4,12 +4,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject player;
+    public StoryController storyController;
 
     [Space]
     [Header("Global looping sounds")]
     
     public AudioClip windSound;
-
+	
     private AudioSource audioSource;
     
     private void Awake()
