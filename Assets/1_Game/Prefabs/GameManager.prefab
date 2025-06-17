@@ -60,6 +60,11 @@ MonoBehaviour:
   voiceLines: []
   logoAlpha: 0
   logo: {fileID: 698304132582758257}
+  generatorPower: {fileID: 0}
+  easyPowerMultiplier: 6
+  normalPowerMultiplier: 3
+  easyPowerDecrease: 0.2
+  normalPowerDecrease: 0.5
 --- !u!82 &5842522610733222702
 AudioSource:
   m_ObjectHideFlags: 0

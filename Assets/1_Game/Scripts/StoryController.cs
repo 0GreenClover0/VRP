@@ -49,10 +49,17 @@ public class StoryController : MonoBehaviour
     
     [Header("Voicelines")]
     public List<AudioClip> voiceLines;
-
-    [Space] [Header("Progression-related variables")]
+    
     [HideInInspector] public float logoAlpha = 0.0f;
+    
+    [Space]
+    [Header("Progression-related variables")]
     public MeshRenderer logo;
+    public GeneratorPower generatorPower;
+    public float easyPowerMultiplier = 4;
+    public float normalPowerMultiplier = 2;
+    public float easyPowerDecrease = 0.15f;
+    public float normalPowerDecrease = 0.5f;
     
     // ---------------------------------
     
@@ -168,6 +175,7 @@ public class StoryController : MonoBehaviour
         {
             case 1:
                 ShowLogo();
+                SetEasyGenerator();
                 break;
             
             case 2:
@@ -186,12 +194,14 @@ public class StoryController : MonoBehaviour
 
     void SetEasyGenerator()
     {
-        
+        generatorPower.powerMultiplier = easyPowerMultiplier;
+        generatorPower.powerDecrease = easyPowerDecrease;
     }
 
     void SetNormalGenerator()
     {
-        
+        generatorPower.powerMultiplier = normalPowerMultiplier;
+        generatorPower.powerDecrease = normalPowerDecrease;
     }
 
     void SpawnScriptedShip(int number)
