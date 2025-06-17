@@ -49,13 +49,19 @@ public class StoryController : MonoBehaviour
     
     [Header("Voicelines")]
     public List<AudioClip> voiceLines;
+
+    [Space] [Header("Progression-related variables")]
+    [HideInInspector] public float logoAlpha = 0.0f;
+    public MeshRenderer logo;
     
     // ---------------------------------
     
-    private AudioSource audioSource;
-    
-    private UnityAction onStoryStageChanged;
     private int currentStage = 1;
+    
+    private AudioSource audioSource;
+    private UnityAction onStoryStageChanged;
+    private float logoTimer = 0.0f;
+    private float logoNextStep = 6.0f;
     
     void StartScriptedSequence()
     {
@@ -105,15 +111,33 @@ public class StoryController : MonoBehaviour
 
     private void Update()
     {
-        generator.on = generatorBlinking;
-        flash.on = flashBlinking;
-        spotlight.on = spotlightBlinking;
-        
+        BackgroundChecks();
         UpdateBlinkingMaterials();
+    }
+
+    void BackgroundChecks()
+    {
+        if (currentStage == 1)
+        {
+            logoTimer += Time.deltaTime;
+
+            Color color = Color.white;
+            color.a = logoAlpha;
+            logo.material.SetColor("_BaseColor", color);
+            
+            if (logoTimer >= logoNextStep)
+            {
+                SetStoryStage(2);
+            }
+        }
     }
 
     private void UpdateBlinkingMaterials()
     {
+        generator.on = generatorBlinking;
+        flash.on = flashBlinking;
+        spotlight.on = spotlightBlinking;
+        
         float t = Mathf.Abs(Mathf.Sin(Time.time * blinkSpeed));
         float emissionAddition = Mathf.Lerp(0.0f, blinkBrightness, t);
         
@@ -143,7 +167,11 @@ public class StoryController : MonoBehaviour
         switch (currentStage)
         {
             case 1:
-
+                ShowLogo();
+                break;
+            
+            case 2:
+                
                 break;
         }
     }
@@ -152,7 +180,8 @@ public class StoryController : MonoBehaviour
 
     void ShowLogo()
     {
-        
+        Animator animator = GetComponent<Animator>();
+        animator.SetTrigger("AnimateLogo"); 
     }
 
     void SetEasyGenerator()
