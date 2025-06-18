@@ -67,6 +67,10 @@ MonoBehaviour:
   easyPowerDecrease: 0.2
   normalPowerDecrease: 0.5
   spotlightPenguin: {fileID: 0}
+  spotlightFilteredTransformer: {fileID: 0}
+  scriptedShipTransform1: {fileID: 0}
+  scriptedShipTransform2: {fileID: 0}
+  scriptedShipTransform3: {fileID: 0}
 --- !u!82 &5842522610733222702
 AudioSource:
   m_ObjectHideFlags: 0
