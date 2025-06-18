@@ -60,6 +60,7 @@ public class StoryController : MonoBehaviour
     public float normalPowerMultiplier = 2;
     public float easyPowerDecrease = 0.15f;
     public float normalPowerDecrease = 0.5f;
+    public GameObject spotlightPenguin;
     
     // ---------------------------------
     
@@ -68,7 +69,9 @@ public class StoryController : MonoBehaviour
     private AudioSource audioSource;
     private UnityAction onStoryStageChanged;
     private float logoTimer = 0.0f;
-    private float logoNextStep = 6.0f;
+    private float logoNextStep = 7.0f;
+    private float firstPenguinVoicelineTimer = 0.0f;
+    private bool firstPenguinVoicelinePlayed = false;
     
     void StartScriptedSequence()
     {
@@ -137,6 +140,17 @@ public class StoryController : MonoBehaviour
                 SetStoryStage(2);
             }
         }
+        
+        if (currentStage == 2)
+        {
+            firstPenguinVoicelineTimer += Time.deltaTime;
+            
+            if (firstPenguinVoicelineTimer >= 3.0f && !firstPenguinVoicelinePlayed)
+            {
+                PlayVoiceLine(0);
+                firstPenguinVoicelinePlayed = true;
+            }
+        }
     }
 
     private void UpdateBlinkingMaterials()
@@ -179,8 +193,10 @@ public class StoryController : MonoBehaviour
                 break;
             
             case 2:
-                
+                SpawnFirstPenguinWithAnimation();
                 break;
+            
+            
         }
     }
     
@@ -228,16 +244,17 @@ public class StoryController : MonoBehaviour
         }
     }
 
-    void PlayVoiceLine(int num)
+    void PlayVoiceLine(int id)
     {
-        audioSource.clip = voiceLines[num];
+        audioSource.clip = voiceLines[id];
         audioSource.time = 0.0f;
         audioSource.Play();
     }
     
     void SpawnFirstPenguinWithAnimation()
     {
-        
+        spotlightPenguin.SetActive(true);
+        spotlightPenguin.GetComponent<Animator>().SetTrigger("Climb");
     }
 
     void HideSpotlightPenguinShowPullSwitchPenguin()
