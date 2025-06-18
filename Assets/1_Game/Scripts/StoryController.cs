@@ -72,6 +72,9 @@ public class StoryController : MonoBehaviour
     private float logoNextStep = 7.0f;
     private float firstPenguinVoicelineTimer = 0.0f;
     private bool firstPenguinVoicelinePlayed = false;
+    private bool firstChargedGenerator = false;
+    private bool firstStage3GeneratorGrabbed = false;
+    private FilteredRotationTransformer generatorRotationTransformer;
     
     void StartScriptedSequence()
     {
@@ -115,6 +118,8 @@ public class StoryController : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         onStoryStageChanged += EvaluateScriptedSequence;
+        generatorRotationTransformer = generatorPower.gameObject.GetComponent<FilteredRotationTransformer>();
+        generatorRotationTransformer.onGrab += OnFirstStage3GeneratorGrab;
         InitializeBlinkingData();
         StartScriptedSequence();
     }
@@ -127,29 +132,36 @@ public class StoryController : MonoBehaviour
 
     void BackgroundChecks()
     {
-        if (currentStage == 1)
+        switch (currentStage)
         {
-            logoTimer += Time.deltaTime;
+            case 1:
+                logoTimer += Time.deltaTime;
 
-            Color color = Color.white;
-            color.a = logoAlpha;
-            logo.material.SetColor("_BaseColor", color);
+                Color color = Color.white;
+                color.a = logoAlpha;
+                logo.material.SetColor("_BaseColor", color);
             
-            if (logoTimer >= logoNextStep)
-            {
-                SetStoryStage(2);
-            }
-        }
-        
-        if (currentStage == 2)
-        {
-            firstPenguinVoicelineTimer += Time.deltaTime;
+                if (logoTimer >= logoNextStep)
+                {
+                    SetStoryStage(2);
+                }
+                break;
             
-            if (firstPenguinVoicelineTimer >= 3.0f && !firstPenguinVoicelinePlayed)
-            {
-                PlayVoiceLine(0);
-                firstPenguinVoicelinePlayed = true;
-            }
+            case 2:
+                firstPenguinVoicelineTimer += Time.deltaTime;
+            
+                if (firstPenguinVoicelineTimer >= 3.0f && !firstPenguinVoicelinePlayed)
+                {
+                    PlayVoiceLine(0);
+                    generatorBlinking = true;
+                    SetStoryStage(3);
+                    firstPenguinVoicelinePlayed = true;
+                }
+                break;
+            
+            case 3:
+                WaitForPoweredGenerator();
+                break;
         }
     }
 
@@ -196,7 +208,8 @@ public class StoryController : MonoBehaviour
                 SpawnFirstPenguinWithAnimation();
                 break;
             
-            
+            case 3:
+                break;
         }
     }
     
@@ -218,6 +231,25 @@ public class StoryController : MonoBehaviour
     {
         generatorPower.powerMultiplier = normalPowerMultiplier;
         generatorPower.powerDecrease = normalPowerDecrease;
+    }
+
+    void OnFirstStage3GeneratorGrab()
+    {
+        if (!firstStage3GeneratorGrabbed)
+        {
+            HideSpotlightPenguinShowPullSwitchPenguin();
+            generatorBlinking = false;
+            firstStage3GeneratorGrabbed = true;
+        }
+    }
+    
+    void WaitForPoweredGenerator()
+    {
+        if (generatorPower.GetCurrentBarValue() >= 70.0f && !firstChargedGenerator)
+        {
+            PlayVoiceLine(0);
+            firstChargedGenerator = true;
+        }
     }
 
     void SpawnScriptedShip(int number)
@@ -259,7 +291,8 @@ public class StoryController : MonoBehaviour
 
     void HideSpotlightPenguinShowPullSwitchPenguin()
     {
-        
+        spotlightPenguin.GetComponent<Animator>().SetTrigger("Hide");
+        // TODO: Show PullSwitch penguin!!!
     }
 
     void EnableUnscriptedShipSpawner()
