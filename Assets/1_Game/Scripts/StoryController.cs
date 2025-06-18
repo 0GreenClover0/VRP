@@ -23,6 +23,7 @@ public class BlinkingData
 
 public class StoryController : MonoBehaviour
 {
+    [Header("Changing this requires reloading the game")]
     public bool scriptedSequence = true;
 
     [Header("Set manual blinking")]
@@ -63,6 +64,13 @@ public class StoryController : MonoBehaviour
     public float normalPowerDecrease = 0.5f;
     public GameObject spotlightPenguin;
     public FilteredTransformer spotlightFilteredTransformer;
+
+    [Space] [Header("Scripted ship transforms (PER LEVEL!)")]
+    public Transform scriptedShipTransform1;
+    public Transform scriptedShipTransform2;
+    public Transform scriptedShipTransform3;
+    public Transform pirates1;
+    public Transform pirates2;
     
     // ---------------------------------
     
