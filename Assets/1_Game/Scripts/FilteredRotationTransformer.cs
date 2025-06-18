@@ -1,6 +1,7 @@
 using System;
 using Oculus.Interaction;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FilteredRotationTransformer : MonoBehaviour, ITransformer
 {
@@ -19,6 +20,8 @@ public class FilteredRotationTransformer : MonoBehaviour, ITransformer
     [SerializeField]
     private Vector3 _rotationAxis = Vector3.forward;
 
+    public UnityAction onGrab;
+    
     private float _lastAngle;
     private float _currentAngle;
     private float _proposedAngle;
@@ -29,6 +32,7 @@ public class FilteredRotationTransformer : MonoBehaviour, ITransformer
         _underlyingTargetTransform.localRotation = _targetTransform.localRotation;
         _underlyingTargetTransform.position = _targetTransform.position;
         _lastAngle = GetLocalAngle();
+        onGrab.Invoke();
     }
 
     public void EndTransform()
