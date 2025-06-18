@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShipsLimit: 5
   ShipsSpeed: 0.5
+  IsDuringScriptedSequence: 1

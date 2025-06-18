@@ -5003,7 +5003,7 @@ Transform:
   m_GameObject: {fileID: 1190039927}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5, y: 0, z: 29.25}
+  m_LocalPosition: {x: -2.25, y: 0, z: 30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -5464,6 +5464,10 @@ PrefabInstance:
       propertyPath: 'flashRenderers.Array.data[0]'
       value: 
       objectReference: {fileID: 263470065}
+    - target: {fileID: 2414729513645854637, guid: bc06327f54eb0b644bbdde2d2f0f83ca, type: 3}
+      propertyPath: spotlightFilteredTransformer
+      value: 
+      objectReference: {fileID: 1969369406}
     - target: {fileID: 2414729513645854637, guid: bc06327f54eb0b644bbdde2d2f0f83ca, type: 3}
       propertyPath: generatorRenderers.Array.size
       value: 2
@@ -8314,6 +8318,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1969369406 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8585615914321229931, guid: e1fb754cf9d36434e98a7144bf37837c, type: 3}
+  m_PrefabInstance: {fileID: 1579530819}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969369393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1453e661a2ee74a4995661b9c90db66c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2001735659
 GameObject:
   m_ObjectHideFlags: 0

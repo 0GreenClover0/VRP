@@ -1,6 +1,7 @@
 using System;
 using Oculus.Interaction;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
@@ -24,6 +25,8 @@ public class FilteredTransformer : MonoBehaviour, ITransformer
     [Range(-3.0f, 3.0f)]
     public float dotProductMultiplier = -1.0f;
     
+    public UnityAction onGrab;
+    
     private GameManager gameManager;
     private Transform leftController;
     private Transform rightController;
@@ -37,6 +40,7 @@ public class FilteredTransformer : MonoBehaviour, ITransformer
     public void BeginTransform()
     {
         _underlyingTransformer.BeginTransform();
+        onGrab.Invoke();
     }
 
     public void EndTransform()
