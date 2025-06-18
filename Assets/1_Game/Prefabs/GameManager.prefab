@@ -57,7 +57,8 @@ MonoBehaviour:
   spotlightRenderers: []
   flashRenderers: []
   miscRenderers: []
-  voiceLines: []
+  voiceLines:
+  - {fileID: 8300000, guid: 6dbc7c0530afc0241a8d4fbd5ed9772c, type: 3}
   logoAlpha: 0
   logo: {fileID: 698304132582758257}
   generatorPower: {fileID: 0}
@@ -65,6 +66,7 @@ MonoBehaviour:
   normalPowerMultiplier: 3
   easyPowerDecrease: 0.2
   normalPowerDecrease: 0.5
+  spotlightPenguin: {fileID: 0}
 --- !u!82 &5842522610733222702
 AudioSource:
   m_ObjectHideFlags: 0
@@ -232,7 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  storyController: {fileID: 0}
+  storyController: {fileID: 2414729513645854637}
   windSound: {fileID: 8300000, guid: 58f7f599f1af3974ebef89af6ae582da, type: 3}
 --- !u!82 &8986438881145416607
 AudioSource:
