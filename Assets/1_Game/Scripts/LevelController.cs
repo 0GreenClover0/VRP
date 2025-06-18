@@ -11,6 +11,8 @@ public class LevelController : MonoBehaviour
     public bool IsTutorial { get; private set; }
     public bool HasStarted { get; private set; } = true;
 
+    public bool IsDuringScriptedSequence = true;
+
     private void Awake()
     {
         if (Instance == null)

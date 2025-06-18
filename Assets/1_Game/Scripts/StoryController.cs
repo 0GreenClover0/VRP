@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
+using Oculus.Interaction;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -61,6 +62,7 @@ public class StoryController : MonoBehaviour
     public float easyPowerDecrease = 0.15f;
     public float normalPowerDecrease = 0.5f;
     public GameObject spotlightPenguin;
+    public FilteredTransformer spotlightFilteredTransformer;
     
     // ---------------------------------
     
@@ -74,6 +76,7 @@ public class StoryController : MonoBehaviour
     private bool firstPenguinVoicelinePlayed = false;
     private bool firstChargedGenerator = false;
     private bool firstStage3GeneratorGrabbed = false;
+    private bool firstStage4SpotlightGrabbed = false;
     private FilteredRotationTransformer generatorRotationTransformer;
     
     void StartScriptedSequence()
@@ -85,6 +88,7 @@ public class StoryController : MonoBehaviour
     {
         if (!scriptedSequence)
         {
+            LevelController.Instance.IsDuringScriptedSequence = false;
             Debug.LogWarning("Scripted sequence is disabled and setting story steps has no effect.");
             return;
         }
@@ -120,6 +124,7 @@ public class StoryController : MonoBehaviour
         onStoryStageChanged += EvaluateScriptedSequence;
         generatorRotationTransformer = generatorPower.gameObject.GetComponent<FilteredRotationTransformer>();
         generatorRotationTransformer.onGrab += OnFirstStage3GeneratorGrab;
+        spotlightFilteredTransformer.onGrab += OnFirstStage4SpotlightGrab;
         InitializeBlinkingData();
         StartScriptedSequence();
     }
@@ -202,25 +207,55 @@ public class StoryController : MonoBehaviour
             case 1:
                 ShowLogo();
                 SetEasyGenerator();
+                LockSpotlightAndGenerator();
                 break;
             
             case 2:
+                UnlockGenerator();
                 SpawnFirstPenguinWithAnimation();
                 break;
             
             case 3:
+                break;
+            
+            case 4:
+                UnlockSpotlight();
+                StartSpotlightBlinking();
+                break;
+            
+            case 5:
+                
                 break;
         }
     }
     
     // --- Story stages ---
 
+    void LockSpotlightAndGenerator()
+    {
+        // spotlightFilteredTransformer.gameObject.GetComponent<Grabbable>().enabled = false;
+        // generatorRotationTransformer.gameObject.GetComponent<Grabbable>().enabled = false;
+
+        spotlightFilteredTransformer.gameObject.GetComponent<Grabbable>().MaxGrabPoints = 0;
+        generatorRotationTransformer.gameObject.GetComponent<Grabbable>().MaxGrabPoints = 0;
+    }
+
+    void UnlockSpotlight()
+    {
+        spotlightFilteredTransformer.gameObject.GetComponent<Grabbable>().MaxGrabPoints = 2;
+    }
+
+    void UnlockGenerator()
+    {
+        generatorRotationTransformer.gameObject.GetComponent<Grabbable>().MaxGrabPoints = 1;
+    }
+    
     void ShowLogo()
     {
         Animator animator = GetComponent<Animator>();
         animator.SetTrigger("AnimateLogo"); 
     }
-
+    
     void SetEasyGenerator()
     {
         generatorPower.powerMultiplier = easyPowerMultiplier;
@@ -242,12 +277,25 @@ public class StoryController : MonoBehaviour
             firstStage3GeneratorGrabbed = true;
         }
     }
+
+    void OnFirstStage4SpotlightGrab()
+    {
+        // Stop spotlight blinking
+        if (!firstStage4SpotlightGrabbed)
+        {
+            blinkBrightness *= 10.0f;
+            spotlightBlinking = false;
+            firstStage4SpotlightGrabbed = true;
+            SetStoryStage(5);
+        }
+    }
     
     void WaitForPoweredGenerator()
     {
         if (generatorPower.GetCurrentBarValue() >= 70.0f && !firstChargedGenerator)
         {
             PlayVoiceLine(0);
+            SetStoryStage(4);
             firstChargedGenerator = true;
         }
     }
@@ -295,6 +343,12 @@ public class StoryController : MonoBehaviour
         // TODO: Show PullSwitch penguin!!!
     }
 
+    void StartSpotlightBlinking()
+    {
+        blinkBrightness /= 10.0f;
+        spotlightBlinking = true;
+    }
+    
     void EnableUnscriptedShipSpawner()
     {
         

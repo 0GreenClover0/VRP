@@ -183,7 +183,7 @@ public class ShipSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (LevelController.Instance.HasStarted)
+        if (LevelController.Instance.HasStarted && !LevelController.Instance.IsDuringScriptedSequence)
         {
             PrepareForSpawn();
         }
