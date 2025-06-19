@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
 using UnityEngine;
 
 public class CustomerManager : MonoBehaviour
@@ -16,11 +15,17 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] private float customerSpawnInterval = 5.0f;
 
     [SerializeField] private float spawnRadius = 1.2f;
+
+    [HideInInspector] public float slightlyAngryStartSatisfaction = 0.0f;
     [HideInInspector] public float satisfaction = 0.0f;
+    [HideInInspector] public bool areAngryJumping = false;
 
     private List<Customer> customersFood = new();
     private List<Customer> customersWood = new();
     private float customerSpawnTimer = 0.0f;
+    private float angryJumperTickTimer = 0.0f;
+
+    private const float angryJumperTickInterval = 1.2f;
 
     private void Awake()
     {
@@ -36,6 +41,11 @@ public class CustomerManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        slightlyAngryStartSatisfaction = 1.0f - (LevelController.Instance.slightlyAngryStartTreshold / (float)LevelController.Instance.MaxCustomersToLose);
+    }
+
     private void Update()
     {
         customerSpawnTimer += Time.deltaTime;
@@ -48,7 +58,77 @@ public class CustomerManager : MonoBehaviour
         }
 
         int allCustomersCount = customersFood.Count + customersWood.Count;
-        satisfaction = 1.0f - ((float)allCustomersCount / (float)LevelController.Instance.MaxCustomersToLose);
+        satisfaction = 1.0f - Mathf.Clamp(((float)allCustomersCount / (float)LevelController.Instance.MaxCustomersToLose), 0.0f, 1.0f);
+
+        ManageAngryJump();
+    }
+
+    private void ManageAngryJump()
+    {
+        if (satisfaction <= 0.0f && !areAngryJumping)
+        {
+            areAngryJumping = true;
+
+            foreach (var customer in customersFood)
+            {
+                if (!customer.IsGrounded())
+                {
+                    areAngryJumping = false;
+                    break;
+                }
+            }
+
+            if (areAngryJumping)
+            {
+                foreach (var customer in customersWood)
+                {
+                    if (!customer.IsGrounded())
+                    {
+                        areAngryJumping = false;
+                        break;
+                    }
+                }
+            }
+
+            if (areAngryJumping)
+            {
+                foreach (var customer in customersFood)
+                {
+                    customer.Jump(true);
+                }
+
+                foreach (var customer in customersWood)
+                {
+                    customer.Jump(true);
+                }
+            }
+        }
+        else if (satisfaction <= 0.0f && areAngryJumping)
+        {
+            angryJumperTickTimer += Time.deltaTime;
+
+            if (angryJumperTickTimer < angryJumperTickInterval)
+            {
+                return;
+            }
+
+            angryJumperTickTimer = 0.0f;
+
+            foreach (var customer in customersFood)
+            {
+                customer.Jump(true);
+            }
+
+            foreach (var customer in customersWood)
+            {
+                customer.Jump(true);
+            }
+        }
+        else
+        {
+            angryJumperTickTimer = 0.0f;
+            areAngryJumping = false;
+        }
     }
 
     private void SpawnCustomer(DeliveryType type)

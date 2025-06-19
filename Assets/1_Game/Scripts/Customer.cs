@@ -4,9 +4,9 @@ public class Customer : Appearable
 {
     enum BehaviorState
     {
-        None,
-        Normal, // In normal state all customers jump randomly, the more angry they are the more they jump
-        Angry, // In angry state all customers jump in unison
+        Normal,
+        SlightlyAngry, // In SlightlyAngry state all customers jump randomly, the more angry they are the more they jump
+        Angry, // In Angry state all customers jump in unison
     }
 
     public enum EmojiType
@@ -25,6 +25,7 @@ public class Customer : Appearable
     [HideInInspector] public CustomerManager customerManager;
     [HideInInspector] public new Rigidbody rigidbody;
 
+    private BehaviorState behaviorState;
     private GameObject emojiObject = null;
     private Emoji emoji = null;
     private float minimalDistanceToGround = 0.0f;
@@ -46,14 +47,49 @@ public class Customer : Appearable
 
     private void Update()
     {
+        StateCheck();
+
         AppearOrDisappearTick();
 
-        JumpTick();
+        if (behaviorState == BehaviorState.SlightlyAngry)
+        {
+            JumpTick();
+        }
 
-        EmojiTick();
+        // if (behaviorState == BehaviorState.Angry && (customerManager.areReadyToAngryJump || customerManager.areAngryJumping))
+        // {
+        //     if (customerManager.areReadyToAngryJump)
+        //     {
+        //         customerManager.areAngryJumping = true;
+        //         customerManager.areReadyToAngryJump = false;
+        //     }
+
+        //     Jump();
+        // }
+
+        if (behaviorState == BehaviorState.SlightlyAngry || behaviorState == BehaviorState.Angry)
+        {
+            EmojiTick();
+        }
     }
 
-    private bool IsGrounded()
+    private void StateCheck()
+    {
+        if (customerManager.satisfaction <= 0.0f)
+        {
+            behaviorState = BehaviorState.Angry;
+        }
+        else if (customerManager.satisfaction < customerManager.slightlyAngryStartSatisfaction)
+        {
+            behaviorState = BehaviorState.SlightlyAngry;
+        }
+        else
+        {
+            behaviorState = BehaviorState.Normal;
+        }
+    }
+
+    public bool IsGrounded()
     {
         return Physics.Raycast(transform.position, -Vector3.up, minimalDistanceToGround + 0.1f);
     }
@@ -67,11 +103,16 @@ public class Customer : Appearable
             return;
         }
 
-        jumperTickTimer = 0.0f;
+        jumperTickTimer = Random.Range(-2.0f, 0.0f);
 
+        Jump();
+    }
+
+    public void Jump(bool skipSatisfactionCheck = false)
+    {
         if (IsGrounded())
         {
-            if (Random.Range(0.0f, 1.0f) > customerManager.satisfaction)
+            if (skipSatisfactionCheck || Random.Range(0.0f, 1.0f) > customerManager.satisfaction)
             {
                 rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
@@ -87,7 +128,7 @@ public class Customer : Appearable
             return;
         }
 
-        emojiTickTimer = 0.0f;
+        emojiTickTimer = Random.Range(-2.0f, 0.0f);
 
         if (emojiObject != null)
         {
