@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
         PlayWindSound();
     }
 
-    void PlayWindSound()
+    private void PlayWindSound()
     {
         audioSource.clip = windSound;
         audioSource.Play();
