@@ -77,6 +77,8 @@ public class Ship : MonoBehaviour
     private Quaternion rotationBeforeCollision;
     private Quaternion targetRotationAfterCollision;
 
+    private Vector3 gainPointsTextOffset = new Vector3(0.0f, 2.0f, 0.0f);
+
     private const int visibilityRange = 110;
     private const float startDirectionWiggle = 15.0f;
 
@@ -593,7 +595,7 @@ public class Ship : MonoBehaviour
 
         if (Player.Instance != null)
         {
-            Player.Instance.AddPoints(100);
+            Player.Instance.AddPoints(100, transform.position + gainPointsTextOffset);
         }
     }
 
@@ -711,7 +713,7 @@ public class Ship : MonoBehaviour
     {
         if (type == ShipType.Pirates)
         {
-            Player.Instance.AddPoints(50);
+            Player.Instance.AddPoints(50, transform.position + gainPointsTextOffset);
         }
 
         onDestroyed.Invoke(this);

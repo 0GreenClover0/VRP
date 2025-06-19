@@ -19,6 +19,10 @@ public class Billboard : MonoBehaviour
     private void Update()
     {
         transform.LookAt(camera.transform.position, Vector3.up);
-        transform.localPosition = transformToOffsetFrom.localPosition + offset;
+
+        if (transformToOffsetFrom != null)
+        {
+            transform.localPosition = transformToOffsetFrom.localPosition + offset;
+        }
     }
 }
