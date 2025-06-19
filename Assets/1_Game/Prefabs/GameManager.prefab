@@ -200,6 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2272831758452246488}
   - component: {fileID: 1695997530405276650}
+  - component: {fileID: 601062330607513200}
   - component: {fileID: 8986438881145416607}
   m_Layer: 0
   m_Name: GameManager
@@ -240,6 +241,24 @@ MonoBehaviour:
   player: {fileID: 0}
   storyController: {fileID: 2414729513645854637}
   windSound: {fileID: 8300000, guid: 58f7f599f1af3974ebef89af6ae582da, type: 3}
+--- !u!114 &601062330607513200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4771999882106840102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 258108f20bdfe55449da97b44859c10c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customerPrefabFood: {fileID: 2762529824821590518, guid: 38a0669bbaa21164f9c1f23b79a4a632, type: 3}
+  customerPrefabWood: {fileID: 6642381194545045850, guid: 11bd0109e1ab48645ae84f53608b94b6, type: 3}
+  customerFoodSpawnLocation: {fileID: 0}
+  customerWoodSpawnLocation: {fileID: 0}
+  customerSpawnInterval: 5
+  satisfaction: 0
 --- !u!82 &8986438881145416607
 AudioSource:
   m_ObjectHideFlags: 0

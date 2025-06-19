@@ -2,13 +2,7 @@ using UnityEngine;
 
 public class Port : MonoBehaviour
 {
-    public enum PortType
-    {
-        Food,
-        Wood,
-    }
-
-    public PortType portType;
+    public DeliveryType portType;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,14 +13,14 @@ public class Port : MonoBehaviour
 
         if (other.attachedRigidbody.TryGetComponent(out Ship ship))
         {
-            if (portType == PortType.Food)
+            if (portType == DeliveryType.Food)
             {
                 if (ship.type == ShipType.FoodSmall || ship.type == ShipType.FoodMedium || ship.type == ShipType.FoodBig)
                 {
                     ship.StopAtPort();
                 }
             }
-            else if (portType == PortType.Wood)
+            else if (portType == DeliveryType.Wood)
             {
                 if (ship.type == ShipType.WoodSmall || ship.type == ShipType.WoodMedium || ship.type == ShipType.WoodBig)
                 {

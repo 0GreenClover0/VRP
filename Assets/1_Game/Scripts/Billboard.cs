@@ -1,12 +1,24 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Billboard : MonoBehaviour
 {
-    public Transform buoyMesh;
-    public Vector3 lightOffset;
-    void Update()
+    [FormerlySerializedAs("buoyMesh")]
+    public Transform transformToOffsetFrom;
+
+    [FormerlySerializedAs("lightOffset")]
+    public Vector3 offset;
+
+    private new Camera camera;
+
+    private void Awake()
     {
-        transform.LookAt(Camera.main.transform.position, Vector3.up);
-        transform.localPosition = buoyMesh.localPosition + lightOffset;
+        camera = Camera.main;
+    }
+
+    private void Update()
+    {
+        transform.LookAt(camera.transform.position, Vector3.up);
+        transform.localPosition = transformToOffsetFrom.localPosition + offset;
     }
 }

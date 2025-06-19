@@ -5,6 +5,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
+public enum DeliveryType
+{
+    Food,
+    Wood,
+}
+
 public enum ShipType
 {
     FoodSmall,
@@ -91,14 +97,14 @@ public class Ship : MonoBehaviour
 
     // These were originally in LevelController and depended on appropriate curves
     private const float levelControllerShipsSpeed = 1.0f;
-    
+
     // Audio
     private AudioSource audioSource;
     [Space]
     [Header("Sound")]
     [Space]
-    
-    [SerializeField] private AudioClip destroyClip; 
+
+    [SerializeField] private AudioClip destroyClip;
     [SerializeField] private List<AudioClip> interactClips;
     private bool playedCrashSound;
 
@@ -121,7 +127,7 @@ public class Ship : MonoBehaviour
         {
             playerRange = shipSpawner.shipRange;
         }
-        
+
         if (IsOutOfRoom())
         {
             Destroy(gameObject);
@@ -383,7 +389,7 @@ public class Ship : MonoBehaviour
         {
             SinkVisuals();
             destroyedCounter -= Time.deltaTime;
-            
+
             if (destroyedCounter < 0.0f)
             {
                 collisionCollider.enabled = false;
@@ -461,7 +467,7 @@ public class Ship : MonoBehaviour
 
         float distanceToLight = Vector2.Distance(shipPosition, targetPosition);
 
-		// if in the trigger of light
+        // if in the trigger of light
         
         if (distanceToLight >= playerRange * rangeFactor)
         {
@@ -580,7 +586,15 @@ public class Ship : MonoBehaviour
 
         isInPort = true;
 
-        Player.Instance.AddPoints(100);
+        if (CustomerManager.Instance != null)
+        {
+            CustomerManager.Instance.PackageDelivered(type);
+        }
+
+        if (Player.Instance != null)
+        {
+            Player.Instance.AddPoints(100);
+        }
     }
 
     private void FollowPoint(Vector2 shipPosition, Vector2 targetPosition)
@@ -645,8 +659,8 @@ public class Ship : MonoBehaviour
         Vector3 centerOfMass = f.CenterOfMass;
         centerOfMass.x = -0.7f;
         f.CenterOfMass = centerOfMass;
-        
-        if(!playedCrashSound)
+
+        if (!playedCrashSound)
             PlayCrashSound();
     }
 
@@ -656,21 +670,21 @@ public class Ship : MonoBehaviour
         {
             return;
         }
-        
+
         audioSource.clip = destroyClip;
         audioSource.Play();
         playedCrashSound = true;
     }
-    
+
     public void DestroyShip()
     {
         if (hasBeenDestroyed)
         {
             return;
         }
-        
+
         SinkVisuals();
-        
+
         hasBeenDestroyed = true;
         destroyedCounter = isInPort ? destroyTimeInPort : destroyTime;
     }
@@ -688,7 +702,7 @@ public class Ship : MonoBehaviour
             {
                 ship.audioSource.volume /= 2.0f;
             }
-            
+
             DestroyShip();
         }
     }
@@ -701,5 +715,25 @@ public class Ship : MonoBehaviour
         }
 
         onDestroyed.Invoke(this);
+    }
+
+    public static bool IsShipTypeCompatibleWithDeliveryType(ShipType shipType, DeliveryType deliveryType)
+    {
+        if (deliveryType == DeliveryType.Food)
+        {
+            if (shipType == ShipType.FoodSmall || shipType == ShipType.FoodMedium || shipType == ShipType.FoodBig)
+            {
+                return true;
+            }
+        }
+        else if (deliveryType == DeliveryType.Wood)
+        {
+            if (shipType == ShipType.WoodSmall || shipType == ShipType.WoodMedium || shipType == ShipType.WoodBig)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
