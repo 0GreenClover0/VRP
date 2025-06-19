@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private GameObject gainedPointsPrefab = null;
+
     public static Player Instance { get; private set; }
 
     public int Points { get; private set; }
@@ -35,9 +37,15 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void AddPoints(int points)
+    public void AddPoints(int points, Vector3? position = null)
     {
         Points += points;
+
+        if (position != null)
+        {
+            GameObject pointsObject = Instantiate(gainedPointsPrefab, position.Value, Quaternion.identity);
+            pointsObject.GetComponent<GainPoints>().SetText("+" + points.ToString());
+        }
     }
 
     public void ActivateFlash()
