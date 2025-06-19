@@ -8,6 +8,7 @@ public class LevelController : MonoBehaviour
     public int ShipsLimit = 5;
     public float ShipsSpeed = 0.65f;
     public int MaxCustomersToLose = 15;
+    public int slightlyAngryStartTreshold = 6;
     public int MapFood { get; private set; }
     public float Time { get; private set; } = 45.0f; // TODO: This should be set per level
     public bool IsTutorial { get; private set; }
