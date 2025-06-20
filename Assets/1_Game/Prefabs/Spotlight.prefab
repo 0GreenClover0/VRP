@@ -292,6 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d02bf768dea8524480b7c392391b265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spotlightController: {fileID: 5609923728239654655}
   leftInteractable: {fileID: 3772952754373619573}
   rightInteractable: {fileID: 7290178239589031808}
   oneHandFilterValue: 0.03

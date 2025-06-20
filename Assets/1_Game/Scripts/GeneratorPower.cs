@@ -39,6 +39,8 @@ public class GeneratorPower : MonoBehaviour
     public Transform mechanism5;
     public Transform mechanism6;
 
+    [HideInInspector] public bool spotlightTurnedDown = false;
+    
     // 0-100
     private float currentGeneratorPower;
     private float currentTime = 0.0f;
@@ -58,7 +60,7 @@ public class GeneratorPower : MonoBehaviour
     {
         currentGeneratorPower += rotationDelta * powerMultiplier;
 
-        if (rotationDelta < Mathf.Abs(0.001f))
+        if (rotationDelta < Mathf.Abs(0.001f) && !spotlightTurnedDown)
         {
             currentGeneratorPower -= powerDecrease;
         }
