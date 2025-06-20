@@ -109,6 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf47ec7c701b8e4981ec857a060c41c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: 1
+  activateOnFirstLight: 0
   type: 0
   behavioralState: 0
   minimumSpeed: 0.3
@@ -117,6 +119,7 @@ MonoBehaviour:
   shipSpawner: {fileID: 0}
   eyes: {fileID: 3509624160262141923}
   floater: {fileID: 0}
+  rendererReference: {fileID: 341698538822709941}
   collisionCollider: {fileID: 8002682981946728663}
   hasBeenDestroyed: 0
   scaleDownSpeed: 0.01

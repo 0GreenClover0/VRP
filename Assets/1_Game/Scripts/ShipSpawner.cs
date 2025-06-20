@@ -238,27 +238,67 @@ public class ShipSpawner : MonoBehaviour
         return;
     }
 
-    public void SpawnShipAtPosition(ShipType type, Vector2 position, float direction, bool glowing = false)
+    public Ship SpawnShipAtPosition(ShipType type, Vector3 position, bool stopped = false, float direction = 0.0f)
     {
-        // TODO: Spawn ship
-        // GameObject shipGO = SceneSerializer.LoadPrefab(GetPrefabName(type));
-        // shipGO.transform.position = new Vector3(position.x, 0, position.y);
-        // if (GameController.Instance.NextScene == null)
-        // {
-        //     shipGO.transform.SetParent(GameController.Instance.CurrentScene.transform);
-        // }
-        // else
-        // {
-        //     shipGO.transform.SetParent(GameController.Instance.NextScene.transform);
-        // }
+        Debug.Log("MANUAL SPAWN");
+        
+        GameObject ship = null;
 
-        // Ship ship = shipGO.GetComponent<Ship>();
-        // Floater floater = shipGO.AddComponent<Floater>();
-        // floater.Configure(floatersManager.GetSettings(type));
+        if (type == ShipType.FoodSmall)
+        {
+            ship = Instantiate(smallFoodShipPrefab);
+        }
+        else if (type == ShipType.FoodMedium)
+        {
+            ship = Instantiate(mediumFoodShipPrefab);
+        }
+        else if (type == ShipType.FoodBig)
+        {
+            ship = Instantiate(bigFoodShipPrefab);
+        }
+        else if (type == ShipType.Pirates)
+        {
+            ship = Instantiate(pirateShipPrefab);
+        }
+        else if (type == ShipType.WoodSmall)
+        {
+            ship = Instantiate(smallWoodShipPrefab);
+        }
+        else if (type == ShipType.WoodBig)
+        {
+            ship = Instantiate(bigWoodShipPrefab);
+        }
 
-        // ship.Initialize(floatersManager, light, floater, direction, glowing, this);
+        if (ship == null)
+        {
+            Debug.LogError("Ship is null after deciding what type of ship should be spawned.");
+            return null;
+        }
+        
+        ship.transform.position = new Vector3(position.x, 0.0f, position.z);
 
-        // ships.Add(ship);
+        if (LevelController.Instance == null)
+        {
+            Debug.LogError("LevelController is null! You're probably spawning a ship on Awake (too early).");
+        }
+        
+        var shipComp = ship.GetComponent<Ship>();
+        shipComp.onDestroyed += RemoveShip;
+        shipComp.maximumSpeed = LevelController.Instance.ShipsSpeed;
+        shipComp.shipSpawner = this;
+        shipComp.lighthouseLight = lighthouseLight;
+        
+        shipComp.SetStartDirection();
+
+        ships.Add(shipComp);
+
+        if (stopped)
+        {
+            shipComp.active = false;
+            shipComp.activateOnFirstLight = true;
+        }
+        
+        return shipComp;
     }
 
     public void PopEvent()

@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using AYellowpaper.SerializedCollections;
 using Oculus.Interaction;
 using UnityEngine;
 using UnityEngine.Events;
@@ -65,7 +63,8 @@ public class StoryController : MonoBehaviour
     public GameObject spotlightPenguin;
     public FilteredTransformer spotlightFilteredTransformer;
 
-    [Space] [Header("Scripted ship transforms (PER LEVEL!)")]
+    [Space] public ShipSpawner shipSpawner;
+    [Header("Scripted ship transforms (PER LEVEL!)")]
     public Transform scriptedShipTransform1;
     public Transform scriptedShipTransform2;
     public Transform scriptedShipTransform3;
@@ -86,6 +85,10 @@ public class StoryController : MonoBehaviour
     private bool firstStage3GeneratorGrabbed = false;
     private bool firstStage4SpotlightGrabbed = false;
     private FilteredRotationTransformer generatorRotationTransformer;
+    private MeshRenderer scriptedShipMesh1;
+    private MeshRenderer scriptedShipMesh2;
+    private MeshRenderer scriptedShipMesh3;
+    private bool startedControllingShip1;
     
     void StartScriptedSequence()
     {
@@ -183,6 +186,7 @@ public class StoryController : MonoBehaviour
         generator.on = generatorBlinking;
         flash.on = flashBlinking;
         spotlight.on = spotlightBlinking;
+        misc.on = miscBlinking;
         
         float t = Mathf.Abs(Mathf.Sin(Time.time * blinkSpeed));
         float emissionAddition = Mathf.Lerp(0.0f, blinkBrightness, t);
@@ -191,6 +195,11 @@ public class StoryController : MonoBehaviour
         {
             for (int i = 0; i < b.renderers.Count; i++)
             {
+                if (b.renderers.Count == 0)
+                {
+                    return;
+                }
+                
                 Color baseEmission = b.baseEmissionColors[i];
                 Material mat = b.renderers[i].material;
                 // mat.EnableKeyword("_EMISSION");
@@ -227,12 +236,17 @@ public class StoryController : MonoBehaviour
                 break;
             
             case 4:
+                SpawnScriptedShip(1);
                 UnlockSpotlight();
                 StartSpotlightBlinking();
                 break;
             
             case 5:
-                
+                StartShip1Blinking();
+                break;
+            
+            case 6:
+                StopMiscBlinking();
                 break;
         }
     }
@@ -308,18 +322,20 @@ public class StoryController : MonoBehaviour
         }
     }
 
-    void SpawnScriptedShip(int number)
+    void SpawnScriptedShip(int num)
     {
-        if (number < 1 || number > 3)
+        if (num < 1 || num > 3)
         {
             Debug.LogError("Wrong ship number in scripted sequence.");
             return;
         }
-
-        switch (number)
+        
+        switch (num)
         {
             case 1:
-
+                var ship = shipSpawner.SpawnShipAtPosition(ShipType.FoodBig, scriptedShipTransform1.position, true);
+                scriptedShipMesh1 = ship.rendererReference;
+                ship.onShipStateChanged += ControlShip1;
                 break;
             
             case 2:
@@ -356,14 +372,54 @@ public class StoryController : MonoBehaviour
         blinkBrightness /= 10.0f;
         spotlightBlinking = true;
     }
+
+    void StartShip1Blinking()
+    {
+        StartMiscBlinking(true, new List<MeshRenderer>() {scriptedShipMesh1});
+    }
+
+    void ControlShip1(BehavioralState newState)
+    {
+        if (newState == BehavioralState.Control && !startedControllingShip1)
+        {
+            startedControllingShip1 = true;
+            SetStoryStage(6);
+        }
+    }
+
+    void StartMiscBlinking(bool allowBlinking, List<MeshRenderer> renderersList)
+    {
+        BlinkingData b = new BlinkingData
+        {
+            baseEmissionColors = new List<Color>(),
+            renderers = renderersList,
+            type = BlinkingType.Misc,
+            on = allowBlinking
+        };
+        
+        foreach (var m in b.renderers)
+        {
+            Material mat = m.material;
+            mat.EnableKeyword("_EMISSION");
+            Color emissionColor = mat.GetColor("_EmissionColor");
+            b.baseEmissionColors.Add(emissionColor);
+        }
+
+        blinkBrightness *= 10.0f;
+
+        misc = b;
+        blinkers[3] = misc;
+        miscBlinking = allowBlinking;
+    }
+
+    void StopMiscBlinking()
+    {
+        blinkBrightness /= 10.0f;
+        miscBlinking = false;
+    }
     
     void EnableUnscriptedShipSpawner()
     {
         
-    }
-    
-    void SetMiscBlinkingData(BlinkingData blinkingData)
-    {
-        misc = blinkingData;
     }
 }
