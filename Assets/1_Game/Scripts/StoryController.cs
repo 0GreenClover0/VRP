@@ -89,6 +89,13 @@ public class StoryController : MonoBehaviour
     private MeshRenderer scriptedShipMesh2;
     private MeshRenderer scriptedShipMesh3;
     private bool startedControllingShip1;
+    private float secondScriptedShipTimer = 0.0f;
+    private float thirdScriptedShipTimer = 0.0f;
+    private bool secondScriptedShipSpawned = false;
+    private bool thirdScriptedShipSpawned = false;
+    private int conditionCounter = 0;
+    private float finishScriptedSequenceTimer = 0.0f;
+    private bool triggeredFinishingScriptedSequence = false;
     
     void StartScriptedSequence()
     {
@@ -178,6 +185,41 @@ public class StoryController : MonoBehaviour
             case 3:
                 WaitForPoweredGenerator();
                 break;
+            
+            case 7:
+                secondScriptedShipTimer += Time.deltaTime;
+            
+                if (secondScriptedShipTimer >= 5.0f && !secondScriptedShipSpawned)
+                {
+                    PlayVoiceLine(0);
+                    SpawnScriptedShip(2);
+                    secondScriptedShipSpawned = true;
+                }
+                break;
+            
+            case 8:
+                thirdScriptedShipTimer += Time.deltaTime;
+            
+                if (thirdScriptedShipTimer >= 5.0f && !thirdScriptedShipSpawned)
+                {
+                    PlayVoiceLine(0);
+                    SpawnScriptedShip(3);
+                    SpawnScriptedShip(4);
+                    SpawnScriptedShip(5);
+                    thirdScriptedShipSpawned = true;
+                }
+
+                if (conditionCounter >= 3)
+                {
+                    finishScriptedSequenceTimer += Time.deltaTime;
+
+                    if (!triggeredFinishingScriptedSequence && finishScriptedSequenceTimer >= 5.0f)
+                    {
+                        SetStoryStage(9);
+                        triggeredFinishingScriptedSequence = true;
+                    }
+                }
+                break;
         }
     }
 
@@ -197,10 +239,15 @@ public class StoryController : MonoBehaviour
             {
                 if (b.renderers.Count == 0)
                 {
-                    return;
+                    break;
                 }
                 
                 Color baseEmission = b.baseEmissionColors[i];
+                if (b.renderers[i] == null || b.renderers.Count == 0 || b.renderers[i].material == null)
+                {
+                    continue;
+                }
+                
                 Material mat = b.renderers[i].material;
                 // mat.EnableKeyword("_EMISSION");
                 float newEmission = baseEmission.maxColorComponent + emissionAddition;
@@ -248,6 +295,10 @@ public class StoryController : MonoBehaviour
             case 6:
                 StopMiscBlinking();
                 break;
+            
+            case 9:
+                FinishScriptedSequence();
+                break;
         }
     }
     
@@ -278,12 +329,20 @@ public class StoryController : MonoBehaviour
         animator.SetTrigger("AnimateLogo"); 
     }
     
+    void FinishScriptedSequence()
+    {
+        SetNormalGenerator();
+        PlayVoiceLine(0);
+        scriptedSequence = false;
+        LevelController.Instance.IsDuringScriptedSequence = false;
+    }
+    
     void SetEasyGenerator()
     {
         generatorPower.powerMultiplier = easyPowerMultiplier;
         generatorPower.powerDecrease = easyPowerDecrease;
     }
-
+    
     void SetNormalGenerator()
     {
         generatorPower.powerMultiplier = normalPowerMultiplier;
@@ -321,10 +380,10 @@ public class StoryController : MonoBehaviour
             firstChargedGenerator = true;
         }
     }
-
+    
     void SpawnScriptedShip(int num)
     {
-        if (num < 1 || num > 3)
+        if (num < 1 || num > 5)
         {
             Debug.LogError("Wrong ship number in scripted sequence.");
             return;
@@ -333,17 +392,32 @@ public class StoryController : MonoBehaviour
         switch (num)
         {
             case 1:
-                var ship = shipSpawner.SpawnShipAtPosition(ShipType.FoodBig, scriptedShipTransform1.position, true);
-                scriptedShipMesh1 = ship.rendererReference;
-                ship.onShipStateChanged += ControlShip1;
+                var ship1 = shipSpawner.SpawnShipAtPosition(ShipType.FoodBig, scriptedShipTransform1.position, true);
+                scriptedShipMesh1 = ship1.rendererReference;
+                ship1.onShipStateChanged += OnShip1StateChange;
                 break;
             
             case 2:
-
+                var ship2 = shipSpawner.SpawnShipAtPosition(ShipType.WoodBig, scriptedShipTransform2.position);
+                scriptedShipMesh2 = ship2.rendererReference;
+                ship2.onShipStateChanged += OnShip2StateChange;
                 break;
             
             case 3:
-
+                var ship3 = shipSpawner.SpawnShipAtPosition(ShipType.FoodBig, scriptedShipTransform3.position);
+                scriptedShipMesh3 = ship3.rendererReference;
+                ship3.onShipStateChanged += OnShip3StateChange;
+                break;
+            
+            // Pirates
+            case 4:
+                var ship4 = shipSpawner.SpawnShipAtPosition(ShipType.Pirates, pirates1.position);
+                ship4.onShipStateChanged += OnShip4StateChange;
+                break;
+            
+            case 5:
+                var ship5 = shipSpawner.SpawnShipAtPosition(ShipType.Pirates, pirates2.position);
+                ship5.onShipStateChanged += OnShip5StateChange;
                 break;
         }
     }
@@ -378,12 +452,53 @@ public class StoryController : MonoBehaviour
         StartMiscBlinking(true, new List<MeshRenderer>() {scriptedShipMesh1});
     }
 
-    void ControlShip1(BehavioralState newState)
+    void OnShip1StateChange(BehavioralState newState)
     {
         if (newState == BehavioralState.Control && !startedControllingShip1)
         {
             startedControllingShip1 = true;
             SetStoryStage(6);
+        }
+
+        if (newState == BehavioralState.InPort)
+        {
+            SetStoryStage(7);
+        }
+    }
+
+    void OnShip2StateChange(BehavioralState newState)
+    {
+        if (newState == BehavioralState.InPort)
+        {
+            SetStoryStage(8);
+        }
+    }
+    
+    void OnShip3StateChange(BehavioralState newState)
+    {
+        if (newState == BehavioralState.InPort)
+        {
+            conditionCounter++;
+        }
+    }
+    
+    void OnShip4StateChange(BehavioralState newState)
+    {
+        // TODO: VERY IMPORTANT! This should take into account guiding pirates safely
+        // From one entrance to another, without destroying them
+        if (newState == BehavioralState.Destroyed)
+        {
+            conditionCounter++;
+        }
+    }
+    
+    void OnShip5StateChange(BehavioralState newState)
+    {
+        // TODO: VERY IMPORTANT! This should take into account guiding pirates safely
+        // From one entrance to another, without destroying them
+        if (newState == BehavioralState.Destroyed)
+        {
+            conditionCounter++;
         }
     }
 
@@ -416,10 +531,5 @@ public class StoryController : MonoBehaviour
     {
         blinkBrightness /= 10.0f;
         miscBlinking = false;
-    }
-    
-    void EnableUnscriptedShipSpawner()
-    {
-        
     }
 }
