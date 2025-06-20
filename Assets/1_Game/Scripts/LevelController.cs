@@ -16,8 +16,6 @@ public class LevelController : MonoBehaviour
 
     public bool IsDuringScriptedSequence = true;
 
-    [SerializeField] private TMP_Text pointsText;
-
     private void Awake()
     {
         if (Instance == null)
@@ -29,15 +27,6 @@ public class LevelController : MonoBehaviour
             Debug.LogError("LevelController instance already existed. Destroying the old one.");
             Destroy(Instance.gameObject);
             Instance = this;
-        }
-    }
-
-    private void Update()
-    {
-        string pointsString = Player.Instance.Points.ToString();
-        if (pointsText.text != pointsString)
-        {
-            pointsText.text = pointsString;
         }
     }
 }
