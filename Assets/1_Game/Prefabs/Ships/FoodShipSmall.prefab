@@ -280,6 +280,10 @@ PrefabInstance:
       propertyPath: statesToLightColors._serializedList.Array.data[7].Value.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7335470740791117205, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: type
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7882661188371078751, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: m_Enabled
       value: 1

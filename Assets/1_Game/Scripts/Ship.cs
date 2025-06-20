@@ -31,6 +31,10 @@ public enum BehavioralState
 
 public class Ship : MonoBehaviour
 {
+    [Tooltip("active and activateOnFirstLight are both kinda exclusive, the second one CAN control the first one")]
+    public bool active = true;
+    [Tooltip("active and activateOnFirstLight are both kinda exclusive, the second one CAN control the first one")]
+    public bool activateOnFirstLight = false;
     public ShipType type = ShipType.FoodSmall;
     public BehavioralState behavioralState = BehavioralState.Normal;
 
@@ -41,7 +45,8 @@ public class Ship : MonoBehaviour
     public ShipSpawner shipSpawner;
     public ShipEyes eyes;
     public GameObject floater;
-
+    public MeshRenderer rendererReference;
+    
     public Collider collisionCollider;
 
     public bool hasBeenDestroyed = false;
@@ -103,6 +108,11 @@ public class Ship : MonoBehaviour
         scaleDownCounter = scaleDownTime;
         audioSource = GetComponent<AudioSource>();
         rangeFactor = ShipTypeToRangeFactor(type);
+
+        if (activateOnFirstLight)
+        {
+            active = false;
+        }
     }
 
     private void Update()
@@ -217,7 +227,7 @@ public class Ship : MonoBehaviour
                     return;
                 }
         }
-
+        
         switch (behavioralState)
         {
             case BehavioralState.Normal:
@@ -288,6 +298,11 @@ public class Ship : MonoBehaviour
 
     private void UpdatePosition()
     {
+        if (!active)
+        {
+            return;
+        }
+        
         float speedDelta = speed * Time.deltaTime;
         Vector2 speedVector = new Vector2(Mathf.Cos(Mathf.Deg2Rad * direction), Mathf.Sin(Mathf.Deg2Rad * direction)) * speedDelta;
 
@@ -299,6 +314,11 @@ public class Ship : MonoBehaviour
 
     private void UpdateRotation()
     {
+        if (!active)
+        {
+            return;
+        }
+        
         Vector3 currentRotation = transform.eulerAngles;
         transform.rotation = Quaternion.Euler(currentRotation.x, -direction, currentRotation.z);
     }
@@ -332,6 +352,11 @@ public class Ship : MonoBehaviour
 
     private void ControlBehavior()
     {
+        if (activateOnFirstLight)
+        {
+            active = true;
+        }
+        
         speed = maximumSpeed;
 
         Vector2 shipPosition = Utilities.Convert3DTo2D(transform.position);
@@ -437,8 +462,7 @@ public class Ship : MonoBehaviour
         float distanceToLight = Vector2.Distance(shipPosition, targetPosition);
 
 		// if in the trigger of light
-		
-
+        
         if (distanceToLight >= playerRange * rangeFactor)
         {
             return false;
@@ -454,7 +478,7 @@ public class Ship : MonoBehaviour
         lighthouseLight.controlledShip = this;
 
         // TODO: Change light color, intensity
-
+        
         return ChangeState(BehavioralState.Control);
     }
 
