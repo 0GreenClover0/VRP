@@ -14,10 +14,16 @@ public enum GrabbingHand
 
 public class AdditionalGrabbableLogic : MonoBehaviour
 {
+    private const OVRInput.RawButton spotlightLeftButton = OVRInput.RawButton.X | OVRInput.RawButton.Y;
+    private const OVRInput.RawButton spotlightRightButton = OVRInput.RawButton.A | OVRInput.RawButton.B;
+    private const OVRInput.RawButton spotlightAnyButton = OVRInput.RawButton.A | OVRInput.RawButton.B |
+                                                          OVRInput.RawButton.X | OVRInput.RawButton.Y;
+    
     // Components
     private FilteredTransformer filteredTransformer;
     private GrabFreeTransformer freeTransformer;
     private Grabbable grabbable;
+    public SpotlightController spotlightController;
     public HandGrabInteractable leftInteractable;
     public HandGrabInteractable rightInteractable;
     public float oneHandFilterValue = 0.02f;
@@ -73,10 +79,25 @@ public class AdditionalGrabbableLogic : MonoBehaviour
                 break;
         }
     }
+
+    void TurnDownSpotlight()
+    {
+        if ((OVRInput.Get(spotlightLeftButton) && holdingHand == GrabbingHand.Left)
+            || (OVRInput.Get(spotlightRightButton) && holdingHand == GrabbingHand.Right)
+            || (OVRInput.Get(spotlightAnyButton) && holdingHand == GrabbingHand.Both))
+        {
+            spotlightController.generatorPowerScript.spotlightTurnedDown = true;
+        }
+        else
+        {
+            spotlightController.generatorPowerScript.spotlightTurnedDown = false;
+        }
+    }
     
     private void Update()
     {
         EvaluateGrabbersNum();
         SwitchOneTwoHands();
+        TurnDownSpotlight();
     }
 }

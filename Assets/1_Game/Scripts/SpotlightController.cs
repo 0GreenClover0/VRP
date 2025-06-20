@@ -48,7 +48,7 @@ public class SpotlightController : MonoBehaviour
     {
         EvaluateGeneratorPower();
         
-        if (spotlightEnabled)
+        if (spotlightEnabled && !generatorPowerScript.spotlightTurnedDown)
         {
             EnableLighthouseLight(true);
             ShootRaycast();
