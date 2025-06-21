@@ -139,12 +139,12 @@ public class CustomerManager : MonoBehaviour
         {
             case DeliveryType.Food:
                 {
-                    customerObject = Instantiate(customerPrefabFood, Utilities.Convert2DTo3D(Random.insideUnitCircle * 1.0f) + customerFoodSpawnLocation.position, Quaternion.identity);
+                    customerObject = Instantiate(customerPrefabFood, Utilities.Convert2DTo3D(Random.insideUnitCircle * spawnRadius) + customerFoodSpawnLocation.position, Quaternion.identity);
                     break;
                 }
             case DeliveryType.Wood:
                 {
-                    customerObject = Instantiate(customerPrefabWood, Utilities.Convert2DTo3D(Random.insideUnitCircle * 2.0f) + customerWoodSpawnLocation.position, Quaternion.identity);
+                    customerObject = Instantiate(customerPrefabWood, Utilities.Convert2DTo3D(Random.insideUnitCircle * spawnRadius) + customerWoodSpawnLocation.position, Quaternion.identity);
                     break;
                 }
             default:
@@ -205,8 +205,17 @@ public class CustomerManager : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawSphere(customerFoodSpawnLocation.position, spawnRadius);
+
+        if (customerFoodSpawnLocation != null)
+        {
+            Gizmos.DrawSphere(customerFoodSpawnLocation.position, spawnRadius);
+        }
+
         Gizmos.color = new Color(0.58f, 0.2f, 0.66f, 0.75f);
-        Gizmos.DrawSphere(customerWoodSpawnLocation.position, spawnRadius);
+
+        if (customerWoodSpawnLocation != null)
+        {
+            Gizmos.DrawSphere(customerWoodSpawnLocation.position, spawnRadius);
+        }
     }
 }
