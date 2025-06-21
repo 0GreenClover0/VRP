@@ -10,6 +10,7 @@ public class PullSwitch : MonoBehaviour
     [SerializeField] private Transform ropeDesiredPosition;
     [SerializeField] private Transform yPositionActivateFlashTreshold;
     [SerializeField] private AudioClip flashSound;
+    [SerializeField] private SnapInteractable lightbulbSocket;
 
     private float flashActiveVisual = 0.0f;
     private AudioSource audioSource;
@@ -18,6 +19,8 @@ public class PullSwitch : MonoBehaviour
 
     private const float flashTime = 5.0f;
     private const float returningToDefaultSpeed = 0.1f;
+
+    private bool isBulbInSocket;
 
     private void Awake()
     {
@@ -39,6 +42,8 @@ public class PullSwitch : MonoBehaviour
 
     private void Update()
     {
+        isBulbInSocket = lightbulbSocket.SelectingInteractors.Count > 0;
+        
         // If nothing is grabbing the string, slowly move up to default position.
         float distance = Vector3.Distance(grabbableObject.transform.position, ropeDesiredPosition.position);
         if (interactableGroupView.SelectingInteractorsCount == 0 && distance > 0.01f)
@@ -46,7 +51,7 @@ public class PullSwitch : MonoBehaviour
             grabbableObject.transform.position = Vector3.MoveTowards(grabbableObject.transform.position, ropeDesiredPosition.position, Time.deltaTime * returningToDefaultSpeed);
         }
 
-        if (flashActiveVisual <= 0.0f && interactableGroupView.SelectingInteractorsCount != 0 && grabbableObject.transform.position.y < yPositionActivateFlashTreshold.transform.position.y)
+        if (isBulbInSocket && flashActiveVisual <= 0.0f && interactableGroupView.SelectingInteractorsCount != 0 && grabbableObject.transform.position.y < yPositionActivateFlashTreshold.transform.position.y)
         {
             ActivateFlash();
             bulbMaterial.ColorProperties = new System.Collections.Generic.List<MaterialPropertyColor>() { activatedMaterialColor };
