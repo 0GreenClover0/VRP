@@ -50,7 +50,7 @@ public class CustomerManager : MonoBehaviour
     {
         customerSpawnTimer += Time.deltaTime;
 
-        if (customerSpawnTimer > customerSpawnInterval)
+        if (customerSpawnTimer > customerSpawnInterval && customersFood.Count + customersWood.Count < LevelController.Instance.MaxCustomersToLose)
         {
             customerSpawnTimer = 0.0f;
             SpawnCustomer(DeliveryType.Food);
@@ -135,16 +135,50 @@ public class CustomerManager : MonoBehaviour
     {
         GameObject customerObject = null;
 
+        Vector3 initialPosition = Vector3.zero;
+        Quaternion initialRotation = Quaternion.identity;
+
         switch (type)
         {
             case DeliveryType.Food:
                 {
-                    customerObject = Instantiate(customerPrefabFood, Utilities.Convert2DTo3D(Random.insideUnitCircle * spawnRadius) + customerFoodSpawnLocation.position, Quaternion.identity);
+                    initialPosition = customerFoodSpawnLocation.position;
+                    initialRotation = customerFoodSpawnLocation.rotation;
                     break;
                 }
             case DeliveryType.Wood:
                 {
-                    customerObject = Instantiate(customerPrefabWood, Utilities.Convert2DTo3D(Random.insideUnitCircle * spawnRadius) + customerWoodSpawnLocation.position, Quaternion.identity);
+                    initialPosition = customerWoodSpawnLocation.position;
+                    initialRotation = customerWoodSpawnLocation.rotation;
+                    break;
+                }
+        }
+
+        initialPosition.y += 0.1f;
+
+        Vector3 position = Vector3.zero;
+
+        // Try not to spawn customer into another customer.
+        for (int i = 0; i < 100; ++i)
+        {
+            position = Utilities.Convert2DTo3D(Random.insideUnitCircle * spawnRadius) + initialPosition;
+
+            if (!Physics.CheckSphere(position, 0.25f))
+            {
+                break;
+            }
+        }
+
+        switch (type)
+        {
+            case DeliveryType.Food:
+                {
+                    customerObject = Instantiate(customerPrefabFood, position, initialRotation);
+                    break;
+                }
+            case DeliveryType.Wood:
+                {
+                    customerObject = Instantiate(customerPrefabWood, position, initialRotation);
                     break;
                 }
             default:

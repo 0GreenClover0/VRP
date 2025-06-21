@@ -8,6 +8,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2726261786591759871}
     m_Modifications:
+    - target: {fileID: 2200503923357681408, guid: 9f00a1c7ade60184fa6a990b477e568b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6448690820857211406, guid: 9f00a1c7ade60184fa6a990b477e568b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050698363718823250, guid: 9f00a1c7ade60184fa6a990b477e568b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050698363718823250, guid: 9f00a1c7ade60184fa6a990b477e568b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050698363718823250, guid: 9f00a1c7ade60184fa6a990b477e568b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7050698363718823250, guid: 9f00a1c7ade60184fa6a990b477e568b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -51,6 +71,14 @@ PrefabInstance:
     - target: {fileID: 7679425038605563880, guid: 9f00a1c7ade60184fa6a990b477e568b, type: 3}
       propertyPath: m_Name
       value: FoodPenguin
+      objectReference: {fileID: 0}
+    - target: {fileID: 7679425038605563880, guid: 9f00a1c7ade60184fa6a990b477e568b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9118922717215813254, guid: 9f00a1c7ade60184fa6a990b477e568b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
