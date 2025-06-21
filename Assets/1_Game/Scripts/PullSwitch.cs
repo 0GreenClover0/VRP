@@ -1,3 +1,4 @@
+using System.Linq;
 using Oculus.Interaction;
 using UnityEngine;
 
@@ -21,6 +22,7 @@ public class PullSwitch : MonoBehaviour
     private const float returningToDefaultSpeed = 0.1f;
 
     private bool isBulbInSocket;
+    private SnapInteractor currentBulb;
 
     private void Awake()
     {
@@ -43,6 +45,16 @@ public class PullSwitch : MonoBehaviour
     private void Update()
     {
         isBulbInSocket = lightbulbSocket.SelectingInteractors.Count > 0;
+
+        if (isBulbInSocket)
+        {
+            // We always have only one interactor
+            currentBulb = lightbulbSocket.SelectingInteractors.First();
+        }
+        else
+        {
+            currentBulb = null;
+        }
         
         // If nothing is grabbing the string, slowly move up to default position.
         float distance = Vector3.Distance(grabbableObject.transform.position, ropeDesiredPosition.position);
@@ -98,5 +110,13 @@ public class PullSwitch : MonoBehaviour
         {
             audioSource.Play();   
         }
+        
+        EjectLightbulb();
+    }
+
+    void EjectLightbulb()
+    {
+        Debug.Log(currentBulb);
+        currentBulb.enabled = false;
     }
 }
