@@ -535,7 +535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactorFilters: []
-  _maxInteractors: -1
+  _maxInteractors: 1
   _maxSelectingInteractors: 1
   _data: {fileID: 0}
   _rigidbody: {fileID: 2861031047555727821}
@@ -795,6 +795,7 @@ MonoBehaviour:
   ropeDesiredPosition: {fileID: 5840619098317144875}
   yPositionActivateFlashTreshold: {fileID: 4746566643705296189}
   flashSound: {fileID: 8300000, guid: 547f5dc34bd03f34ea66cd1a4c894938, type: 3}
+  lightbulbSocket: {fileID: 7742381971604797533}
 --- !u!82 &8583919483817084364
 AudioSource:
   m_ObjectHideFlags: 0
