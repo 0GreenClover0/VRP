@@ -158,6 +158,11 @@ public class PullSwitch : MonoBehaviour
     [ContextMenu("Activate flash")]
     private void ActivateFlash()
     {
+        if (Utilities.GetGameManager().storyController.currentStage < 5)
+        {
+            return;
+        }
+        
         flashActiveVisual = flashTime;
         Player.Instance.ActivateFlash();
 

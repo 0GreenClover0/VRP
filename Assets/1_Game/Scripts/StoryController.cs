@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Oculus.Interaction;
 using UnityEngine;
@@ -62,6 +63,7 @@ public class StoryController : MonoBehaviour
     public float normalPowerDecrease = 0.5f;
     public GameObject spotlightPenguin;
     public FilteredTransformer spotlightFilteredTransformer;
+    public Animator pullSwitchAnimator;
 
     [Space] public ShipSpawner shipSpawner;
     [Header("Scripted ship transforms (PER LEVEL!)")]
@@ -73,7 +75,7 @@ public class StoryController : MonoBehaviour
     
     // ---------------------------------
     
-    private int currentStage = 1;
+    public int currentStage { get; private set; } = 1 ;
     
     private AudioSource audioSource;
     private UnityAction onStoryStageChanged;
@@ -272,6 +274,7 @@ public class StoryController : MonoBehaviour
                 ShowLogo();
                 SetEasyGenerator();
                 LockSpotlightAndGenerator();
+                DisablePullSwitchPenguin();
                 break;
             
             case 2:
@@ -313,6 +316,16 @@ public class StoryController : MonoBehaviour
         generatorRotationTransformer.gameObject.GetComponent<Grabbable>().MaxGrabPoints = 0;
     }
 
+    void DisablePullSwitchPenguin()
+    {
+        foreach (var mesh in pullSwitchAnimator.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>())
+        {
+            mesh.enabled = false;
+        }
+        
+        // pullSwitchAnimator.gameObject.SetActive(false);
+    }
+    
     void UnlockSpotlight()
     {
         spotlightFilteredTransformer.gameObject.GetComponent<Grabbable>().MaxGrabPoints = 2;
@@ -353,7 +366,6 @@ public class StoryController : MonoBehaviour
     {
         if (!firstStage3GeneratorGrabbed)
         {
-            HideSpotlightPenguinShowPullSwitchPenguin();
             generatorBlinking = false;
             firstStage3GeneratorGrabbed = true;
         }
@@ -375,6 +387,7 @@ public class StoryController : MonoBehaviour
     {
         if (generatorPower.GetCurrentBarValue() >= 70.0f && !firstChargedGenerator)
         {
+            HideSpotlightPenguinShowPullSwitchPenguin();
             PlayVoiceLine(0);
             SetStoryStage(4);
             firstChargedGenerator = true;
@@ -438,7 +451,18 @@ public class StoryController : MonoBehaviour
     void HideSpotlightPenguinShowPullSwitchPenguin()
     {
         spotlightPenguin.GetComponent<Animator>().SetTrigger("Hide");
-        // TODO: Show PullSwitch penguin!!!
+        StartCoroutine(PullSwitchPenguinEnter());
+    }
+
+    IEnumerator PullSwitchPenguinEnter()
+    {
+        yield return new WaitForSeconds(3.5f);
+        pullSwitchAnimator.GetComponent<Animator>().SetTrigger("Enter");
+        yield return new WaitForSeconds(0.5f);
+        foreach (var mesh in pullSwitchAnimator.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>())
+        {
+            mesh.enabled = true;
+        }
     }
 
     void StartSpotlightBlinking()
