@@ -1,3 +1,4 @@
+using Oculus.Interaction;
 using UnityEngine;
 
 public static class Utilities
@@ -20,5 +21,21 @@ public static class Utilities
     public static GameManager GetGameManager()
     {
         return GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+    }
+    
+    public static void SilenceRigidbody(Rigidbody r, bool silence)
+    {
+        if (silence)
+        {
+            // r.isKinematic = true;
+            r.interpolation = RigidbodyInterpolation.None;
+            r.useGravity = false;
+        }
+        else
+        {
+            r.interpolation = RigidbodyInterpolation.Interpolate;
+            r.useGravity = true;
+            // r.isKinematic = false;
+        }
     }
 }

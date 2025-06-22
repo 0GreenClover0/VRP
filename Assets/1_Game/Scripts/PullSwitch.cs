@@ -12,6 +12,13 @@ class FakeEnvironmentLightData
 
 public class PullSwitch : MonoBehaviour
 {
+    [Header("Debug anim controlling")]
+    public bool wiggle; 
+    public bool jumpOut;
+    public bool takenLight;
+    [SerializeField] private Animator animator;
+    [Space]
+    
     [SerializeField] private InteractableGroupView interactableGroupView;
     [SerializeField] private MaterialPropertyBlockEditor bulbMaterial;
     [SerializeField] private GameObject grabbableObject;
@@ -40,6 +47,8 @@ public class PullSwitch : MonoBehaviour
     [Space] [Header("Flash curves")]
     [SerializeField] private AnimationCurve lightUp;
     [SerializeField] private AnimationCurve lightDown;
+
+    // [HideInInspector] public AdditionalLightbulbLogic deliveredLightbulb;
     
     private FakeEnvironmentLightData normalLightData = new FakeEnvironmentLightData();   // LERP A
     private FakeEnvironmentLightData flashLightData = new FakeEnvironmentLightData();    // LERP B
@@ -92,6 +101,12 @@ public class PullSwitch : MonoBehaviour
             currentBulb = null;
         }
         
+        EvaluatePullSwitchVisuals();
+        EvaluateAnimations();
+    }
+
+    void EvaluatePullSwitchVisuals()
+    {
         // If nothing is grabbing the string, slowly move up to default position.
         float distance = Vector3.Distance(grabbableObject.transform.position, ropeDesiredPosition.position);
         if (interactableGroupView.SelectingInteractorsCount == 0 && distance > 0.01f)
@@ -122,6 +137,24 @@ public class PullSwitch : MonoBehaviour
         flashActiveVisual = Mathf.Clamp(flashActiveVisual, -1.0f, float.MaxValue);
     }
 
+    void EvaluateAnimations()
+    {
+        if (wiggle)
+        {
+            animator.SetTrigger("Wiggle");
+        }
+
+        if (jumpOut)
+        {
+            animator.SetTrigger("JumpOut");   
+        }
+
+        if (takenLight)
+        {
+            animator.SetTrigger("TakenLightbulb");   
+        }
+    }
+    
     [ContextMenu("Activate flash")]
     private void ActivateFlash()
     {
@@ -149,10 +182,16 @@ public class PullSwitch : MonoBehaviour
         RenderSettings.skybox.SetFloat("_Exposure", currentSkyExposure);
         RenderSettings.reflectionIntensity = currentReflectionIntensity;
     }
+
+    public void TakeLightbulbAnim()
+    {
+        animator.SetTrigger("TakenLightbulb");
+    }
     
     void EjectLightbulb()
     {
         Debug.Log(currentBulb);
         currentBulb.enabled = false;
+        animator.SetTrigger("JumpOut");
     }
 }
