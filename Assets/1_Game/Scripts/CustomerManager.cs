@@ -50,7 +50,7 @@ public class CustomerManager : MonoBehaviour
     {
         customerSpawnTimer += Time.deltaTime;
 
-        if (customerSpawnTimer > customerSpawnInterval && customersFood.Count + customersWood.Count < LevelController.Instance.MaxCustomersToLose)
+        if (customerSpawnTimer > customerSpawnInterval && customersFood.Count + customersWood.Count < LevelController.Instance.MaxCustomersToLose + 1)
         {
             customerSpawnTimer = 0.0f;
             SpawnCustomer(DeliveryType.Food);
@@ -59,6 +59,11 @@ public class CustomerManager : MonoBehaviour
 
         int allCustomersCount = customersFood.Count + customersWood.Count;
         satisfaction = 1.0f - Mathf.Clamp(((float)allCustomersCount / (float)LevelController.Instance.MaxCustomersToLose), 0.0f, 1.0f);
+
+        if (allCustomersCount > LevelController.Instance.MaxCustomersToLose)
+        {
+            GameManager.Instance.GameOver();
+        }
 
         ManageAngryJump();
     }
