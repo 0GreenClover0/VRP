@@ -45,11 +45,11 @@ public class Customer : Appearable
         minimalDistanceToGround = physicsCollider.bounds.extents.y;
     }
 
-    private void Update()
+    protected override void Update()
     {
-        StateCheck();
+        base.Update();
 
-        AppearOrDisappearTick();
+        StateCheck();
 
         if (behaviorState == BehaviorState.SlightlyAngry)
         {

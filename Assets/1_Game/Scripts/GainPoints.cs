@@ -17,9 +17,9 @@ public class GainPoints : Appearable
         Appear();
     }
 
-    private void Update()
+    protected override void Update()
     {
-        AppearOrDisappearTick();
+        base.Update();
 
         LifeTimerTick();
 
