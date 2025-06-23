@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements.Experimental;
 
 public enum AppearingState

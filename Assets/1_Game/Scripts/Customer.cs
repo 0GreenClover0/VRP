@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Customer : Appearable
@@ -9,6 +10,14 @@ public class Customer : Appearable
         Angry, // In Angry state all customers jump in unison
     }
 
+    public enum PenguinSoundType
+    {
+        NeutralOrAngry, // To depict slightly angry state
+        Happy,
+        Neutral,
+        Angry,
+    }
+    
     public enum EmojiType
     {
         Happy,
@@ -22,10 +31,20 @@ public class Customer : Appearable
     [SerializeField] private Collider physicsCollider;
     [SerializeField] private float jumpForce = 3.5f;
     [SerializeField] private Animator animator;
+    
+    [Space]
+    [Header("Penguin sounds")]
+    [SerializeField] private List<AudioClip> happyPenguins;
+    [SerializeField] private List<AudioClip> neutralPenguins;
+    [SerializeField] private List<AudioClip> angryPenguins;
+    [SerializeField] private AudioClip riotPenguin;
+    [SerializeField] private AudioSource riotAudioSource;
+    [SerializeField] private AudioSource happyAudioSource;
 
     [HideInInspector] public CustomerManager customerManager;
     [HideInInspector] public new Rigidbody rigidbody;
 
+    private AudioSource audioSource;
     private BehaviorState behaviorState;
     private GameObject emojiObject = null;
     private Emoji emoji = null;
@@ -44,6 +63,7 @@ public class Customer : Appearable
         rigidbody = GetComponent<Rigidbody>();
 
         minimalDistanceToGround = physicsCollider.bounds.extents.y;
+        audioSource = GetComponent<AudioSource>();
     }
 
     protected override void Update()
@@ -118,8 +138,18 @@ public class Customer : Appearable
         //         rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         //     }
         // }
+        
         if (skipSatisfactionCheck || Random.Range(0.0f, 1.0f) > customerManager.satisfaction)
         {
+            if (skipSatisfactionCheck)
+            {
+                PlayRiotSound();
+            }
+            else
+            {
+                PlayPenguinSound(PenguinSoundType.NeutralOrAngry);
+            }
+            
             if (animator != null)
             {
                 animator.SetTrigger("Jump");   
@@ -127,6 +157,45 @@ public class Customer : Appearable
         }
     }
 
+    public void PlayPenguinSound(PenguinSoundType type)
+    {
+        switch (type)
+        {
+            case PenguinSoundType.Happy:
+                happyAudioSource.clip = happyPenguins[Random.Range(0, happyPenguins.Count - 1)];
+                happyAudioSource.pitch = Random.Range(0.85f, 1.15f);
+                happyAudioSource.Play();
+                break;
+            
+            case PenguinSoundType.NeutralOrAngry:
+                bool chooseNeutral = Random.Range(0, 1) == 1;
+                audioSource.clip = chooseNeutral ? neutralPenguins[Random.Range(0, neutralPenguins.Count - 1)]
+                                                 : angryPenguins[Random.Range(0, angryPenguins.Count - 1)];
+                audioSource.pitch = Random.Range(0.85f, 1.15f);
+                audioSource.Play();
+                break;
+            
+            case PenguinSoundType.Neutral:
+                audioSource.clip = neutralPenguins[Random.Range(0, neutralPenguins.Count - 1)];
+                audioSource.pitch = Random.Range(0.85f, 1.15f);
+                audioSource.Play();
+                break;
+            
+            case PenguinSoundType.Angry:
+                audioSource.clip = angryPenguins[Random.Range(0, angryPenguins.Count - 1)];
+                audioSource.pitch = Random.Range(0.85f, 1.15f);
+                audioSource.Play();
+                break;
+        }
+    }
+    
+    void PlayRiotSound()
+    {
+        riotAudioSource.clip = riotPenguin;
+        riotAudioSource.pitch = Random.Range(0.85f, 1.15f);
+        riotAudioSource.Play();
+    }
+    
     private void EmojiTick()
     {
         emojiTickTimer += Time.deltaTime;
