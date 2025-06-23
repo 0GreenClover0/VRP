@@ -21,6 +21,7 @@ public class Customer : Appearable
     [SerializeField] private Sprite customerAngrySprite;
     [SerializeField] private Collider physicsCollider;
     [SerializeField] private float jumpForce = 3.5f;
+    [SerializeField] private Animator animator;
 
     [HideInInspector] public CustomerManager customerManager;
     [HideInInspector] public new Rigidbody rigidbody;
@@ -110,12 +111,16 @@ public class Customer : Appearable
 
     public void Jump(bool skipSatisfactionCheck = false)
     {
-        if (IsGrounded())
+        // if (IsGrounded())
+        // {
+        //     if (skipSatisfactionCheck || Random.Range(0.0f, 1.0f) > customerManager.satisfaction)
+        //     {
+        //         rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        //     }
+        // }
+        if (skipSatisfactionCheck || Random.Range(0.0f, 1.0f) > customerManager.satisfaction)
         {
-            if (skipSatisfactionCheck || Random.Range(0.0f, 1.0f) > customerManager.satisfaction)
-            {
-                rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            }
+            animator.SetTrigger("Jump");
         }
     }
 

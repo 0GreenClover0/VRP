@@ -45,8 +45,6 @@ public class AdditionalLightbulbLogic : MonoBehaviour
                 holdingHand = GrabbingHand.Right;
             }
         }
-        
-        Debug.Log(grabbersNum);
     }
 
     void UnfreezeRigidbody()
