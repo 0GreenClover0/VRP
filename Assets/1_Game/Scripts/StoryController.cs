@@ -50,6 +50,8 @@ public class StoryController : MonoBehaviour
     
     [Header("Voicelines")]
     public List<AudioClip> voiceLines;
+    public List<AudioClip> emergentVoiceLines; // if this doesnt fire, check if StoryController is not disabled in runtime
+    public List<AudioClip> gameOverVoiceLines; // if this doesnt fire, check if StoryController is not disabled in runtime
     
     [HideInInspector] public float logoAlpha = 0.0f;
     
@@ -194,7 +196,7 @@ public class StoryController : MonoBehaviour
             
                 if (secondScriptedShipTimer >= 5.0f && !secondScriptedShipSpawned)
                 {
-                    PlayVoiceLine(0);
+                    PlayVoiceLine(2);
                     SpawnScriptedShip(2);
                     secondScriptedShipSpawned = true;
                 }
@@ -205,7 +207,7 @@ public class StoryController : MonoBehaviour
             
                 if (thirdScriptedShipTimer >= 5.0f && !thirdScriptedShipSpawned)
                 {
-                    PlayVoiceLine(0);
+                    PlayVoiceLine(3);
                     SpawnScriptedShip(3);
                     SpawnScriptedShip(4);
                     SpawnScriptedShip(5);
@@ -346,7 +348,7 @@ public class StoryController : MonoBehaviour
     void FinishScriptedSequence()
     {
         SetNormalGenerator();
-        PlayVoiceLine(0);
+        PlayVoiceLine(4);
         scriptedSequence = false;
         LevelController.Instance.IsDuringScriptedSequence = false;
     }
@@ -389,7 +391,7 @@ public class StoryController : MonoBehaviour
         if (generatorPower.GetCurrentBarValue() >= 70.0f && !firstChargedGenerator)
         {
             HideSpotlightPenguinShowPullSwitchPenguin();
-            PlayVoiceLine(0);
+            PlayVoiceLine(1);
             SetStoryStage(4);
             firstChargedGenerator = true;
         }
