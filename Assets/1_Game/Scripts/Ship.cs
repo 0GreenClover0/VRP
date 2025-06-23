@@ -709,6 +709,13 @@ public class Ship : Appearable
 
         hasBeenDestroyed = true;
         destroyedCounter = isInPort ? destroyTimeInPort : destroyTime;
+
+        if (!GameManager.Instance.warnedAboutPullSwitch && !LevelController.Instance.IsDuringScriptedSequence
+            && type != ShipType.Pirates && shipSpawner.ships.Count >= 3)
+        {
+            GameManager.Instance.WarnAboutPullSwitch();
+            GameManager.Instance.warnedAboutPullSwitch = true;
+        }
     }
 
     public void GetCollectedByKeeper()

@@ -474,14 +474,14 @@ public class StoryController : MonoBehaviour
         }
     }
     
-    void PlayVoiceLine(int id)
+    public void PlayVoiceLine(int id)
     {
         audioSource.clip = voiceLines[id];
         audioSource.time = 0.0f;
         audioSource.Play();
     }
     
-    void PlayEmergentVoiceline(int id)
+    public void PlayEmergentVoiceline(int id)
     {
         audioSource.clip = emergentVoiceLines[id];
         audioSource.time = 0.0f;
