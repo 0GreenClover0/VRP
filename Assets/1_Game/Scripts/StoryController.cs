@@ -172,13 +172,14 @@ public class StoryController : MonoBehaviour
                 if (logoTimer >= logoNextStep)
                 {
                     SetStoryStage(2);
+                    PlayVoiceLine(5);
                 }
                 break;
             
             case 2:
                 firstPenguinVoicelineTimer += Time.deltaTime;
             
-                if (firstPenguinVoicelineTimer >= 3.0f && !firstPenguinVoicelinePlayed)
+                if (firstPenguinVoicelineTimer >= 8.0f && !firstPenguinVoicelinePlayed)
                 {
                     PlayVoiceLine(0);
                     generatorBlinking = true;
