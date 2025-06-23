@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
         restartButtons.gameObject.SetActive(true);
         restartButtons.Appear();
 
+        LevelController.Instance.GameFinished = true;
+
         gameOver.Appear();
     }
 }

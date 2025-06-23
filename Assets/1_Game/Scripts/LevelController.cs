@@ -15,6 +15,8 @@ public class LevelController : MonoBehaviour
     public bool HasStarted { get; private set; } = true;
 
     public bool IsDuringScriptedSequence = true;
+    
+    public bool GameFinished = false;
 
     private void Awake()
     {
@@ -28,5 +30,7 @@ public class LevelController : MonoBehaviour
             Destroy(Instance.gameObject);
             Instance = this;
         }
+
+        GameFinished = false;
     }
 }

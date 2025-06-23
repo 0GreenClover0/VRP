@@ -39,6 +39,11 @@ public class Player : MonoBehaviour
 
     public void AddPoints(int points, Vector3? position = null)
     {
+        if (LevelController.Instance.GameFinished)
+        {
+            return;
+        }
+        
         Points += points;
 
         if (position != null)
