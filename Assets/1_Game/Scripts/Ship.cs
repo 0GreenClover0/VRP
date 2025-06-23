@@ -685,6 +685,11 @@ public class Ship : MonoBehaviour
             return;
         }
 
+        if (type == ShipType.Pirates)
+        {
+            Player.Instance.AddPoints(50, transform.position + gainPointsTextOffset);
+        }
+
         SinkVisuals();
 
         hasBeenDestroyed = true;
@@ -711,11 +716,6 @@ public class Ship : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (type == ShipType.Pirates)
-        {
-            Player.Instance.AddPoints(50, transform.position + gainPointsTextOffset);
-        }
-
         onDestroyed.Invoke(this);
     }
 
