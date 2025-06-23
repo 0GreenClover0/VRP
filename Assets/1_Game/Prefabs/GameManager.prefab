@@ -68,9 +68,13 @@ MonoBehaviour:
   normalPowerDecrease: 0.5
   spotlightPenguin: {fileID: 0}
   spotlightFilteredTransformer: {fileID: 0}
+  pullSwitchAnimator: {fileID: 0}
+  shipSpawner: {fileID: 0}
   scriptedShipTransform1: {fileID: 0}
   scriptedShipTransform2: {fileID: 0}
   scriptedShipTransform3: {fileID: 0}
+  pirates1: {fileID: 0}
+  pirates2: {fileID: 0}
 --- !u!82 &5842522610733222702
 AudioSource:
   m_ObjectHideFlags: 0
@@ -258,7 +262,10 @@ MonoBehaviour:
   customerFoodSpawnLocation: {fileID: 0}
   customerWoodSpawnLocation: {fileID: 0}
   customerSpawnInterval: 5
+  spawnRadius: 1.2
+  slightlyAngryStartSatisfaction: 0
   satisfaction: 0
+  areAngryJumping: 0
 --- !u!82 &8986438881145416607
 AudioSource:
   m_ObjectHideFlags: 0
@@ -384,8 +391,8 @@ Transform:
   m_GameObject: {fileID: 5310792074878272309}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000002041459, y: 0.70710605, z: -0.7071076, w: 0.0000021085143}
-  m_LocalPosition: {x: 0, y: 0.984, z: 2.81}
-  m_LocalScale: {x: 0.22514392, y: 0.22514392, z: 0.22514392}
+  m_LocalPosition: {x: 0, y: 0.675, z: 2.81}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2272831758452246488}
