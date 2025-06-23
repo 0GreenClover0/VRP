@@ -29,7 +29,7 @@ public class Customer : Appearable
     [SerializeField] private Sprite customerHappySprite;
     [SerializeField] private Sprite customerAngrySprite;
     [SerializeField] private Collider physicsCollider;
-    [SerializeField] private float jumpForce = 3.5f;
+    // [SerializeField] private float jumpForce = 3.5f;
     [SerializeField] private Animator animator;
     
     [Space]
