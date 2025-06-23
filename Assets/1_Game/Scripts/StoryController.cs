@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Oculus.Interaction;
 using UnityEngine;
 using UnityEngine.Events;
@@ -95,12 +96,13 @@ public class StoryController : MonoBehaviour
     private MeshRenderer scriptedShipMesh1;
     private MeshRenderer scriptedShipMesh2;
     private MeshRenderer scriptedShipMesh3;
+    private List<Ship> scriptedPirates = new List<Ship>();
     private bool startedControllingShip1;
     private float secondScriptedShipTimer = 0.0f;
     private float thirdScriptedShipTimer = 0.0f;
     private bool secondScriptedShipSpawned = false;
     private bool thirdScriptedShipSpawned = false;
-    private int conditionCounter = 0;
+    private bool thirdShipDestroyed = false;
     private float finishScriptedSequenceTimer = 0.0f;
     private bool triggeredFinishingScriptedSequence = false;
     
@@ -223,7 +225,10 @@ public class StoryController : MonoBehaviour
                     thirdScriptedShipSpawned = true;
                 }
 
-                if (conditionCounter >= 3)
+                Debug.Log(scriptedPirates.Count);
+                
+                if (thirdShipDestroyed && (scriptedPirates[0] == null && scriptedPirates[1] == null)
+                    || scriptedPirates.Count <= 0) // change to bool last ship destroyed and check if pirate list is empty
                 {
                     finishScriptedSequenceTimer += Time.deltaTime;
 
@@ -321,9 +326,6 @@ public class StoryController : MonoBehaviour
 
     void LockSpotlightAndGenerator()
     {
-        // spotlightFilteredTransformer.gameObject.GetComponent<Grabbable>().enabled = false;
-        // generatorRotationTransformer.gameObject.GetComponent<Grabbable>().enabled = false;
-
         spotlightFilteredTransformer.gameObject.GetComponent<Grabbable>().MaxGrabPoints = 0;
         generatorRotationTransformer.gameObject.GetComponent<Grabbable>().MaxGrabPoints = 0;
     }
@@ -334,8 +336,6 @@ public class StoryController : MonoBehaviour
         {
             mesh.enabled = false;
         }
-        
-        // pullSwitchAnimator.gameObject.SetActive(false);
     }
     
     void UnlockSpotlight()
@@ -420,36 +420,70 @@ public class StoryController : MonoBehaviour
                 var ship1 = shipSpawner.SpawnShipAtPosition(ShipType.FoodBig, scriptedShipTransform1.position, true);
                 scriptedShipMesh1 = ship1.rendererReference;
                 ship1.onShipStateChanged += OnShip1StateChange;
+                ship1.onDestroyed += OnScriptedShip1Destroyed;
                 break;
             
             case 2:
                 var ship2 = shipSpawner.SpawnShipAtPosition(ShipType.WoodBig, scriptedShipTransform2.position);
                 scriptedShipMesh2 = ship2.rendererReference;
                 ship2.onShipStateChanged += OnShip2StateChange;
+                ship2.onDestroyed += OnScriptedShip2Destroyed;
                 break;
             
             case 3:
                 var ship3 = shipSpawner.SpawnShipAtPosition(ShipType.FoodBig, scriptedShipTransform3.position);
                 scriptedShipMesh3 = ship3.rendererReference;
                 ship3.onShipStateChanged += OnShip3StateChange;
+                ship3.onDestroyed += OnScriptedShip3Destroyed;
                 break;
             
             // Pirates
             case 4:
                 var ship4 = shipSpawner.SpawnShipAtPosition(ShipType.Pirates, pirates1.position);
-                ship4.onShipStateChanged += OnShip4StateChange;
+                scriptedPirates.Add(ship4);
                 break;
             
             case 5:
                 var ship5 = shipSpawner.SpawnShipAtPosition(ShipType.Pirates, pirates2.position);
-                ship5.onShipStateChanged += OnShip5StateChange;
+                scriptedPirates.Add(ship5);
                 break;
         }
     }
 
+    void OnScriptedShip1Destroyed(Ship ship)
+    {
+        if (ship.behavioralState != BehavioralState.InPort && ship.behavioralState != BehavioralState.Stop)
+        {
+            StartCoroutine(RestartShip(1));
+        }
+    }
+    
+    void OnScriptedShip2Destroyed(Ship ship)
+    {
+        if (ship.behavioralState != BehavioralState.InPort && ship.behavioralState != BehavioralState.Stop)
+        {
+            StartCoroutine(RestartShip(2));
+        }
+    }
+    
+    void OnScriptedShip3Destroyed(Ship ship)
+    {
+        if (ship.behavioralState != BehavioralState.InPort && ship.behavioralState != BehavioralState.Stop)
+        {
+            StartCoroutine(RestartShip(3));   
+        }
+    }
+    
     void PlayVoiceLine(int id)
     {
         audioSource.clip = voiceLines[id];
+        audioSource.time = 0.0f;
+        audioSource.Play();
+    }
+    
+    void PlayEmergentVoiceline(int id)
+    {
+        audioSource.clip = emergentVoiceLines[id];
         audioSource.time = 0.0f;
         audioSource.Play();
     }
@@ -488,6 +522,13 @@ public class StoryController : MonoBehaviour
         StartMiscBlinking(true, new List<MeshRenderer>() {scriptedShipMesh1});
     }
 
+    IEnumerator RestartShip(int num)
+    {
+        PlayEmergentVoiceline(0);
+        yield return new WaitForSeconds(3);
+        SpawnScriptedShip(num);
+    }
+    
     void OnShip1StateChange(BehavioralState newState)
     {
         if (newState == BehavioralState.Control && !startedControllingShip1)
@@ -495,7 +536,7 @@ public class StoryController : MonoBehaviour
             startedControllingShip1 = true;
             SetStoryStage(6);
         }
-
+        
         if (newState == BehavioralState.InPort)
         {
             SetStoryStage(7);
@@ -512,29 +553,10 @@ public class StoryController : MonoBehaviour
     
     void OnShip3StateChange(BehavioralState newState)
     {
+        
         if (newState == BehavioralState.InPort)
         {
-            conditionCounter++;
-        }
-    }
-    
-    void OnShip4StateChange(BehavioralState newState)
-    {
-        // TODO: VERY IMPORTANT! This should take into account guiding pirates safely
-        // From one entrance to another, without destroying them
-        if (newState == BehavioralState.Destroyed)
-        {
-            conditionCounter++;
-        }
-    }
-    
-    void OnShip5StateChange(BehavioralState newState)
-    {
-        // TODO: VERY IMPORTANT! This should take into account guiding pirates safely
-        // From one entrance to another, without destroying them
-        if (newState == BehavioralState.Destroyed)
-        {
-            conditionCounter++;
+            thirdShipDestroyed = true;
         }
     }
 
