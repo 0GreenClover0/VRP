@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        restartButtons.transform.localScale = Vector3.zero;
+        // restartButtons.transform.localScale = Vector3.zero;
         restartButtons.gameObject.SetActive(true);
         restartButtons.Appear();
 

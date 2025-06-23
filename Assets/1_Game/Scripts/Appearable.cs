@@ -16,6 +16,12 @@ public class Appearable : MonoBehaviour
 
     private AppearingState state;
     private float appearingTimer = 0.0f;
+    private Vector3 cachedScale = Vector3.one;
+
+    protected virtual void Awake()
+    {
+        cachedScale = transform.localScale;
+    }
 
     protected virtual void Update()
     {
@@ -34,13 +40,13 @@ public class Appearable : MonoBehaviour
 
                     if (value > 1.0f)
                     {
-                        transform.localScale = Vector3.one;
+                        // transform.localScale = Vector3.one;
                         ChangeAppearingState(AppearingState.None);
                         break;
                     }
 
                     float newSize = Easing.OutElastic(value);
-                    Vector3 newScale = Vector3.one * newSize;
+                    Vector3 newScale = cachedScale * newSize;
 
                     transform.localScale = newScale;
                     break;
@@ -60,7 +66,7 @@ public class Appearable : MonoBehaviour
                     }
 
                     float newSize = Easing.OutElastic(value);
-                    Vector3 newScale = Vector3.one * newSize;
+                    Vector3 newScale = cachedScale * newSize;
 
                     transform.localScale = newScale;
                     break;
