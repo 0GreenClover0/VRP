@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public StoryController storyController;
 
+    [HideInInspector] public bool warnedAboutPullSwitch = false;
     [SerializeField] private GameOverScreen gameOver;
     [SerializeField] private Appearable restartButtons;
 
@@ -17,6 +19,7 @@ public class GameManager : MonoBehaviour
     public AudioClip windSound;
 
     private AudioSource audioSource;
+    [HideInInspector] public bool firstFlashUsed = false;
 
     private void Awake()
     {
@@ -51,5 +54,29 @@ public class GameManager : MonoBehaviour
         LevelController.Instance.GameFinished = true;
 
         gameOver.Appear();
+    }
+
+    public void WarnAboutPullSwitch()
+    {
+        StartCoroutine(RopeReminder());
+    }
+
+    IEnumerator RopeReminder()
+    {
+        yield return new WaitForSeconds(2);
+        
+        storyController.PlayEmergentVoiceline(1);
+        storyController.blinkBrightness /= 8.0f;
+        storyController.flashBlinking = true;
+        
+        yield return new WaitForSeconds(15);
+        
+        if (!firstFlashUsed)
+        {
+            storyController.PlayEmergentVoiceline(8);
+            yield return new WaitForSeconds(30);
+            storyController.blinkBrightness /= 8.0f;
+            storyController.flashBlinking = false;
+        }
     }
 }

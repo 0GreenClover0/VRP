@@ -170,6 +170,10 @@ public class PullSwitch : MonoBehaviour
         {
             audioSource.Play();   
         }
+
+        GameManager.Instance.firstFlashUsed = true;
+        GameManager.Instance.storyController.flashBlinking = false;
+        GameManager.Instance.storyController.blinkBrightness /= 8.0f;
         
         EjectLightbulb();
     }
