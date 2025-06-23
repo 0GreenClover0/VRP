@@ -159,30 +159,31 @@ public class Customer : Appearable
 
     public void PlayPenguinSound(PenguinSoundType type)
     {
+        Random.InitState(System.DateTime.Now.Millisecond);
         switch (type)
         {
             case PenguinSoundType.Happy:
-                happyAudioSource.clip = happyPenguins[Random.Range(0, happyPenguins.Count - 1)];
+                happyAudioSource.clip = happyPenguins[Random.Range(0, happyPenguins.Count)];
                 happyAudioSource.pitch = Random.Range(0.85f, 1.15f);
                 happyAudioSource.Play();
                 break;
             
             case PenguinSoundType.NeutralOrAngry:
-                bool chooseNeutral = Random.Range(0, 1) == 1;
-                audioSource.clip = chooseNeutral ? neutralPenguins[Random.Range(0, neutralPenguins.Count - 1)]
-                                                 : angryPenguins[Random.Range(0, angryPenguins.Count - 1)];
+                bool chooseNeutral = Random.Range(0, 2) == 1;
+                audioSource.clip = chooseNeutral ? neutralPenguins[Random.Range(0, neutralPenguins.Count)]
+                                                 : angryPenguins[Random.Range(0, angryPenguins.Count)];
                 audioSource.pitch = Random.Range(0.85f, 1.15f);
                 audioSource.Play();
                 break;
             
             case PenguinSoundType.Neutral:
-                audioSource.clip = neutralPenguins[Random.Range(0, neutralPenguins.Count - 1)];
+                audioSource.clip = neutralPenguins[Random.Range(0, neutralPenguins.Count)];
                 audioSource.pitch = Random.Range(0.85f, 1.15f);
                 audioSource.Play();
                 break;
             
             case PenguinSoundType.Angry:
-                audioSource.clip = angryPenguins[Random.Range(0, angryPenguins.Count - 1)];
+                audioSource.clip = angryPenguins[Random.Range(0, angryPenguins.Count)];
                 audioSource.pitch = Random.Range(0.85f, 1.15f);
                 audioSource.Play();
                 break;

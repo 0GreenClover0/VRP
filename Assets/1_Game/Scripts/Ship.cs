@@ -682,12 +682,13 @@ public class Ship : Appearable
 
     public void PlayCrashSound()
     {
+        Random.InitState(System.DateTime.Now.Millisecond);
         if (audioSource == null || audioSource.isPlaying)
         {
             return;
         }
 
-        audioSource.clip = destroyClips[Random.Range(0, destroyClips.Count-1)];
+        audioSource.clip = destroyClips[Random.Range(0, destroyClips.Count)];
         audioSource.pitch = Random.Range(0.75f, 1.25f);
         audioSource.Play();
         playedCrashSound = true;
