@@ -25,6 +25,9 @@ public class StoryController : MonoBehaviour
     [Header("Changing this requires reloading the game")]
     public bool scriptedSequence = true;
 
+    [Space]
+    public GameManager gameManagerRef;
+    
     [Header("Set manual blinking")]
     public bool generatorBlinking;
     public bool spotlightBlinking;

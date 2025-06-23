@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scriptedSequence: 1
+  gameManagerRef: {fileID: 1695997530405276650}
   generatorBlinking: 0
   spotlightBlinking: 0
   flashBlinking: 0

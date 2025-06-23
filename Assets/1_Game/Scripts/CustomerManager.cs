@@ -43,6 +43,13 @@ public class CustomerManager : MonoBehaviour
 
     private void Start()
     {
+        if (LevelController.Instance.IsDuringScriptedSequence)
+        {
+            SpawnCustomer(DeliveryType.Food);
+            SpawnCustomer(DeliveryType.Wood);
+            SpawnCustomer(DeliveryType.Food);
+        }
+        
         slightlyAngryStartSatisfaction = 1.0f - (LevelController.Instance.slightlyAngryStartTreshold / (float)LevelController.Instance.MaxCustomersToLose);
     }
 
@@ -144,7 +151,7 @@ public class CustomerManager : MonoBehaviour
         }
     }
 
-    private void SpawnCustomer(DeliveryType type)
+    public void SpawnCustomer(DeliveryType type)
     {
         GameObject customerObject = null;
 
@@ -241,7 +248,7 @@ public class CustomerManager : MonoBehaviour
             }
 
             customer = customersWood.FirstOrDefault();
-            customersFood.RemoveAt(0);
+            customersWood.RemoveAt(0);
         }
 
         customer.SpawnEmoji(Customer.EmojiType.Happy);
