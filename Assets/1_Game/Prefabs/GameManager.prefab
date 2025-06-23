@@ -264,9 +264,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   storyController: {fileID: 2414729513645854637}
+  warnedAboutPullSwitch: 0
   gameOver: {fileID: 0}
   restartButtons: {fileID: 0}
   windSound: {fileID: 8300000, guid: 58f7f599f1af3974ebef89af6ae582da, type: 3}
+  firstFlashUsed: 0
 --- !u!114 &601062330607513200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,7 +416,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.000002041459, y: 0.70710605, z: -0.7071076, w: 0.0000021085143}
   m_LocalPosition: {x: 0, y: 0.675, z: 2.81}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.35, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2272831758452246488}
