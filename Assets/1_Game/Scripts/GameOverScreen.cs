@@ -15,9 +15,9 @@ public class GameOverScreen : Appearable
         Appear();
     }
 
-    private void Update()
+    protected override void Update()
     {
-        AppearOrDisappearTick();
+        base.Update();
     }
 
     public override void Appear()

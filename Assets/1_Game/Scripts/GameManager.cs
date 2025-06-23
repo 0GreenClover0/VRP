@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public StoryController storyController;
 
     [SerializeField] private GameOverScreen gameOver;
+    [SerializeField] private Appearable restartButtons;
 
     [Space]
     [Header("Global looping sounds")]
@@ -43,6 +44,10 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        restartButtons.transform.localScale = Vector3.zero;
+        restartButtons.gameObject.SetActive(true);
+        restartButtons.Appear();
+
         gameOver.Appear();
     }
 }

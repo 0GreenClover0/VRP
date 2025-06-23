@@ -15,6 +15,11 @@ public class Appearable : MonoBehaviour
     private AppearingState state;
     private float appearingTimer = 0.0f;
 
+    protected virtual void Update()
+    {
+        AppearOrDisappearTick();
+    }
+
     protected void AppearOrDisappearTick()
     {
         switch (state)

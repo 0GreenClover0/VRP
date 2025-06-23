@@ -20,9 +20,9 @@ public class Emoji : Appearable
         billboardTransformToOffsetFrom = GetComponent<Billboard>().transformToOffsetFrom;
     }
 
-    private void Update()
+    protected override void Update()
     {
-        AppearOrDisappearTick();
+        base.Update();
 
         MoveUpTick();
 
