@@ -109,7 +109,7 @@ public class StoryController : MonoBehaviour
         if (!scriptedSequence)
         {
             LevelController.Instance.IsDuringScriptedSequence = false;
-            Debug.LogWarning("Scripted sequence is disabled and setting story steps has no effect.");
+            // Debug.LogWarning("Scripted sequence is disabled and setting story steps has no effect.");
             return;
         }
 
@@ -138,7 +138,8 @@ public class StoryController : MonoBehaviour
         }
     }
     
-    private void Awake()
+    // Awake is too early, because we need to get LevelController (it's null on Awake)
+    private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         onStoryStageChanged += EvaluateScriptedSequence;

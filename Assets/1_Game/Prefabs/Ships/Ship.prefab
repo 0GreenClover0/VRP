@@ -123,7 +123,10 @@ MonoBehaviour:
   collisionCollider: {fileID: 8002682981946728663}
   hasBeenDestroyed: 0
   scaleDownSpeed: 0.01
-  destroyClip: {fileID: 8300000, guid: c5bc63bc781f71440a8f1b3b90bc1c22, type: 3}
+  destroyClips:
+  - {fileID: 8300000, guid: 3f09e7fc94673f541ae3b909c3d3d5bd, type: 3}
+  - {fileID: 8300000, guid: 9e108fc5ff99e1b479c7c0b58486df85, type: 3}
+  - {fileID: 8300000, guid: 7e301c01918811246b6022b702f9ec2f, type: 3}
   interactClips:
   - {fileID: 8300000, guid: 51eda3a09815e204eb8e9bac9edbbe30, type: 3}
   - {fileID: 8300000, guid: c434480033ec00348b14ca34215d3508, type: 3}
@@ -585,8 +588,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3774c5b2d6be6aa4dab26d36b5cce328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buoyMesh: {fileID: 3954938001171830968}
-  lightOffset: {x: 0, y: 0.55, z: 0}
+  transformToOffsetFrom: {fileID: 3954938001171830968}
+  offset: {x: 0, y: 0.55, z: 0}
 --- !u!1 &6929596435044761620
 GameObject:
   m_ObjectHideFlags: 0

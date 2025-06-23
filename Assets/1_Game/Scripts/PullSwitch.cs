@@ -158,7 +158,7 @@ public class PullSwitch : MonoBehaviour
     [ContextMenu("Activate flash")]
     private void ActivateFlash()
     {
-        if (Utilities.GetGameManager().storyController.currentStage < 5)
+        if (LevelController.Instance.IsDuringScriptedSequence && Utilities.GetGameManager().storyController.currentStage < 5)
         {
             return;
         }

@@ -120,7 +120,10 @@ public class Customer : Appearable
         // }
         if (skipSatisfactionCheck || Random.Range(0.0f, 1.0f) > customerManager.satisfaction)
         {
-            animator.SetTrigger("Jump");
+            if (animator != null)
+            {
+                animator.SetTrigger("Jump");   
+            }
         }
     }
 

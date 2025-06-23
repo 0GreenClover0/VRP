@@ -106,7 +106,7 @@ public class Ship : MonoBehaviour
     [Header("Sound")]
     [Space]
 
-    [SerializeField] private AudioClip destroyClip;
+    [SerializeField] private List<AudioClip> destroyClips;
     [SerializeField] private List<AudioClip> interactClips;
     private bool playedCrashSound;
 
@@ -673,7 +673,8 @@ public class Ship : MonoBehaviour
             return;
         }
 
-        audioSource.clip = destroyClip;
+        audioSource.clip = destroyClips[Random.Range(0, destroyClips.Count-1)];
+        audioSource.pitch = Random.Range(0.75f, 1.25f);
         audioSource.Play();
         playedCrashSound = true;
     }
