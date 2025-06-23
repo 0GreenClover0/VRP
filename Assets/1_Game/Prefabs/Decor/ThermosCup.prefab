@@ -886,6 +886,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7819109381721611174}
     m_Modifications:
+    - target: {fileID: 715176485482988441, guid: ea5603d0f7e31aa48a95d21d3ab18138, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 589a2425730236846839f47f75e1a050, type: 2}
     - target: {fileID: 1363514579921052236, guid: ea5603d0f7e31aa48a95d21d3ab18138, type: 3}
       propertyPath: m_Name
       value: ThermosCupModel
