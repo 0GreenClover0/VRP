@@ -695,7 +695,7 @@ public class Ship : Appearable
 
     public void DestroyShip()
     {
-        if (hasBeenDestroyed)
+        if (hasBeenDestroyed || isInPort)
         {
             return;
         }
