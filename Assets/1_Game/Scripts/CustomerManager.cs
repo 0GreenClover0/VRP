@@ -70,7 +70,10 @@ public class CustomerManager : MonoBehaviour
 
     private void ManageAngryJump()
     {
-        if (satisfaction <= 0.0f && !areAngryJumping)
+        int allCustomersCount = customersFood.Count + customersWood.Count;
+        bool riots = LevelController.Instance.MaxCustomersToLose - allCustomersCount <= 2;
+        
+        if (riots && !areAngryJumping)
         {
             areAngryJumping = true;
 
@@ -108,7 +111,7 @@ public class CustomerManager : MonoBehaviour
                 }
             }
         }
-        else if (satisfaction <= 0.0f && areAngryJumping)
+        else if (riots && areAngryJumping)
         {
             angryJumperTickTimer += Time.deltaTime;
 
