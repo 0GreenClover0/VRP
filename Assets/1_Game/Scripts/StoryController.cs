@@ -163,6 +163,11 @@ public class StoryController : MonoBehaviour
 
     void BackgroundChecks()
     {
+        if (!scriptedSequence)
+        {
+            return;
+        }
+        
         switch (currentStage)
         {
             case 1:
