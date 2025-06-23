@@ -237,6 +237,7 @@ public class CustomerManager : MonoBehaviour
         }
 
         customer.SpawnEmoji(Customer.EmojiType.Happy);
+        customer.PlayPenguinSound(Customer.PenguinSoundType.Happy);
         customer.Disappear();
         customer.rigidbody.isKinematic = true;
     }
