@@ -207,6 +207,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bc0c0aaffa711534f8911681708adf2a, type: 3}
   riotPenguin: {fileID: 8300000, guid: 5bd1997f6123c2441b21ac91f8c467db, type: 3}
   riotAudioSource: {fileID: 450127744284017796}
+  happyAudioSource: {fileID: 1585122892668388043}
   customerManager: {fileID: 0}
   rigidbody: {fileID: 0}
 --- !u!54 &1714507545751411277
