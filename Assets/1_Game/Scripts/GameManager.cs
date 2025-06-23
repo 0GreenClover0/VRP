@@ -58,7 +58,10 @@ public class GameManager : MonoBehaviour
 
     public void WarnAboutPullSwitch()
     {
-        StartCoroutine(RopeReminder());
+        if (!firstFlashUsed)
+        {
+            StartCoroutine(RopeReminder());
+        }
     }
 
     IEnumerator RopeReminder()
@@ -66,16 +69,16 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         
         storyController.PlayEmergentVoiceline(1);
-        storyController.blinkBrightness /= 8.0f;
+        storyController.blinkBrightness /= 5.0f;
         storyController.flashBlinking = true;
         
         yield return new WaitForSeconds(15);
-        
+
         if (!firstFlashUsed)
         {
             storyController.PlayEmergentVoiceline(8);
             yield return new WaitForSeconds(30);
-            storyController.blinkBrightness /= 8.0f;
+            storyController.blinkBrightness *= 5.0f;
             storyController.flashBlinking = false;
         }
     }

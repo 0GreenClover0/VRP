@@ -173,7 +173,7 @@ public class PullSwitch : MonoBehaviour
 
         GameManager.Instance.firstFlashUsed = true;
         GameManager.Instance.storyController.flashBlinking = false;
-        GameManager.Instance.storyController.blinkBrightness /= 8.0f;
+        GameManager.Instance.storyController.blinkBrightness *= 5.0f;
         
         EjectLightbulb();
     }
