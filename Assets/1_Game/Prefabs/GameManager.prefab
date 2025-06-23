@@ -65,8 +65,20 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b232eaa87bf62ba4ebe04f1016915a18, type: 3}
   - {fileID: 8300000, guid: 400269e9c06b83e47982b7d6fb891d1d, type: 3}
   - {fileID: 8300000, guid: e7d3d1280091ad947a51636b48fcfae1, type: 3}
-  emergentVoiceLines: []
-  gameOverVoiceLines: []
+  emergentVoiceLines:
+  - {fileID: 8300000, guid: 8a94b3496622cfc4e8e15cf8379b7783, type: 3}
+  - {fileID: 8300000, guid: cc049db39bcd7624cb36c83b19f9f836, type: 3}
+  - {fileID: 8300000, guid: 5ca0825e6e93aba44a07f960eeedb138, type: 3}
+  - {fileID: 8300000, guid: e799173303d09f441aface4181af9d2e, type: 3}
+  - {fileID: 8300000, guid: 4d4365c6a0bde254bbcd4c700e3cbb1e, type: 3}
+  - {fileID: 8300000, guid: e531fc1b5ad76d84ab6770ba4904f0a5, type: 3}
+  - {fileID: 8300000, guid: ab3c95b9cd9c93d409c09c4a3fc2822d, type: 3}
+  - {fileID: 8300000, guid: 3b7f4a96b64ebba4c851eeef59d5a895, type: 3}
+  - {fileID: 8300000, guid: 5aa2b5295e943ce4f806cb033615f592, type: 3}
+  gameOverVoiceLines:
+  - {fileID: 8300000, guid: f0b67cc59087e1c47acbfa2ad89a2843, type: 3}
+  - {fileID: 8300000, guid: 3388e3dfbe3ff13489daac53f7513b56, type: 3}
+  - {fileID: 8300000, guid: 5cc1ae5be54c6bc47891e7f502798b39, type: 3}
   logoAlpha: 0
   logo: {fileID: 698304132582758257}
   generatorPower: {fileID: 0}
