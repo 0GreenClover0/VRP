@@ -1,3 +1,4 @@
+using System.Collections;
 using Oculus.Interaction;
 using UnityEngine;
 
@@ -11,6 +12,10 @@ public class Generator : MonoBehaviour
     private GeneratorPower generatorPower;
     private OneGrabRotateTransformer rotateTransformer;
 
+    private float powerGeneratorCooldown = 10.0f;
+    private bool remindedAboutGenerator = false;
+    private InteractableGroupView igv;
+    
     void Start()
     {
         leverTransform = transform;
@@ -18,6 +23,7 @@ public class Generator : MonoBehaviour
         previousZ = leverZ;
         generatorPower = GetComponent<GeneratorPower>();
         rotateTransformer = GetComponent<OneGrabRotateTransformer>();
+        igv = GetComponent<InteractableGroupView>();
     }
 
     void Update()
@@ -31,7 +37,21 @@ public class Generator : MonoBehaviour
     
         rotationDelta = leverZ - previousZ;
         generatorPower.rotationDelta = -rotationDelta;
+        
+        if (generatorPower.GetCurrentGeneratorPower() < 15.0f && generatorPower.GetCurrentGeneratorPower() > 0.0f
+            && !remindedAboutGenerator && igv.SelectingInteractorsCount <= 0)
+        {
+            GameManager.Instance.storyController.PlayEmergentVoiceline(Random.Range(6, 8));
+            remindedAboutGenerator = true;
+            StartCoroutine(ResetRemindedAboutGenerator());
+        }
     
         cached = !cached;
+    }
+    
+    IEnumerator ResetRemindedAboutGenerator()
+    {
+        yield return new WaitForSeconds(powerGeneratorCooldown);
+        remindedAboutGenerator = false;
     }
 }
