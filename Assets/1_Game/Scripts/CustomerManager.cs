@@ -48,6 +48,11 @@ public class CustomerManager : MonoBehaviour
 
     private void Update()
     {
+        if (LevelController.Instance.IsDuringScriptedSequence)
+        {
+            return;
+        }
+        
         customerSpawnTimer += Time.deltaTime;
 
         if (customerSpawnTimer > customerSpawnInterval && customersFood.Count + customersWood.Count < LevelController.Instance.MaxCustomersToLose + 1)
