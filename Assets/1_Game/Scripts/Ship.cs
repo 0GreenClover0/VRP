@@ -35,7 +35,7 @@ public enum BehavioralState
     CollectedByKeeper
 }
 
-public class Ship : MonoBehaviour
+public class Ship : Appearable
 {
     [Tooltip("active and activateOnFirstLight are both kinda exclusive, the second one CAN control the first one")]
     public bool active = true;
@@ -110,19 +110,31 @@ public class Ship : MonoBehaviour
     [SerializeField] private List<AudioClip> interactClips;
     private bool playedCrashSound;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         // SetStartDirection();
         scaleDownCounter = scaleDownTime;
         audioSource = GetComponent<AudioSource>();
         rangeFactor = ShipTypeToRangeFactor(type);
 
+        Appear();
+        
         if (activateOnFirstLight)
         {
             active = false;
         }
     }
 
+    void CheckDistanceFromShipSpawner()
+    {
+        AppearOrDisappearTick();
+        if (shipSpawner != null && Vector3.Distance(shipSpawner.transform.position, transform.position) > 25.0f)
+        {
+            Disappear();
+        }
+    }
+    
     private void Update()
     {
         if (shipSpawner != null)
@@ -130,6 +142,8 @@ public class Ship : MonoBehaviour
             playerRange = shipSpawner.shipRange;
         }
 
+        CheckDistanceFromShipSpawner();
+        
         if (IsOutOfRoom())
         {
             Destroy(gameObject);
