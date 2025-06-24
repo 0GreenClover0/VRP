@@ -57,6 +57,8 @@ public class Ship : Appearable
 
     public bool hasBeenDestroyed = false;
 
+    public GameObject particlePrefab;
+    
     public UnityAction<Ship> onDestroyed;
     public UnityAction<BehavioralState> onShipStateChanged;
 
@@ -113,7 +115,7 @@ public class Ship : Appearable
     protected override void Awake()
     {
         base.Awake();
-        // SetStartDirection();
+        
         scaleDownCounter = scaleDownTime;
         audioSource = GetComponent<AudioSource>();
         rangeFactor = ShipTypeToRangeFactor(type);
@@ -123,6 +125,10 @@ public class Ship : Appearable
         if (activateOnFirstLight)
         {
             active = false;
+        }
+        else
+        {
+            HandleSplash(behavioralState);
         }
     }
 
@@ -586,6 +592,7 @@ public class Ship : Appearable
 
     private bool ChangeState(BehavioralState newState)
     {
+        HandleSplash(newState);
         onShipStateChanged.Invoke(newState);
         behavioralState = newState;
         return true;
@@ -593,6 +600,18 @@ public class Ship : Appearable
 
     #endregion
 
+    void HandleSplash(BehavioralState newState)
+    {
+        if (newState == BehavioralState.Destroyed || newState == BehavioralState.Stop)
+        {
+            particlePrefab.SetActive(false);
+        }
+        else
+        {
+            particlePrefab.SetActive(true);
+        }
+    }
+    
     public void StopAtPort()
     {
         if (isInPort)
