@@ -98,29 +98,25 @@ Shader "Hidden/Dragon Water"
 
             #pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
             #pragma multi_compile _ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS
-            #pragma multi_compile _ EVALUATE_SH_MIXED EVALUATE_SH_VERTEX
-            #pragma multi_compile _ LIGHTMAP_SHADOW_MIXING
-            #pragma multi_compile _ SHADOWS_SHADOWMASK
-            #pragma multi_compile _ DIRLIGHTMAP_COMBINED
-            #pragma multi_compile _ LIGHTMAP_ON
+            
             #pragma multi_compile _ _FORWARD_PLUS
             #pragma multi_compile_fragment _ _ADDITIONAL_LIGHT_SHADOWS
             #pragma multi_compile_fragment _ _REFLECTION_PROBE_BLENDING
             #pragma multi_compile_fragment _ _REFLECTION_PROBE_BOX_PROJECTION
             #pragma multi_compile_fragment _ _SHADOWS_SOFT
             //#pragma multi_compile_local_fragment _ _SURFACE_TYPE_TRANSPARENT      
-            #pragma multi_compile_local _ _RECEIVE_SHADOWS_OFF
+            #pragma shader_feature_local_fragment _RECEIVE_SHADOWS_OFF
 
             #pragma multi_compile_local_fragment _ _ALPHATEST_ON
             #pragma multi_compile_local_fragment _ _SPECULARHIGHLIGHTS_OFF
             //#pragma multi_compile_local_fragment _ _ENVIRONMENTREFLECTIONS_OFF
 
-            #pragma multi_compile_local_fragment _ _USE_COLOR_NOISE_TEXTURE
+            #pragma shader_feature_local_fragment _USE_COLOR_NOISE_TEXTURE
             #pragma multi_compile_local_fragment _ _USE_NORMAL_MAP
-            #pragma multi_compile_local_fragment _FOAM_MODE_OFF _FOAM_MODE_ON _FOAM_MODE_ON_EXTRA
-            #pragma multi_compile_local_fragment _ _USE_REFRACTION
-            #pragma multi_compile_local_fragment _ _USE_RIPPLE
-            #pragma multi_compile_local_fragment _REFLECTIONS_SIMPLE _REFLECTIONS_NORMAL _REFLECTIONS_CUBEMAP
+            #pragma shader_feature_local_fragment _FOAM_MODE_OFF _FOAM_MODE_ON _FOAM_MODE_ON_EXTRA
+            #pragma shader_feature_local_fragment _USE_REFRACTION
+            #pragma shader_feature_local_fragment _USE_RIPPLE
+            #pragma shader_feature_local_fragment _REFLECTIONS_SIMPLE _REFLECTIONS_NORMAL _REFLECTIONS_CUBEMAP
 
             #pragma multi_compile_instancing
             #pragma multi_compile_fog
