@@ -78,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3669728572003431613, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: m_Name
-      value: FoodShipBig
+      value: FoodShipSmall
       objectReference: {fileID: 0}
     - target: {fileID: 3729787960367833038, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: centerOfMass.x
@@ -145,6 +145,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5014016823882143814, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: offset.x
+      value: -1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014016823882143814, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: offset.y
+      value: 11.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014016823882143814, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: offset.z
+      value: 2.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014016823882143814, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: lightOffset.x
       value: -1.8
       objectReference: {fileID: 0}
@@ -163,7 +175,7 @@ PrefabInstance:
     - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: statesToLightMaps._serializedList.Array.data[2].Value
       value: 
-      objectReference: {fileID: 2800000, guid: 5b1b91e9cc8c33748add399a7c2e532f, type: 3}
+      objectReference: {fileID: 2800000, guid: 2e5f735c7d6215042bbeeea4ba9d1ca9, type: 3}
     - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: statesToLightMaps._serializedList.Array.data[3].Value
       value: 
@@ -175,15 +187,15 @@ PrefabInstance:
     - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: statesToLightMaps._serializedList.Array.data[5].Value
       value: 
-      objectReference: {fileID: 2800000, guid: 5b1b91e9cc8c33748add399a7c2e532f, type: 3}
+      objectReference: {fileID: 2800000, guid: 2e5f735c7d6215042bbeeea4ba9d1ca9, type: 3}
     - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: statesToLightMaps._serializedList.Array.data[6].Value
       value: 
-      objectReference: {fileID: 2800000, guid: 5b1b91e9cc8c33748add399a7c2e532f, type: 3}
+      objectReference: {fileID: 2800000, guid: 2e5f735c7d6215042bbeeea4ba9d1ca9, type: 3}
     - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: statesToLightMaps._serializedList.Array.data[7].Value
       value: 
-      objectReference: {fileID: 2800000, guid: 5b1b91e9cc8c33748add399a7c2e532f, type: 3}
+      objectReference: {fileID: 2800000, guid: 2e5f735c7d6215042bbeeea4ba9d1ca9, type: 3}
     - target: {fileID: 5590121961051086716, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: statesToLightColors._serializedList.Array.data[0].Value.a
       value: 0.5019608

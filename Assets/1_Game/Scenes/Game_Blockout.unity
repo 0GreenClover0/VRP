@@ -15,15 +15,15 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
   m_Fog: 1
-  m_FogColor: {r: 0, g: 0, b: 0.019607844, a: 1}
+  m_FogColor: {r: 0, g: 0, b: 0.09803922, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.24697402, g: 0.25898898, b: 0.2830189, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 0.3
+  m_AmbientIntensity: 2.5
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 365f8ad5b09dd9c46bd73aa85310e4ec, type: 2}
@@ -267,14 +267,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07526695df90995428107ff97abf5ba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  geometryType: 2
+  geometryType: 1
   geometryRectangleConfig:
     width: 20
     height: 20
     subdivisions: 10
   geometryCircleConfig:
-    radius: 101.09
-    segments: 64
+    radius: 200
+    segments: 16
     rings: 12
   geometryInfiniteOceanPreset: Low
   geometryInfiniteOceanAttachTo: 0
@@ -285,7 +285,7 @@ MonoBehaviour:
   waterLightIntensity: 1
   waveProfile: {fileID: 11400000, guid: bd5feac5393a8d648b429f50a8e023af, type: 2}
   materialProfile: {fileID: 11400000, guid: 7999fbc2d06838642ac5cfda7269010a, type: 2}
-  underwaterProfile: {fileID: 11400000, guid: 9194267491f5f5649baed3911f0b88a1, type: 2}
+  underwaterProfile: {fileID: 0}
   synchronizeWorldOrigin: 0
   cutoutWaterVolume: 1
   cutoutReverse: 0
@@ -1687,13 +1687,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 304908713}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0007739516, y: -0.98900235, z: 0.14780739, w: 0.0051786313}
+  m_LocalRotation: {x: 0.0053776256, y: -0.98836106, z: 0.14771156, w: 0.03598253}
   m_LocalPosition: {x: 5.045088, y: 2.817545, z: 23.095974}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 17, y: -179.4, z: 0}
+  m_LocalEulerAnglesHint: {x: 17, y: -175.83, z: 0}
 --- !u!1001 &309283087
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3068,7 +3068,7 @@ Light:
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.3
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -5394,7 +5394,7 @@ Transform:
   m_GameObject: {fileID: 1190039927}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 0, z: 29.75}
+  m_LocalPosition: {x: 1.5, y: 0, z: 27.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -5970,7 +5970,7 @@ PrefabInstance:
       objectReference: {fileID: 500746926}
     - target: {fileID: 2414729513645854637, guid: bc06327f54eb0b644bbdde2d2f0f83ca, type: 3}
       propertyPath: scriptedSequence
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2414729513645854637, guid: bc06327f54eb0b644bbdde2d2f0f83ca, type: 3}
       propertyPath: spotlightPenguin
@@ -7064,13 +7064,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1468662549}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.008582159, y: -0.413245, z: 0.0038948462, w: 0.9105711}
-  m_LocalPosition: {x: 0.133, y: 5.037, z: -0.694}
+  m_LocalRotation: {x: 0.10891381, y: 0.029397562, z: -0.000041217074, w: 0.99361646}
+  m_LocalPosition: {x: 1.3, y: 5.37, z: 0.547}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 1.08, y: -48.82, z: 0}
+  m_LocalEulerAnglesHint: {x: 12.5, y: 3.43, z: 0.371}
 --- !u!1001 &1487489438
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10450,6 +10450,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -135.979
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6c557e1f9fe8fdb4eb215a344d7865d1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 589a2425730236846839f47f75e1a050, type: 2}
     - target: {fileID: 919132149155446097, guid: 6c557e1f9fe8fdb4eb215a344d7865d1, type: 3}
       propertyPath: m_Name
       value: house

@@ -13,30 +13,31 @@ MonoBehaviour:
   m_Name: GLMaterialProfile
   m_EditorClassIdentifier: 
   waterDepth: 5
-  shallowWaterColor: {r: 0, g: 0.68159175, b: 1, a: 0}
-  deepWaterColor: {r: 0, g: 0.44116876, b: 0.6981132, a: 0.8509804}
+  shallowWaterColor: {r: 0, g: 0.37336296, b: 0.5471698, a: 0}
+  deepWaterColor: {r: 0, g: 0.09926163, b: 0.20754719, a: 0.8509804}
   mousePos: {x: 0.046573736, y: 6.206, z: 1.1653969, w: 0}
-  mouseRadius: 5
+  mouseRadius: 7.5
+  mouseIntensity: 1
   smoothness: 0.7
   specular: {r: 0.13149695, g: 0.13650319, b: 0.14150941, a: 1}
   specularHighlights: 1
-  colorNoiseHillnessOffset: -0.8
-  colorNoiseHillnessLighten: -1
+  colorNoiseHillnessOffset: -0.09
+  colorNoiseHillnessLighten: -7
   colorNoiseHillnessDarken: 0
-  useColorNoiseTexture: 0
+  useColorNoiseTexture: 1
   colorNoiseTexture1:
-    texture: {fileID: 2800000, guid: b61a8fc6859ecc04db5b625e02412aca, type: 3}
-    size: 256
-    speed: 0
-    strength: 1.07
+    texture: {fileID: 2800000, guid: a17b971337f35a5468f958ccdb089945, type: 3}
+    size: 10
+    speed: 0.55
+    strength: 0.63
   colorNoiseTexture2:
     texture: {fileID: 2800000, guid: df770d0a19fff24458eb1ea831765047, type: 3}
-    size: 256
-    speed: 0.05
-    strength: 1.16
-  colorNoiseColor: {r: 0, g: 0.5129205, b: 0.5754717, a: 1}
-  colorNoiseIntensity: 2
-  colorNoiseEmission: 0
+    size: 10
+    speed: 5
+    strength: 2
+  colorNoiseColor: {r: 0, g: 0.24998058, b: 0.4433962, a: 1}
+  colorNoiseIntensity: 0.15
+  colorNoiseEmission: 1
   sssGlobalIntensity: 0.05
   sssNormalInfluence: 0.5
   sssPower: 0.4
@@ -45,32 +46,32 @@ MonoBehaviour:
   normalGlobalStrength: 1
   useNormalMap: 1
   normalMap1:
-    texture: {fileID: 2800000, guid: d3f4a6382a589374a800e294eb1bc30f, type: 3}
-    size: 15
-    speed: 0.2
-    strength: 0.1
+    texture: {fileID: 2800000, guid: 6c7cc9f15e55914468bdaa70aa3f1bd2, type: 3}
+    size: 30
+    speed: 0.25
+    strength: 0.32
   normalMap2:
-    texture: {fileID: 2800000, guid: 850c0a9b0e75e5b49acd86690bfc3737, type: 3}
-    size: 10
-    speed: 0.4
-    strength: 0.3
-  useFoam: 0
-  foamGlobalIntensity: 0.39
+    texture: {fileID: 2800000, guid: 5b4da6b8803d0f54f8f0e5feddaf81cd, type: 3}
+    size: 30
+    speed: 0.1
+    strength: 0.2
+  useFoam: 1
+  foamGlobalIntensity: 1
   foamEmissionRate: 1
-  foamColor: {r: 0, g: 0.7607844, b: 0.7607844, a: 1}
-  foamNoiseTexture: {fileID: 2800000, guid: b61a8fc6859ecc04db5b625e02412aca, type: 3}
-  foamNoiseSize: 65.74
+  foamColor: {r: 0, g: 0.16132079, b: 0.254717, a: 1}
+  foamNoiseTexture: {fileID: 2800000, guid: df770d0a19fff24458eb1ea831765047, type: 3}
+  foamNoiseSize: 10
   foamSmoothnessFactor: 1.17
   foamSpecularFactor: 0.59
   foamNormalAttenuation: 2
   foamNormalAttenuationBias: 1
   foamEdge:
-    intensity: 0.48
-    maxDepth: 35.04
-    power: 15.72
+    intensity: 2.32
+    maxDepth: 99.94
+    power: 10
   foamHillness:
-    intensity: 1.43
-    hillnessThreshold: 0.04
+    intensity: 0
+    hillnessThreshold: 2
     hillnessMultiplier: 13.8
   foamExtraLayers: 0
   foamHillnessExtraLayer1:
