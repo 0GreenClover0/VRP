@@ -120,8 +120,10 @@ MonoBehaviour:
   eyes: {fileID: 3509624160262141923}
   floater: {fileID: 0}
   rendererReference: {fileID: 341698538822709941}
+  crashParticle: {fileID: 417761080263594737, guid: b430fd3e97f049c458cbce850577dd3f, type: 3}
   collisionCollider: {fileID: 8002682981946728663}
   hasBeenDestroyed: 0
+  particlePrefab: {fileID: 0}
   scaleDownSpeed: 0.01
   destroyClips:
   - {fileID: 8300000, guid: 3f09e7fc94673f541ae3b909c3d3d5bd, type: 3}
@@ -192,42 +194,6 @@ MonoBehaviour:
       Value: {r: 0, g: 0, b: 0, a: 0}
     - Key: 7
       Value: {r: 0, g: 0, b: 0, a: 0}
-  statesToMeshColors:
-    _serializedList:
-    - Key: 0
-      Value: {r: 1, g: 1, b: 1, a: 1}
-    - Key: 1
-      Value: {r: 1, g: 1, b: 1, a: 1}
-    - Key: 2
-      Value: {r: 0.09803922, g: 0.09803922, b: 0.09803922, a: 1}
-    - Key: 3
-      Value: {r: 1, g: 1, b: 1, a: 1}
-    - Key: 4
-      Value: {r: 1, g: 1, b: 1, a: 1}
-    - Key: 5
-      Value: {r: 0.09803922, g: 0.09803922, b: 0.09803922, a: 1}
-    - Key: 6
-      Value: {r: 0.09803922, g: 0.09803922, b: 0.09803922, a: 1}
-    - Key: 7
-      Value: {r: 0.09803922, g: 0.09803922, b: 0.09803922, a: 1}
-  statesToIntensities:
-    _serializedList:
-    - Key: 0
-      Value: 4
-    - Key: 1
-      Value: 4
-    - Key: 2
-      Value: 1
-    - Key: 3
-      Value: 4
-    - Key: 4
-      Value: 4
-    - Key: 5
-      Value: 1
-    - Key: 6
-      Value: 1
-    - Key: 7
-      Value: 1
   shipRenderer: {fileID: 341698538822709941}
   lightRenderer: {fileID: 346100277302962287}
 --- !u!82 &8185795114473860105

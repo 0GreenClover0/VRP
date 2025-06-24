@@ -52,6 +52,7 @@ public class Ship : Appearable
     public ShipEyes eyes;
     public GameObject floater;
     public MeshRenderer rendererReference;
+    public GameObject crashParticle;
     
     public Collider collisionCollider;
 
@@ -696,7 +697,10 @@ public class Ship : Appearable
         f.CenterOfMass = centerOfMass;
 
         if (!playedCrashSound)
+        {
             PlayCrashSound();
+            Instantiate(crashParticle, transform.position, Quaternion.identity);
+        }
     }
 
     public void PlayCrashSound()
