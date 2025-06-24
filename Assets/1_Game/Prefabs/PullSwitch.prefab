@@ -800,7 +800,7 @@ MonoBehaviour:
   flashSound: {fileID: 8300000, guid: 547f5dc34bd03f34ea66cd1a4c894938, type: 3}
   lightbulbSocket: {fileID: 7742381971604797533}
   normalFogColor: {r: 0, g: 0, b: 0.09803922, a: 1}
-  normalAmbientIntensity: 2.5
+  normalAmbientIntensity: 2
   normalSkyExposure: 1
   normalReflectionIntensity: 0.275
   flashFogColor: {r: 0.7, g: 0.7, b: 1, a: 1}
