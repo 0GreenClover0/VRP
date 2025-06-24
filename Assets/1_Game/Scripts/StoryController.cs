@@ -62,6 +62,7 @@ public class StoryController : MonoBehaviour
     [Space]
     [Header("Progression-related variables")]
     public MeshRenderer logo;
+    public MeshRenderer controllerPrompt;
     public GeneratorPower generatorPower;
     public float easyPowerMultiplier = 4;
     public float normalPowerMultiplier = 2;
@@ -241,7 +242,7 @@ public class StoryController : MonoBehaviour
                 break;
         }
     }
-
+    
     private void UpdateBlinkingMaterials()
     {
         generator.on = generatorBlinking;
@@ -358,6 +359,7 @@ public class StoryController : MonoBehaviour
     {
         SetNormalGenerator();
         PlayVoiceLine(4);
+        StartCoroutine(EmergencyControllerPromptShow());
         scriptedSequence = false;
         LevelController.Instance.IsDuringScriptedSequence = false;
     }
@@ -589,5 +591,11 @@ public class StoryController : MonoBehaviour
     {
         blinkBrightness /= 10.0f;
         miscBlinking = false;
+    }
+
+    IEnumerator EmergencyControllerPromptShow()
+    {
+        yield return new WaitForSeconds(30); // !
+        GameManager.Instance.ScheduleShowingControllerPrompt();
     }
 }
