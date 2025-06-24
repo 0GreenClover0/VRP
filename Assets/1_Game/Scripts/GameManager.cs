@@ -18,12 +18,15 @@ public class GameManager : MonoBehaviour
 
     public AudioClip windSound;
 
+    private bool showedControllerPrompt = false;
     private AudioSource audioSource;
+    private AdditionalGrabbableLogic additionalGrabbableLogic;
     [HideInInspector] public bool firstFlashUsed = false;
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        additionalGrabbableLogic = storyController.spotlightFilteredTransformer.gameObject.GetComponent<AdditionalGrabbableLogic>();
 
         PlayWindSound();
 
@@ -37,6 +40,11 @@ public class GameManager : MonoBehaviour
             Destroy(Instance.gameObject);
             Instance = this;
         }
+    }
+
+    private void Update()
+    {
+        DimSpotlightTick();
     }
 
     private void PlayWindSound()
@@ -64,6 +72,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ScheduleShowingControllerPrompt()
+    {
+        if (!showedControllerPrompt && !LevelController.Instance.IsDuringScriptedSequence && !LevelController.Instance.GameFinished)
+        {
+            if (additionalGrabbableLogic.holdingHand != GrabbingHand.Both ||
+                additionalGrabbableLogic.spotlightController.generatorPowerScript.GetCurrentGeneratorPower() < 30)
+            {
+                storyController.spotlightFilteredTransformer.onGrab += OnGrab;
+                return;
+            }
+            StartCoroutine(ShowDimSpotlightHint(30)); // !   
+        }
+    }
+
+    private void OnGrab()
+    {
+        StartCoroutine(ShowDimSpotlightHint(1));
+    }
+
     IEnumerator RopeReminder()
     {
         yield return new WaitForSeconds(2);
@@ -81,5 +108,28 @@ public class GameManager : MonoBehaviour
             storyController.blinkBrightness *= 5.0f;
             storyController.flashBlinking = false;
         }
+    }
+
+    void DimSpotlightTick()
+    {
+        if (LevelController.Instance.IsDuringScriptedSequence || LevelController.Instance.GameFinished)
+        {
+            return;
+        }
+        
+        Color color = Color.white;
+        color.a = storyController.logoAlpha;
+        storyController.controllerPrompt.material.SetColor("_BaseColor", color);
+    }
+    
+    IEnumerator ShowDimSpotlightHint(int time)
+    {
+        yield return new WaitForSeconds(time);
+        if (!showedControllerPrompt)
+        {
+            Animator animator = storyController.GetComponent<Animator>();
+            animator.SetTrigger("AnimatePromptController");
+        }
+        showedControllerPrompt = true;
     }
 }
