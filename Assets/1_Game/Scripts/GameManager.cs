@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         
         storyController.PlayEmergentVoiceline(1);
-        storyController.blinkBrightness /= 5.0f;
+        storyController.blinkBrightness = 5.5f;
         storyController.flashBlinking = true;
         
         yield return new WaitForSeconds(15);
@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
         {
             storyController.PlayEmergentVoiceline(8);
             yield return new WaitForSeconds(30);
-            storyController.blinkBrightness *= 5.0f;
+            storyController.blinkBrightness = 8.0f;
             storyController.flashBlinking = false;
         }
     }
