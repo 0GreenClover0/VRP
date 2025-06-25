@@ -84,9 +84,9 @@ MonoBehaviour:
   controllerPrompt: {fileID: 38780728716517850}
   generatorPower: {fileID: 0}
   easyPowerMultiplier: 6
-  normalPowerMultiplier: 3
+  normalPowerMultiplier: 4
   easyPowerDecrease: 0.2
-  normalPowerDecrease: 0.5
+  normalPowerDecrease: 0.4
   spotlightPenguin: {fileID: 0}
   spotlightFilteredTransformer: {fileID: 0}
   pullSwitchAnimator: {fileID: 0}
