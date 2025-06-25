@@ -24,6 +24,10 @@ public class FilteredTransformer : MonoBehaviour, ITransformer
 
     [Range(-3.0f, 3.0f)]
     public float dotProductMultiplier = -1.0f;
+
+    [Space]
+    public float yawClampA = -70f;
+    public float yawClampB = 70f;
     
     public UnityAction onGrab;
     
@@ -112,7 +116,7 @@ public class FilteredTransformer : MonoBehaviour, ITransformer
         
         Vector3 targetForward = _underlyingTargetTransform.forward;
         
-        Debug.Log("Y: "+ y + ", dot: " + dotValue);
+        // Debug.Log("Y: "+ y + ", dot: " + dotValue);
 
         // New front point for calculating yaw
         Vector3 v = rightController.position - leftController.position;
@@ -130,11 +134,23 @@ public class FilteredTransformer : MonoBehaviour, ITransformer
         targetForward.Normalize();
         Quaternion targetYawRotation = Quaternion.LookRotation(targetForward, Vector3.up);
         
+        // Step 1: Interpolate rotation
         _targetTransform.rotation = Quaternion.Slerp(
             _targetTransform.rotation,
             targetYawRotation,
             _filterStrength
         );
+
+        // Extract Euler and normalize Y to [-180, 180]
+        Vector3 eulerRotation = _targetTransform.rotation.eulerAngles;
+        float yaw = eulerRotation.y;
+        if (yaw > 180f) yaw -= 360f;
+
+        yaw = Mathf.Clamp(yaw, yawClampA, yawClampB);
+
+        // Reconstruct the quaternion but clamped
+        eulerRotation.y = yaw;
+        _targetTransform.rotation = Quaternion.Euler(eulerRotation);
 
     }
 }
