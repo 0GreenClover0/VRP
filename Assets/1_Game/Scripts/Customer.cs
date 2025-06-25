@@ -224,6 +224,11 @@ public class Customer : Appearable
 
     public void SpawnEmoji(EmojiType type)
     {
+        if (emojiObject != null)
+        {
+            emoji.Disappear();
+        }
+
         emojiObject = Instantiate(emojiPrefab, transform.position, Quaternion.identity);
 
         emoji = emojiObject.GetComponent<Emoji>();
