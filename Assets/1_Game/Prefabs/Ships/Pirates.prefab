@@ -365,10 +365,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pirates
       objectReference: {fileID: 0}
-    - target: {fileID: 3729787960367833038, guid: 7c6855901bc063643865e19432add1c0, type: 3}
-      propertyPath: buoyancyForce
-      value: 6000
-      objectReference: {fileID: 0}
     - target: {fileID: 3954938001171830968, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: m_LocalScale.x
       value: 130
@@ -387,7 +383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3954938001171830968, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.2
+      value: 3.85
       objectReference: {fileID: 0}
     - target: {fileID: 3954938001171830968, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: m_LocalPosition.z

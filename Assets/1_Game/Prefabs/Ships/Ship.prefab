@@ -254,9 +254,9 @@ MonoBehaviour:
   contactPoints:
   - {x: -0.010047913, y: -0.004655521, z: 0.027885437}
   centerOfMass: {x: -0.009475708, y: -1.0051316, z: 0.028152466}
-  buoyancyForce: 5000
+  buoyancyForce: 4000
   ignoreMass: 0
-  normalAlignemnt: 0.425
+  normalAlignemnt: 0.35
   instability: 0.2
   submergeDrag: 1
   submergeAngularDrag: 1
