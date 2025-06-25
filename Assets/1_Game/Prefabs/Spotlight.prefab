@@ -316,6 +316,14 @@ MonoBehaviour:
   _filterStrength: 0.02
   _dotProductOrigin: {fileID: 9188510277062497594}
   dotProductMultiplier: -1
+  constraintA: 0
+  constraintB: 118
+  offset: -0.05
+  dot01min: 0.385
+  dot01max: 1
+  clampAOffset: 0
+  clampBOffset: 0
+  earlierOffset: 0
 --- !u!54 &857083351720157755
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -323,10 +331,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3503209695013075824}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
