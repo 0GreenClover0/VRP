@@ -26,7 +26,11 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        additionalGrabbableLogic = storyController.spotlightFilteredTransformer.gameObject.GetComponent<AdditionalGrabbableLogic>();
+
+        if (storyController != null)
+        {
+            additionalGrabbableLogic = storyController.spotlightFilteredTransformer.gameObject.GetComponent<AdditionalGrabbableLogic>();
+        }
 
         PlayWindSound();
 

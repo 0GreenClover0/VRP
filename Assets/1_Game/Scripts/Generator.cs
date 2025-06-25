@@ -42,7 +42,11 @@ public class Generator : MonoBehaviour
         if (generatorPower.GetCurrentGeneratorPower() < 15.0f && generatorPower.GetCurrentGeneratorPower() > 0.0f
             && !remindedAboutGenerator && igv.SelectingInteractorsCount <= 0)
         {
-            GameManager.Instance.storyController.PlayEmergentVoiceline(Random.Range(6, 8));
+            if (GameManager.Instance.storyController != null)
+            {
+                GameManager.Instance.storyController.PlayEmergentVoiceline(Random.Range(6, 8));
+            }
+
             remindedAboutGenerator = true;
             StartCoroutine(ResetRemindedAboutGenerator());
         }
