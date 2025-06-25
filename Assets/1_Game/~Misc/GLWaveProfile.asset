@@ -37,7 +37,7 @@ MonoBehaviour:
   autoWaveSpeedGravity: 9.81
   autoWaveHeight: 0
   autoWaveHeightRatio: 0.143
-  textureSize: 1024
+  textureSize: 256
   projectionSize: 1024
   hillnessOffsetFactor: 0.144
   hillnessNormalPower: 2.45
