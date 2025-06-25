@@ -197,6 +197,7 @@ public class CustomerManager : MonoBehaviour
                 }
         }
 
+        initialRotation *= Quaternion.Euler(0.0f, Random.Range(-30.0f, 30.0f), 0.0f);
         initialPosition.y += 0.1f;
 
         Vector3 position = Vector3.zero;
