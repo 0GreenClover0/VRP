@@ -96,6 +96,10 @@ PrefabInstance:
       propertyPath: contactPoints.Array.data[0].z
       value: 0.027879633
       objectReference: {fileID: 0}
+    - target: {fileID: 3954938001171830968, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4534523379401657421, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: m_Size.x
       value: 0.16345178

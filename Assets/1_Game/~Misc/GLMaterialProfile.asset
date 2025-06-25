@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fd8ac118ad5a734194e5da87b7a75ef, type: 3}
   m_Name: GLMaterialProfile
   m_EditorClassIdentifier: 
-  waterDepth: 5
+  waterDepth: 2
   shallowWaterColor: {r: 0, g: 0.37336296, b: 0.5471698, a: 0}
   deepWaterColor: {r: 0, g: 0.09926163, b: 0.20754719, a: 0.8509804}
   mousePos: {x: 0.046573736, y: 6.206, z: 1.1653969, w: 0}
@@ -27,16 +27,16 @@ MonoBehaviour:
   useColorNoiseTexture: 1
   colorNoiseTexture1:
     texture: {fileID: 2800000, guid: a17b971337f35a5468f958ccdb089945, type: 3}
-    size: 10
+    size: 40
     speed: 0.55
-    strength: 0.63
+    strength: 0.743
   colorNoiseTexture2:
     texture: {fileID: 2800000, guid: df770d0a19fff24458eb1ea831765047, type: 3}
-    size: 10
+    size: 40
     speed: 5
     strength: 2
   colorNoiseColor: {r: 0, g: 0.24998058, b: 0.4433962, a: 1}
-  colorNoiseIntensity: 0.15
+  colorNoiseIntensity: 0.444
   colorNoiseEmission: 1
   sssGlobalIntensity: 0.05
   sssNormalInfluence: 0.5
@@ -66,9 +66,9 @@ MonoBehaviour:
   foamNormalAttenuation: 2
   foamNormalAttenuationBias: 1
   foamEdge:
-    intensity: 2.32
-    maxDepth: 99.94
-    power: 10
+    intensity: 2
+    maxDepth: 20
+    power: 3
   foamHillness:
     intensity: 0
     hillnessThreshold: 2
