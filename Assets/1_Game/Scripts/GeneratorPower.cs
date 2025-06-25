@@ -42,7 +42,7 @@ public class GeneratorPower : MonoBehaviour
     [HideInInspector] public bool spotlightTurnedDown = false;
     
     // 0-100
-    private float currentGeneratorPower;
+    [HideInInspector] public float currentGeneratorPower;
     private float currentTime = 0.0f;
     private float barValue = 0.0f;
     private float t = 0.0f;
