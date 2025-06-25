@@ -115,7 +115,7 @@ Shader "Hidden/Dragon Water"
             #pragma multi_compile_local_fragment _ _USE_NORMAL_MAP
             #pragma shader_feature_local_fragment _FOAM_MODE_OFF _FOAM_MODE_ON _FOAM_MODE_ON_EXTRA
             #pragma shader_feature_local_fragment _USE_REFRACTION
-            #pragma shader_feature_local_fragment _USE_RIPPLE
+            #pragma multi_compile_local_fragment _USE_RIPPLE
             #pragma shader_feature_local_fragment _REFLECTIONS_SIMPLE _REFLECTIONS_NORMAL _REFLECTIONS_CUBEMAP
 
             #pragma multi_compile_instancing
