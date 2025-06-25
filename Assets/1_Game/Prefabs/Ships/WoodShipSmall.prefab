@@ -105,6 +105,10 @@ PrefabInstance:
       value: WoodShipSmall
       objectReference: {fileID: 0}
     - target: {fileID: 3729787960367833038, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: buoyancyForce
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3729787960367833038, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: centerOfMass.x
       value: -0.009294128
       objectReference: {fileID: 0}
@@ -150,27 +154,27 @@ PrefabInstance:
       objectReference: {fileID: 2212009239438826721, guid: 2e3c5bfb65777c74f85b83ebf22818d8, type: 3}
     - target: {fileID: 4534523379401657421, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: m_Size.x
-      value: 0.24317735
+      value: 0.23226063
       objectReference: {fileID: 0}
     - target: {fileID: 4534523379401657421, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: m_Size.y
-      value: 0.075418994
+      value: 0.07217548
       objectReference: {fileID: 0}
     - target: {fileID: 4534523379401657421, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: m_Size.z
-      value: 0.10637751
+      value: 0.07665814
       objectReference: {fileID: 0}
     - target: {fileID: 4534523379401657421, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: m_Center.x
-      value: 0.0013327488
+      value: -0.00007312194
       objectReference: {fileID: 0}
     - target: {fileID: 4534523379401657421, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: m_Center.y
-      value: 0
+      value: 1.8328796e-13
       objectReference: {fileID: 0}
     - target: {fileID: 4534523379401657421, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: m_Center.z
-      value: 0.04318876
+      value: 0.02805699
       objectReference: {fileID: 0}
     - target: {fileID: 4545535784333817714, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -577,12 +581,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8762603376888253822, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.027446087
+      objectReference: {fileID: 0}
+    - target: {fileID: 8762603376888253822, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0607
+      value: -0.1165
+      objectReference: {fileID: 0}
+    - target: {fileID: 8762603376888253822, guid: 7c6855901bc063643865e19432add1c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8762603376888253822, guid: 7c6855901bc063643865e19432add1c0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.008
+      value: -0.151
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1975711664604200627, guid: 7c6855901bc063643865e19432add1c0, type: 3}
