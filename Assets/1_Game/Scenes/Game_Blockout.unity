@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0, g: 0, b: 0.09803922, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.0175
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.24697402, g: 0.25898898, b: 0.2830189, a: 1}
@@ -273,9 +273,9 @@ MonoBehaviour:
     height: 20
     subdivisions: 10
   geometryCircleConfig:
-    radius: 200
-    segments: 16
-    rings: 12
+    radius: 100
+    segments: 8
+    rings: 2
   geometryInfiniteOceanPreset: Low
   geometryInfiniteOceanAttachTo: 0
   geometryInfiniteOceanAttachCustomTarget: {fileID: 0}
@@ -7297,7 +7297,7 @@ Transform:
   m_GameObject: {fileID: 1190039927}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.75, y: 0, z: 29}
+  m_LocalPosition: {x: -12.25, y: 0, z: 22.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -9412,7 +9412,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1468662550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9498,7 +9498,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 69.8
+  field of view: 55.5
   orthographic: 0
   orthographic size: 5
   m_Depth: 0.43
@@ -9525,7 +9525,7 @@ Transform:
   m_GameObject: {fileID: 1468662549}
   serializedVersion: 2
   m_LocalRotation: {x: 0.012517277, y: 0.12000123, z: -0.0017473021, w: -0.9926933}
-  m_LocalPosition: {x: -0.19, y: 5, z: 0.67}
+  m_LocalPosition: {x: 10.87, y: 5, z: 0.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -14,28 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterDepth: 2
   shallowWaterColor: {r: 0, g: 0.37336296, b: 0.5471698, a: 0}
-  deepWaterColor: {r: 0, g: 0.09926163, b: 0.20754719, a: 0.8509804}
+  deepWaterColor: {r: 0, g: 0.03483312, b: 0.0754717, a: 0.8509804}
   mousePos: {x: 0.046573736, y: 6.206, z: 1.1653969, w: 0}
   mouseRadius: 7.5
   mouseIntensity: 1
   smoothness: 0.7
   specular: {r: 0.13149695, g: 0.13650319, b: 0.14150941, a: 1}
   specularHighlights: 1
-  colorNoiseHillnessOffset: -0.09
-  colorNoiseHillnessLighten: -7
+  colorNoiseHillnessOffset: -1
+  colorNoiseHillnessLighten: 13.7
   colorNoiseHillnessDarken: 0
   useColorNoiseTexture: 1
   colorNoiseTexture1:
-    texture: {fileID: 2800000, guid: a17b971337f35a5468f958ccdb089945, type: 3}
-    size: 40
-    speed: 0.55
-    strength: 0.743
-  colorNoiseTexture2:
-    texture: {fileID: 2800000, guid: df770d0a19fff24458eb1ea831765047, type: 3}
-    size: 40
-    speed: 5
+    texture: {fileID: 2800000, guid: b61a8fc6859ecc04db5b625e02412aca, type: 3}
+    size: 12.5
+    speed: 0.1
     strength: 2
-  colorNoiseColor: {r: 0, g: 0.24998058, b: 0.4433962, a: 1}
+  colorNoiseTexture2:
+    texture: {fileID: 2800000, guid: 835e5130059bbd346b3ccb56d3994d5c, type: 3}
+    size: 40
+    speed: 0.1
+    strength: 2
+  colorNoiseColor: {r: 0, g: 0.041863207, b: 0.0754717, a: 1}
   colorNoiseIntensity: 0.444
   colorNoiseEmission: 1
   sssGlobalIntensity: 0.05
@@ -49,12 +49,12 @@ MonoBehaviour:
     texture: {fileID: 2800000, guid: 6c7cc9f15e55914468bdaa70aa3f1bd2, type: 3}
     size: 30
     speed: 0.25
-    strength: 0.3
+    strength: 0.25
   normalMap2:
     texture: {fileID: 2800000, guid: 5b4da6b8803d0f54f8f0e5feddaf81cd, type: 3}
     size: 30
     speed: 0.1
-    strength: 0.5
+    strength: 0.25
   useFoam: 1
   foamGlobalIntensity: 1
   foamEmissionRate: 1
@@ -88,7 +88,7 @@ MonoBehaviour:
     intensity: 1
     hillnessThreshold: 0.5
     hillnessMultiplier: 1.5
-  transparencyType: 2
+  transparencyType: 0
   refractionStrength: 1
   refractionDistanceFactor: 1
   reflectionsMode: 2
