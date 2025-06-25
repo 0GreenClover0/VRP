@@ -10,7 +10,7 @@ public class FilteredTransformer : MonoBehaviour, ITransformer
 {
     [SerializeField]
     private GrabFreeTransformer _underlyingTransformer;
-
+    
     [SerializeField]
     private Transform _targetTransform;
 
@@ -34,8 +34,14 @@ public class FilteredTransformer : MonoBehaviour, ITransformer
     private AdditionalGrabbableLogic additionalGrabbableLogic;
     
     // This is HARDCODED, because this Meta SDK is SO RETARTED that I can't even GET those values from the component...
-    private float constraintA = 0.0f;
-    private float constraintB = 75.0f;
+    public float constraintA = 0.0f;
+    public float constraintB = 75.0f;
+    public float offset = -0.6f;
+    public float dot01min = 0.385f;
+    public float dot01max = 1.0f;
+    public float clampAOffset = 0.0f;
+    public float clampBOffset = 0.0f;
+    public float earlierOffset = 0.0f;
     
     public void BeginTransform()
     {
@@ -97,12 +103,12 @@ public class FilteredTransformer : MonoBehaviour, ITransformer
         // HARDCODED
         float limitA = constraintA;
         float limitB = -Mathf.Sin(Mathf.Deg2Rad * constraintB);
-        float dotValue = Vector3.Dot(dirVector, transform.forward);
-        float dot01 = AK.MapRangeClamped(dotValue, -1.0f, 1.0f, 0.385f, 1.0f);
+        float dotValue = Vector3.Dot(dirVector, transform.forward) + earlierOffset;
+        float dot01 = AK.MapRangeClamped(dotValue, -1.0f, 1.0f, dot01min, dot01max);
         float dotSign = dotValue > 0 ? 1.0f : -1.0f;
         float y = (limitB + limitA) / 2.0f + dotProductMultiplier * Mathf.Abs(dotValue) * dot01 * dotSign;
         // Min = B, because limitB is negative
-        y = Mathf.Clamp(y, limitB, limitA);
+        y = Mathf.Clamp(y + offset, limitB + clampBOffset, limitA + clampAOffset);
         
         Vector3 targetForward = _underlyingTargetTransform.forward;
         
