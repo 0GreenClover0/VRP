@@ -35,8 +35,9 @@ public class Generator : MonoBehaviour
             previousZ = leverZ;
         }
     
-        rotationDelta = leverZ - previousZ;
-        generatorPower.rotationDelta = -rotationDelta;
+        rotationDelta = -(leverZ - previousZ);
+        rotationDelta = Mathf.Clamp(rotationDelta, 0.0f, rotationDelta);
+        generatorPower.rotationDelta = rotationDelta;
         
         if (generatorPower.GetCurrentGeneratorPower() < 15.0f && generatorPower.GetCurrentGeneratorPower() > 0.0f
             && !remindedAboutGenerator && igv.SelectingInteractorsCount <= 0)
