@@ -683,7 +683,7 @@ public class ShipSpawner : MonoBehaviour
 
     private bool IsTimeForLastChance()
     {
-        if (LevelController.Instance.Time > lastChanceTimeThreshold)
+        if (LevelController.Instance.TimeDeprecated > lastChanceTimeThreshold)
         {
             return false;
         }

@@ -44,6 +44,102 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 324164a0f9e5b7a4bbd2f0dd1a9bc79e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shipsLimitCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 3
+      inSlope: 0.033333335
+      outSlope: 0.033333335
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 30
+      value: 4
+      inSlope: 0.033333335
+      outSlope: 0.0125
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 110
+      value: 5
+      inSlope: 0.0125
+      outSlope: 0.011111111
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.1749094
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 200
+      value: 6
+      inSlope: 0.011111111
+      outSlope: 0.005
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 400
+      value: 7
+      inSlope: 0.005
+      outSlope: 0
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  shipsSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 60
+      value: 0.5
+      inSlope: -0
+      outSlope: 0.0024999997
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 120
+      value: 0.65
+      inSlope: 0.0024999997
+      outSlope: 0.0025000002
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 240
+      value: 0.95
+      inSlope: 0.0025000002
+      outSlope: 0.0025000002
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   ShipsLimit: 5
   ShipsSpeed: 0.5
+  MaxCustomersToLose: 15
+  slightlyAngryStartTreshold: 6
   IsDuringScriptedSequence: 1
+  GameFinished: 0
