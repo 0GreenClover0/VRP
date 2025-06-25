@@ -14,10 +14,9 @@ public enum GrabbingHand
 
 public class AdditionalGrabbableLogic : MonoBehaviour
 {
-    private const OVRInput.RawButton spotlightLeftButton = OVRInput.RawButton.X | OVRInput.RawButton.Y;
-    private const OVRInput.RawButton spotlightRightButton = OVRInput.RawButton.A | OVRInput.RawButton.B;
-    private const OVRInput.RawButton spotlightAnyButton = OVRInput.RawButton.A | OVRInput.RawButton.B |
-                                                          OVRInput.RawButton.X | OVRInput.RawButton.Y;
+    private const OVRInput.RawButton spotlightLeftButton = OVRInput.RawButton.LIndexTrigger;
+    private const OVRInput.RawButton spotlightRightButton = OVRInput.RawButton.RIndexTrigger;
+    private const OVRInput.RawButton spotlightAnyButton = OVRInput.RawButton.LIndexTrigger | OVRInput.RawButton.RIndexTrigger;
     
     // Components
     private FilteredTransformer filteredTransformer;
