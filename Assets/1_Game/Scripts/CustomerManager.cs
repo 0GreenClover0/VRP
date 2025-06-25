@@ -12,7 +12,7 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] private Transform customerFoodSpawnLocation;
     [SerializeField] private Transform customerWoodSpawnLocation;
 
-    [SerializeField] private float customerSpawnInterval = 5.0f;
+    [SerializeField] private AnimationCurve customerSpawnIntervalCurve;
 
     [SerializeField] private float spawnRadius = 1.2f;
 
@@ -25,6 +25,7 @@ public class CustomerManager : MonoBehaviour
     private float customerSpawnTimer = 0.0f;
     private float angryJumperTickTimer = 0.0f;
     private DeliveryType lastTypeSpawned = DeliveryType.Wood;
+    private float timeStarted = 0.0f;
 
     private const float angryJumperTickInterval = 1.2f;
 
@@ -60,8 +61,15 @@ public class CustomerManager : MonoBehaviour
         {
             return;
         }
+
+        if (timeStarted <= 0.0f)
+        {
+            timeStarted = Time.time;
+        }
         
         customerSpawnTimer += Time.deltaTime;
+
+        float customerSpawnInterval = customerSpawnIntervalCurve.Evaluate(Time.time - timeStarted);
 
         if (customerSpawnTimer > customerSpawnInterval && customersFood.Count + customersWood.Count < LevelController.Instance.MaxCustomersToLose + 1)
         {
