@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3774c5b2d6be6aa4dab26d36b5cce328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buoyMesh: {fileID: 8145541670332562879}
-  lightOffset: {x: 0, y: 0.55, z: 0}
+  transformToOffsetFrom: {fileID: 8145541670332562879}
+  offset: {x: 0, y: 0.55, z: 0}
 --- !u!1 &1050936989307283185
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,10 +142,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050936989307283185}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 500
-  m_Drag: 1
-  m_AngularDrag: 40
+  m_LinearDamping: 1
+  m_AngularDamping: 40
   m_CenterOfMass: {x: 0.0019960525, y: -1.0001788, z: 0.0005397862}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -187,7 +187,7 @@ MonoBehaviour:
   contactPoints:
   - {x: 0.00007811055, y: -0.9700664, z: 0.0037982797}
   centerOfMass: {x: -0.009234053, y: -1.5000012, z: 0.032033995}
-  buoyancyForce: 3000
+  buoyancyForce: 4000
   ignoreMass: 0
   normalAlignemnt: 0.3
   instability: 0.2

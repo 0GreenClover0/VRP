@@ -20,19 +20,19 @@ MonoBehaviour:
     speed: 1
   - direction: {x: -0.9659258, y: -0.25881904}
     number: 0.8311092
-    steepness: 0.252
+    steepness: 0.25
     amplitude: 0.45
-    speed: 1
-  - direction: {x: -0.104528494, y: -0.9945219}
-    number: 0.3611026
+    speed: 0.5
+  - direction: {x: -0.83867055, y: -0.54463905}
+    number: 1.2566371
     steepness: 0.296
     amplitude: 0.45
-    speed: 1
+    speed: 0.5
   - direction: {x: -0.43837112, y: -0.89879405}
     number: 0.43332314
     steepness: 1
     amplitude: 0.45
-    speed: 3
+    speed: 2
   autoWaveSpeed: 0
   autoWaveSpeedGravity: 9.81
   autoWaveHeight: 0
