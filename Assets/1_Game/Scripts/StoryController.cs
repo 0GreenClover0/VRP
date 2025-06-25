@@ -485,6 +485,11 @@ public class StoryController : MonoBehaviour
     
     public void PlayEmergentVoiceline(int id)
     {
+        if (audioSource.isPlaying)
+        {
+            return;
+        }
+        
         audioSource.clip = emergentVoiceLines[id];
         audioSource.time = 0.0f;
         audioSource.Play();
