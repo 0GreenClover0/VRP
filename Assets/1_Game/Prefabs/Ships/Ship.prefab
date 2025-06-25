@@ -29,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.2, y: 1.0647401, z: 0.2}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8762603376888253822}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -254,7 +254,7 @@ MonoBehaviour:
   contactPoints:
   - {x: -0.010047913, y: -0.004655521, z: 0.027885437}
   centerOfMass: {x: -0.009475708, y: -1.0051316, z: 0.028152466}
-  buoyancyForce: 3000
+  buoyancyForce: 5000
   ignoreMass: 0
   normalAlignemnt: 0.425
   instability: 0.2
@@ -726,8 +726,8 @@ Transform:
   m_GameObject: {fileID: 6929596435044761620}
   serializedVersion: 2
   m_LocalRotation: {x: 0.00000017881389, y: -0.00000005960463, z: 0.70710677, w: 0.7071067}
-  m_LocalPosition: {x: -0.015, y: 0, z: -0.038}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.12}
+  m_LocalPosition: {x: -0.0496, y: 0, z: -0.1136}
+  m_LocalScale: {x: 0.024514189, y: 0.1, z: 0.019739999}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4979248059194376949}
@@ -741,7 +741,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6929596435044761620}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10c0309d9d7aad644aed57a49954522e, type: 3}
   m_Name: 
@@ -764,7 +764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &626546292294509126
 Transform:
   m_ObjectHideFlags: 0
@@ -817,7 +817,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1.0239993, z: 0.8947564}
   m_Center: {x: -0.00000007843547, y: -0.011999574, z: 0.3321805}
@@ -869,7 +869,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8230478836532744386}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
