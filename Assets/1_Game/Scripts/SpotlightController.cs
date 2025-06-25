@@ -17,6 +17,8 @@ public class SpotlightController : MonoBehaviour
     public GameObject spotlightConeRef;
     private LighthouseLight lighthouseLight;
 
+    public Transform shipTrigger;
+    public SphereCollider shipTriggerCollider;
     public WaterSurface ocean;
     private float cachedWaterDecalRadius;
 
@@ -25,6 +27,7 @@ public class SpotlightController : MonoBehaviour
     private void Awake()
     {
         lighthouseLight = waterConeTransform.gameObject.GetComponent<LighthouseLight>();
+        shipTriggerCollider = shipTrigger.gameObject.GetComponent<SphereCollider>();
         cachedWaterDecalRadius = ocean.waterLightRadius;
         spotlightEnabled = false;
     }
@@ -47,18 +50,38 @@ public class SpotlightController : MonoBehaviour
     void Update()
     {
         EvaluateGeneratorPower();
+        ShootRaycast();
         
         if (spotlightEnabled && !generatorPowerScript.spotlightTurnedDown)
         {
             EnableLighthouseLight(true);
-            ShootRaycast();
         }
         else
         {
             EnableLighthouseLight(false);
         }
+
+        // Only for "stone", special case
+        if (generatorPowerScript.GetCurrentGeneratorPower() > 0.0f)
+        {
+            shipTrigger.GetChild(0).gameObject.SetActive(true);
+        }
+        else
+        {
+            shipTrigger.GetChild(0).gameObject.SetActive(false);
+        }
     }
 
+    void UpdateShipTrigger()
+    {
+        if (shipTrigger == null)
+        {
+            Debug.LogError("shipTrigger is null in SpotlightController");
+        }
+
+        shipTrigger.position = waterConeTransform.position;
+    }
+    
     void EvaluateGeneratorPower()
     {
         if (generatorPowerScript.GetCurrentBarValue() > 1.0f)
@@ -114,5 +137,6 @@ public class SpotlightController : MonoBehaviour
             ocean.waterLightRadius = 0.0f;
             waterConeTransform.gameObject.GetComponent<LighthouseLight>().enabled = false;
         }
+        UpdateShipTrigger();
     }
 }
