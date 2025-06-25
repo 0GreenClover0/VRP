@@ -28,6 +28,8 @@ public class GeneratorPower : MonoBehaviour
     [Tooltip("Time in seconds that is needed to interpolate the bar from 0 to 100%")]
     public float speed = 1.0f;
 
+    public float minRotationDelta = 3.0f;
+
     public Transform barTransform;
 
     [Space]
@@ -58,7 +60,10 @@ public class GeneratorPower : MonoBehaviour
 
     void OnTimer()
     {
-        currentGeneratorPower += rotationDelta * powerMultiplier;
+        if (Mathf.Abs(rotationDelta) > minRotationDelta)
+        {
+            currentGeneratorPower += Mathf.Abs(rotationDelta) * powerMultiplier;   
+        }
 
         if (rotationDelta < Mathf.Abs(0.001f) && !spotlightTurnedDown)
         {
@@ -70,7 +75,7 @@ public class GeneratorPower : MonoBehaviour
         lastA = barValue;
         lastB = currentGeneratorPower;
 
-        if ((!audioSource.isPlaying || audioSource.time > Random.Range(0.05f, 0.1f)) && Mathf.Abs(rotationDelta) > 0.02f)
+        if ((!audioSource.isPlaying || audioSource.time > Random.Range(0.05f, 0.1f)) && Mathf.Abs(rotationDelta) > minRotationDelta)
         {
             audioSource.pitch = Random.Range(0.8f, 1.2f);
             audioSource.Play();

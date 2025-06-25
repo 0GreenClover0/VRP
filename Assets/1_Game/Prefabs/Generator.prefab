@@ -189,7 +189,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6963285931656169231
 Transform:
   m_ObjectHideFlags: 0
@@ -933,6 +933,7 @@ MonoBehaviour:
   powerMultiplier: 2
   powerDecrease: 0.5
   speed: 1
+  minRotationDelta: 3
   barTransform: {fileID: 7726661042684241700}
   mechanism1: {fileID: 4138923336742136375}
   mechanism2: {fileID: 3706832590073413349}
@@ -940,6 +941,7 @@ MonoBehaviour:
   mechanism4: {fileID: 4924218988933826901}
   mechanism5: {fileID: 6454679271007849735}
   mechanism6: {fileID: 1618744778521625628}
+  spotlightTurnedDown: 0
 --- !u!114 &3089143459886817237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -969,10 +971,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1360416656783571439}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1441,6 +1443,7 @@ MonoBehaviour:
   powerMultiplier: 1.5
   powerDecrease: 1
   speed: 1
+  minRotationDelta: 3
   barTransform: {fileID: 1407505543196386257}
   mechanism1: {fileID: 6682586081607573463}
   mechanism2: {fileID: 6395393202085799657}
@@ -1448,6 +1451,7 @@ MonoBehaviour:
   mechanism4: {fileID: 0}
   mechanism5: {fileID: 0}
   mechanism6: {fileID: 0}
+  spotlightTurnedDown: 0
 --- !u!114 &3334082978441339492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1477,10 +1481,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1932050308781868886}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}

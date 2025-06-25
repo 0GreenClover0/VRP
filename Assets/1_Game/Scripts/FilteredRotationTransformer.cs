@@ -1,5 +1,6 @@
 using System;
 using Oculus.Interaction;
+using Oculus.Interaction.HandGrab;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -20,18 +21,27 @@ public class FilteredRotationTransformer : MonoBehaviour, ITransformer
     [SerializeField]
     private Vector3 _rotationAxis = Vector3.forward;
 
+    private Transform leftController;
+    private Transform rightController;
+
     public UnityAction onGrab;
     
     private float _lastAngle;
     private float _currentAngle;
     private float _proposedAngle;
 
+    private void Start()
+    {
+        leftController = GameManager.Instance.player.GetComponent<OVRCameraRig>().leftControllerAnchor;
+        rightController = GameManager.Instance.player.GetComponent<OVRCameraRig>().rightControllerAnchor;
+    }
+
     public void BeginTransform()
     {
         _underlyingTransformer.BeginTransform();
-        _underlyingTargetTransform.localRotation = _targetTransform.localRotation;
-        _underlyingTargetTransform.position = _targetTransform.position;
-        _lastAngle = GetLocalAngle();
+        // _underlyingTargetTransform.localRotation = _targetTransform.localRotation;
+        // _underlyingTargetTransform.position = _targetTransform.position;
+        // _lastAngle = GetLocalAngle();
         onGrab.Invoke();
     }
 
@@ -54,27 +64,12 @@ public class FilteredRotationTransformer : MonoBehaviour, ITransformer
         
         // Compute rotation delta
         _currentAngle = GetLocalAngle();
-        float delta = Mathf.DeltaAngle(_lastAngle, _currentAngle);
-        _proposedAngle = _lastAngle + delta;
         
-        Debug.Log("CurrentAngle: " + GetLocalAngle() + ", LastAngle: " + _lastAngle + ", Delta: " + delta + ", ProposedAngle: " + _proposedAngle);
+        // Debug.Log("CurrentAngle: " + GetLocalAngle() + ", LastAngle: " + _lastAngle + ", Delta: " + delta + ", ProposedAngle: " + _proposedAngle);
         
-        // Allow only forward (positive) rotation, exclude some off jumps in rotation resulting in odd backward turns sometimes
-        if (_proposedAngle > _lastAngle)
-        {
-            // Cancel backward rotation
-            _currentAngle = _lastAngle;
-            _proposedAngle = _lastAngle;
-            _underlyingTargetTransform.localRotation = Quaternion.AngleAxis(_lastAngle, _rotationAxis.normalized);
-            _underlyingTargetTransform.position = _targetTransform.position;
-        }
-        else
-        {
-            _lastAngle = _proposedAngle;
-        }
-
+        
         Quaternion currentRot = _targetTransform.localRotation;
-        Quaternion targetRot = Quaternion.AngleAxis(_lastAngle, _rotationAxis.normalized);
+        Quaternion targetRot = Quaternion.AngleAxis(_currentAngle, _rotationAxis.normalized);
         _targetTransform.localRotation = Quaternion.Slerp(currentRot, targetRot, _filterStrength);
         _targetTransform.position = Vector3.Lerp(_targetTransform.position, _underlyingTargetTransform.position, _filterStrength);
     }
