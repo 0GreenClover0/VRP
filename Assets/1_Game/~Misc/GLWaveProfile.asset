@@ -23,11 +23,6 @@ MonoBehaviour:
     steepness: 0.25
     amplitude: 0.45
     speed: 0.5
-  - direction: {x: -0.83867055, y: -0.54463905}
-    number: 1.2566371
-    steepness: 0.296
-    amplitude: 0.45
-    speed: 0.5
   - direction: {x: -0.43837112, y: -0.89879405}
     number: 0.43332314
     steepness: 1
