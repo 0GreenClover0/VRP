@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
     {
         if (!showedControllerPrompt && !LevelController.Instance.IsDuringScriptedSequence && !LevelController.Instance.GameFinished)
         {
-            if (additionalGrabbableLogic.holdingHand != GrabbingHand.Both ||
+            if (additionalGrabbableLogic.holdingHand == GrabbingHand.None ||
                 additionalGrabbableLogic.spotlightController.generatorPowerScript.GetCurrentGeneratorPower() < 30)
             {
                 storyController.spotlightFilteredTransformer.onGrab += OnGrab;
@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
 
     private void OnGrab()
     {
-        StartCoroutine(ShowDimSpotlightHint(1));
+        StartCoroutine(ShowDimSpotlightHint(20));
     }
 
     IEnumerator RopeReminder()
@@ -125,11 +125,18 @@ public class GameManager : MonoBehaviour
     IEnumerator ShowDimSpotlightHint(int time)
     {
         yield return new WaitForSeconds(time);
+
+        if (additionalGrabbableLogic.holdingHand == GrabbingHand.None)
+        {
+            StartCoroutine(ShowDimSpotlightHint(5));
+            yield break;
+        }
+        
         if (!showedControllerPrompt)
         {
             Animator animator = storyController.GetComponent<Animator>();
             animator.SetTrigger("AnimatePromptController");
+            showedControllerPrompt = true;
         }
-        showedControllerPrompt = true;
     }
 }
