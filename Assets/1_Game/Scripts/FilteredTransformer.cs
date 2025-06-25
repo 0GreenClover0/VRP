@@ -1,4 +1,5 @@
 using System;
+using System.Numerics;
 using Oculus.Interaction;
 using UnityEngine;
 using UnityEngine.Events;
@@ -120,8 +121,28 @@ public class FilteredTransformer : MonoBehaviour, ITransformer
 
         // New front point for calculating yaw
         Vector3 v = rightController.position - leftController.position;
-        Vector3 yawDir = Vector3.Cross(v, Vector3.up).normalized;
         
+        if (additionalGrabbableLogic.holdingHand == GrabbingHand.Left)
+        {
+            Transform t = leftController.transform;
+            Vector3 euler = t.eulerAngles;
+            euler.x = 0.0f;
+            euler.z = 0.0f;
+            t.rotation = Quaternion.Euler(euler);
+            v = t.position + t.right - t.position;
+        }
+        
+        if (additionalGrabbableLogic.holdingHand == GrabbingHand.Right)
+        {
+            Transform t = rightController.transform;
+            Vector3 euler = t.eulerAngles;
+            euler.x = 0.0f;
+            euler.z = 0.0f;
+            t.rotation = Quaternion.Euler(euler);
+            v = t.position + t.right - t.position;
+        }
+        
+        Vector3 yawDir = Vector3.Cross(v, Vector3.up).normalized;
         targetForward = yawDir;
         
         targetForward.y = y;
