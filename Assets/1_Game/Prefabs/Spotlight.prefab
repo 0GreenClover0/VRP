@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderers:
-  - {fileID: 0}
+  - {fileID: 6845729912582903122}
   _vectorProperties: []
   _colorProperties: []
   _floatProperties: []
