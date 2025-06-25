@@ -51,6 +51,11 @@ public class CustomerManager : MonoBehaviour
             SpawnCustomer(DeliveryType.Wood);
             SpawnCustomer(DeliveryType.Food);
         }
+        else
+        {
+            SpawnCustomer(DeliveryType.Food);
+            SpawnCustomer(DeliveryType.Wood);
+        }
         
         slightlyAngryStartSatisfaction = 1.0f - (LevelController.Instance.slightlyAngryStartTreshold / (float)LevelController.Instance.MaxCustomersToLose);
     }
