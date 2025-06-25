@@ -24,6 +24,7 @@ public class CustomerManager : MonoBehaviour
     private List<Customer> customersWood = new();
     private float customerSpawnTimer = 0.0f;
     private float angryJumperTickTimer = 0.0f;
+    private DeliveryType lastTypeSpawned = DeliveryType.Wood;
 
     private const float angryJumperTickInterval = 1.2f;
 
@@ -65,8 +66,17 @@ public class CustomerManager : MonoBehaviour
         if (customerSpawnTimer > customerSpawnInterval && customersFood.Count + customersWood.Count < LevelController.Instance.MaxCustomersToLose + 1)
         {
             customerSpawnTimer = 0.0f;
-            SpawnCustomer(DeliveryType.Food);
-            SpawnCustomer(DeliveryType.Wood);
+
+            if (lastTypeSpawned == DeliveryType.Food)
+            {
+                SpawnCustomer(DeliveryType.Wood);
+                lastTypeSpawned = DeliveryType.Wood;
+            }
+            else
+            {
+                SpawnCustomer(DeliveryType.Food);
+                lastTypeSpawned = DeliveryType.Food;
+            }
         }
 
         int allCustomersCount = customersFood.Count + customersWood.Count;
