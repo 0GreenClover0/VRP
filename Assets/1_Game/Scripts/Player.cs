@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 
     public float FlashCounter { get; private set; }
 
-    private const float flashTime = 10.0f;
+    public float flashTime { get; private set; } = 10.0f;
 
     private void Awake()
     {
