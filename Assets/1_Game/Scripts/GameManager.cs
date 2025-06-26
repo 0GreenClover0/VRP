@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        gameSceneNames = new List<string>() {"Game_Blockout"};
+        gameSceneNames = new List<string>() {"Random1", "Random2"};
 
         audioSource = GetComponent<AudioSource>();
 
