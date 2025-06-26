@@ -103,8 +103,17 @@ public class PullSwitch : MonoBehaviour
         
         EvaluatePullSwitchVisuals();
         EvaluateAnimations();
+        BulbSocketBlinking();
     }
 
+    void BulbSocketBlinking()
+    {
+        if (isBulbInSocket && GameManager.Instance.firstFlashUsed)
+        {
+            GameManager.Instance.storyController.miscBlinking = false;
+        }
+    }
+    
     void EvaluatePullSwitchVisuals()
     {
         // If nothing is grabbing the string, slowly move up to default position.

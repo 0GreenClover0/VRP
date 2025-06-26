@@ -390,7 +390,6 @@ public class StoryController : MonoBehaviour
         // Stop spotlight blinking
         if (!firstStage4SpotlightGrabbed)
         {
-            blinkBrightness *= 10.0f;
             spotlightBlinking = false;
             firstStage4SpotlightGrabbed = true;
             SetStoryStage(5);
@@ -520,7 +519,6 @@ public class StoryController : MonoBehaviour
 
     void StartSpotlightBlinking()
     {
-        blinkBrightness /= 10.0f;
         spotlightBlinking = true;
     }
 
@@ -567,7 +565,7 @@ public class StoryController : MonoBehaviour
         }
     }
 
-    void StartMiscBlinking(bool allowBlinking, List<MeshRenderer> renderersList)
+    public void StartMiscBlinking(bool allowBlinking, List<MeshRenderer> renderersList)
     {
         BlinkingData b = new BlinkingData
         {
@@ -585,7 +583,7 @@ public class StoryController : MonoBehaviour
             b.baseEmissionColors.Add(emissionColor);
         }
 
-        blinkBrightness *= 10.0f;
+        blinkBrightness = 10.0f;
 
         misc = b;
         blinkers[3] = misc;
@@ -594,7 +592,7 @@ public class StoryController : MonoBehaviour
 
     void StopMiscBlinking()
     {
-        blinkBrightness /= 10.0f;
+        blinkBrightness = 8.0f;
         miscBlinking = false;
     }
 

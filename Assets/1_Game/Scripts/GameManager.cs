@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
                 storyController.spotlightFilteredTransformer.onGrab += OnGrab;
                 return;
             }
-            StartCoroutine(ShowDimSpotlightHint(30)); // !   
+            StartCoroutine(ShowDimSpotlightHint(60)); // !   
         }
     }
 
