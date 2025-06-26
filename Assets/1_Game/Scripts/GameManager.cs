@@ -64,6 +64,8 @@ public class GameManager : MonoBehaviour
 
             if (leftButtonsTimer > 5.0f)
             {
+                leftButtonsTimer = -999.0f;
+
                 SceneManager.LoadSceneAsync("Menu");
             }
         }
@@ -78,8 +80,9 @@ public class GameManager : MonoBehaviour
 
             if (rightButtonsTimer > 5.0f)
             {
-                string randomLevel = gameSceneNames[UnityEngine.Random.Range(0, Instance.gameSceneNames.Count)];
+                rightButtonsTimer = -999.0f;
 
+                string randomLevel = gameSceneNames[UnityEngine.Random.Range(0, Instance.gameSceneNames.Count)];
                 SceneManager.LoadSceneAsync(randomLevel);
             }
         }
