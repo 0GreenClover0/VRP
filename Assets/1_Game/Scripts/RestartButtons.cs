@@ -4,13 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class RestartButtons : MonoBehaviour
 {
-    private List<string> gameSceneNames = new List<string>();
-
-    private void Awake()
-    {
-        gameSceneNames = new List<string>() {"Game_Blockout"};
-    }
-
     // Do not change this name.
     public void RestartLevel()
     {
@@ -24,7 +17,7 @@ public class RestartButtons : MonoBehaviour
 
     public void RandomLevel()
     {
-        string randomLevel = gameSceneNames[Random.Range(0, gameSceneNames.Count)];
+        string randomLevel = GameManager.Instance.gameSceneNames[Random.Range(0, GameManager.Instance.gameSceneNames.Count)];
 
         SceneManager.LoadSceneAsync(randomLevel);
     }

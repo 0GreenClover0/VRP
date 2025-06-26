@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,8 +25,12 @@ public class GameManager : MonoBehaviour
     private AdditionalGrabbableLogic additionalGrabbableLogic;
     [HideInInspector] public bool firstFlashUsed = false;
 
+    public List<string> gameSceneNames = new List<string>();
+
     private void Awake()
     {
+        gameSceneNames = new List<string>() {"Game_Blockout"};
+
         audioSource = GetComponent<AudioSource>();
 
         if (storyController != null)
@@ -46,8 +52,41 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private float leftButtonsTimer = 0.0f;
+    private float rightButtonsTimer = 0.0f;
+
     private void Update()
     {
+        if (OVRInput.Get(OVRInput.RawButton.X) && OVRInput.Get(OVRInput.RawButton.Y))
+        {
+            leftButtonsTimer += Time.deltaTime;
+
+            if (leftButtonsTimer > 5.0f)
+            {
+                SceneManager.LoadSceneAsync("Menu");
+            }
+        }
+        else
+        {
+            leftButtonsTimer = 0.0f;
+        }
+
+        if (OVRInput.Get(OVRInput.RawButton.A) && OVRInput.Get(OVRInput.RawButton.B))
+        {
+            rightButtonsTimer += Time.deltaTime;
+
+            if (rightButtonsTimer > 5.0f)
+            {
+                string randomLevel = gameSceneNames[UnityEngine.Random.Range(0, Instance.gameSceneNames.Count)];
+
+                SceneManager.LoadSceneAsync(randomLevel);
+            }
+        }
+        else
+        {
+            rightButtonsTimer = 0.0f;
+        }
+
         DimSpotlightTick();
     }
 
