@@ -93,8 +93,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: d05c9b18fed49ef4fbd1d24c1e0c124d, type: 2}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: e179f1374a74c2540abee1cbf19c6d1f, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 921706c34c2cbb24c82a59de9ab586c8, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 9acd3db6352adac4e90419282404a286, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -6683,7 +6683,7 @@ Transform:
   m_GameObject: {fileID: 1190039927}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.5, y: 0, z: 20.5}
+  m_LocalPosition: {x: -11.5, y: 0, z: 25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -14993,6 +14993,7 @@ MonoBehaviour:
   powerMultiplier: 2
   powerDecrease: 0.5
   speed: 1
+  minRotationDelta: 3
   barTransform: {fileID: 7726661042210860425}
   mechanism1: {fileID: 4138923337072910490}
   mechanism2: {fileID: 3706832589599962184}
@@ -17142,6 +17143,7 @@ MonoBehaviour:
   powerMultiplier: 1.5
   powerDecrease: 1
   speed: 1
+  minRotationDelta: 3
   barTransform: {fileID: 1407505543106783612}
   mechanism1: {fileID: 6682586081938412922}
   mechanism2: {fileID: 6395393202276101188}
@@ -17969,6 +17971,8 @@ MonoBehaviour:
   generatorPowerScript: {fileID: 2037011981602602617}
   waterConeTransform: {fileID: 8802445923121537442}
   spotlightConeRef: {fileID: 6353783403553989649}
+  shipTrigger: {fileID: 0}
+  shipTriggerCollider: {fileID: 0}
   ocean: {fileID: 26406872}
 --- !u!114 &5618312328091851208
 MonoBehaviour:
