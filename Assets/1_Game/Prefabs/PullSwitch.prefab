@@ -502,10 +502,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2669527279106412201}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1061,10 +1061,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4214296559461055527}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1737,6 +1737,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4092878007002918, guid: bcacdcda25fb6f646bcdb0e3ff7958cd, type: 3}
   m_PrefabInstance: {fileID: 972563372026910338}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &2106166836252953291 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1172526551899085897, guid: bcacdcda25fb6f646bcdb0e3ff7958cd, type: 3}
+  m_PrefabInstance: {fileID: 972563372026910338}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3392512895486046779
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2252,6 +2257,7 @@ MonoBehaviour:
   pullSwitchRef: {fileID: 5640138955781011182}
   lightBulbPrefab: {fileID: 8770182500794299091, guid: 6451592af2520cf488384ae9649b0f61, type: 3}
   lightbulbSocket: {fileID: 5232230803761747559}
+  ropeBaseSocket: {fileID: 2106166836252953291}
 --- !u!4 &7345716381247280167 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -6799611125061086856, guid: 34af0e58f520f5f4fbcfc72f6fef8ad1, type: 3}

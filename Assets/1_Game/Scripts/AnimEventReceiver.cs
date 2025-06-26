@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Oculus.Interaction;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -9,6 +10,7 @@ public class AnimEventReceiver : MonoBehaviour
     [SerializeField] private PullSwitch pullSwitchRef;
     [SerializeField] private GameObject lightBulbPrefab;
     [SerializeField] private Transform lightbulbSocket;
+    [SerializeField] private MeshRenderer ropeBaseSocket;
     private bool takenLightBulb = false;
     
     public void GiveLightbulb()
@@ -21,6 +23,8 @@ public class AnimEventReceiver : MonoBehaviour
         Utilities.SilenceRigidbody(bulb.GetComponent<Rigidbody>(), true);
         bulb.transform.localPosition = Vector3.zero;
         GameManager.Instance.storyController.PlayEmergentVoiceline(Random.Range(2, 6));
+        GameManager.Instance.storyController.StartMiscBlinking(true, new List<MeshRenderer>() {ropeBaseSocket});
+            
         StartCoroutine(RemindAboutLightbulb());
     }
 
