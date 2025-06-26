@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Oculus.Interaction;
 using UnityEngine;
@@ -16,7 +17,7 @@ public class PullSwitch : MonoBehaviour
     public bool wiggle; 
     public bool jumpOut;
     public bool takenLight;
-    [SerializeField] private Animator animator;
+    public Animator animator;
     [Space]
     
     [SerializeField] private InteractableGroupView interactableGroupView;
@@ -27,7 +28,7 @@ public class PullSwitch : MonoBehaviour
     [SerializeField] private AudioClip flashSound;
     [SerializeField] private SnapInteractable lightbulbSocket;
 
-    private float flashActiveVisual = -0.1f;
+    public float flashActiveVisual { get; private set; } = -0.1f;
     private AudioSource audioSource;
     private MaterialPropertyColor defaultMaterialColor;
     private MaterialPropertyColor activatedMaterialColor;
@@ -53,10 +54,10 @@ public class PullSwitch : MonoBehaviour
     private FakeEnvironmentLightData normalLightData = new FakeEnvironmentLightData();   // LERP A
     private FakeEnvironmentLightData flashLightData = new FakeEnvironmentLightData();    // LERP B
 
-    private const float flashTime = 5.0f;
+    private float flashTime = 7.5f;
     private const float returningToDefaultSpeed = 0.1f;
 
-    private bool isBulbInSocket;
+    public bool isBulbInSocket { get; private set; }
     private SnapInteractor currentBulb;
 
     private void Awake()
@@ -85,6 +86,11 @@ public class PullSwitch : MonoBehaviour
         flashLightData.ambientIntensity = flashAmbientIntensity;
         flashLightData.skyExposure = flashSkyExposure;
         flashLightData.reflectionIntensity = flashReflectionIntensity;
+    }
+
+    private void Start()
+    {
+        flashTime = Player.Instance.flashTime;
     }
 
     private void Update()

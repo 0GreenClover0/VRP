@@ -7287,7 +7287,7 @@ Transform:
   m_GameObject: {fileID: 1190039927}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 29}
+  m_LocalPosition: {x: -21, y: 0, z: 17.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -8363,6 +8363,10 @@ PrefabInstance:
       propertyPath: gameOver
       value: 
       objectReference: {fileID: 1716776747}
+    - target: {fileID: 1695997530405276650, guid: bc06327f54eb0b644bbdde2d2f0f83ca, type: 3}
+      propertyPath: pullSwitch
+      value: 
+      objectReference: {fileID: 1661687076}
     - target: {fileID: 1695997530405276650, guid: bc06327f54eb0b644bbdde2d2f0f83ca, type: 3}
       propertyPath: restartButtons
       value: 
@@ -10954,6 +10958,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3660018093901091438, guid: 48352ab4444a232448c523cba0f04589, type: 3}
   m_PrefabInstance: {fileID: 1391510715}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1661687076 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5640138955781011182, guid: 48352ab4444a232448c523cba0f04589, type: 3}
+  m_PrefabInstance: {fileID: 1391510715}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad6ef94a78e7e3141900c0203c3eef59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1662006378
 PrefabInstance:
   m_ObjectHideFlags: 0

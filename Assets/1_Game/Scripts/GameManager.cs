@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool warnedAboutPullSwitch = false;
     [SerializeField] private GameOverScreen gameOver;
     [SerializeField] private Appearable restartButtons;
+    public PullSwitch pullSwitch;
 
     [Space]
     [Header("Global looping sounds")]

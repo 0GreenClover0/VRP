@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Linq;
 using Oculus.Interaction;
 using Oculus.Interaction.HandGrab;
@@ -15,6 +16,7 @@ public class AdditionalLightbulbLogic : MonoBehaviour
     public UnityAction onTakeBulbFromPenguin;
     private Rigidbody rigidbody;
     private bool firstGrab = true;
+    private bool triggeredDestroy = false;
     
     private void Awake()
     {
@@ -61,6 +63,26 @@ public class AdditionalLightbulbLogic : MonoBehaviour
     private void Update()
     {
         EvaluateGrabbersNum();
+        BringBackLightbulb();
         UnfreezeRigidbody();
+    }
+
+    void BringBackLightbulb()
+    {
+        if (Vector3.Distance(transform.position, GameManager.Instance.player.transform.position) >= 2.25f
+            && !GameManager.Instance.pullSwitch.isBulbInSocket && GameManager.Instance.pullSwitch.flashActiveVisual <= 7.0f
+            && !triggeredDestroy)
+        {
+            GameManager.Instance.pullSwitch.animator.SetTrigger("JumpOut");
+            triggeredDestroy = true;
+            GameManager.Instance.storyController.miscBlinking = false;
+            StartCoroutine(DestroyBulb());
+        }
+    }
+
+    IEnumerator DestroyBulb()
+    {
+        yield return new WaitForSeconds(5.0f);
+        Destroy(gameObject);
     }
 }
